@@ -1,0 +1,366 @@
+---
+// Navegación sticky con dropdowns para Servicios y Zonas
+---
+
+<nav class="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <!-- Logo -->
+      <a href="/" class="nav__logo">
+        <div class="logo-placeholder">
+          <svg width="180" height="50" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
+            <text x="10" y="25" font-family="DM Serif Display, serif" font-size="18" fill="#3d3d3d" font-weight="400">
+              MARÍA DE LA VERA
+            </text>
+            <text x="10" y="42" font-family="DM Sans, sans-serif" font-size="11" fill="#4a7c59" font-weight="500">
+              Nutricionista
+            </text>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Menú hamburguesa (mobile) -->
+      <button class="nav__toggle" aria-label="Toggle menu" id="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Menú principal -->
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <!-- Servicios con dropdown -->
+          <li class="nav__item nav__item--dropdown">
+            <button class="nav__link nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              Servicios <span class="nav__arrow">▾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="/perdida-de-peso">Pérdida de peso</a></li>
+              <li><a href="/nutricion-deportiva">Nutrición deportiva</a></li>
+              <li><a href="/salud-digestiva">Salud digestiva</a></li>
+              <li><a href="/salud-hormonal">Salud hormonal femenina</a></li>
+              <li><a href="/nutricion-clinica">Nutrición clínica</a></li>
+              <li><a href="/nutricionista-online">Consulta online</a></li>
+            </ul>
+          </li>
+
+          <!-- Zonas con dropdown -->
+          <li class="nav__item nav__item--dropdown">
+            <button class="nav__link nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              Zonas <span class="nav__arrow">▾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="/nutricionista-boadilla-centro">Boadilla Centro</a></li>
+              <li><a href="/nutricionista-prado-del-espino">Prado del Espino</a></li>
+              <li><a href="/nutricionista-olivar-de-boadilla">El Olivar de Boadilla</a></li>
+              <li><a href="/nutricionista-bonanza-boadilla">Bonanza</a></li>
+              <li><a href="/nutricionista-las-lomas-boadilla">Las Lomas</a></li>
+              <li><a href="/nutricionista-valdecabanas-boadilla">Valdecabañas</a></li>
+              <li><a href="/nutricionista-sector-b-boadilla">Sector B</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item">
+            <a href="/#sobre-mi" class="nav__link">Sobre mí</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="/#precios" class="nav__link">Precios</a>
+          </li>
+
+          <li class="nav__item nav__item--cta">
+            <a href="/reservar" class="btn btn--primary">Reservar cita</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    padding: 1rem 0;
+  }
+
+  .nav__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav__logo {
+    display: block;
+  }
+
+  .logo-placeholder svg {
+    display: block;
+  }
+
+  /* Menú hamburguesa */
+  .nav__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav__toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-primary);
+    transition: var(--transition-base);
+  }
+
+  .nav__toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .nav__toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav__toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Menú principal */
+  .nav__menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-lg);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav__menu.active {
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+
+  .nav__list {
+    list-style: none;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav__item {
+    border-bottom: 1px solid var(--color-bg-secondary);
+  }
+
+  .nav__item:last-child {
+    border-bottom: none;
+  }
+
+  .nav__link {
+    display: block;
+    padding: 1rem 0;
+    color: var(--color-text-primary);
+    font-weight: 500;
+    transition: var(--transition-base);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+
+  .nav__link:hover {
+    color: var(--color-trust);
+  }
+
+  .nav__arrow {
+    display: inline-block;
+    margin-left: 0.25rem;
+    transition: transform var(--transition-base);
+  }
+
+  .nav__dropdown-trigger[aria-expanded="true"] .nav__arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown */
+  .nav__dropdown {
+    list-style: none;
+    padding-left: var(--spacing-md);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav__dropdown.active {
+    max-height: 500px;
+  }
+
+  .nav__dropdown li {
+    border-bottom: none;
+  }
+
+  .nav__dropdown a {
+    display: block;
+    padding: 0.75rem 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    transition: var(--transition-base);
+  }
+
+  .nav__dropdown a:hover {
+    color: var(--color-trust);
+    padding-left: 0.5rem;
+  }
+
+  .nav__item--cta {
+    padding-top: var(--spacing-md);
+    border-bottom: none;
+  }
+
+  .nav__item--cta .btn {
+    width: 100%;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .nav__toggle {
+      display: none;
+    }
+
+    .nav__menu {
+      position: static;
+      max-height: none;
+      overflow: visible;
+      box-shadow: none;
+    }
+
+    .nav__list {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      padding: 0;
+    }
+
+    .nav__item {
+      border-bottom: none;
+      position: relative;
+    }
+
+    .nav__link {
+      padding: 0.5rem 0;
+    }
+
+    .nav__item--dropdown {
+      position: relative;
+    }
+
+    .nav__dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-sm);
+      min-width: 240px;
+      margin-top: 0.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+    }
+
+    .nav__item--dropdown:hover .nav__dropdown,
+    .nav__dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      max-height: none;
+    }
+
+    .nav__dropdown li {
+      padding: 0;
+    }
+
+    .nav__dropdown a {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .nav__dropdown a:hover {
+      background-color: var(--color-bg-secondary);
+      padding-left: 1rem;
+    }
+
+    .nav__item--cta {
+      padding-top: 0;
+      margin-left: auto;
+    }
+
+    .nav__item--cta .btn {
+      width: auto;
+    }
+  }
+</style>
+
+<script>
+  // Toggle menú móvil
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  }
+
+  // Dropdowns (mobile y desktop)
+  const dropdownTriggers = document.querySelectorAll('.nav__dropdown-trigger');
+
+  dropdownTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const dropdown = trigger.nextElementSibling;
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Cerrar otros dropdowns en móvil
+      if (window.innerWidth < 768) {
+        dropdownTriggers.forEach(otherTrigger => {
+          if (otherTrigger !== trigger) {
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            otherTrigger.nextElementSibling?.classList.remove('active');
+          }
+        });
+      }
+
+      // Toggle el actual
+      trigger.setAttribute('aria-expanded', !isExpanded);
+      dropdown?.classList.toggle('active');
+    });
+  });
+
+  // Cerrar menú móvil al hacer clic en un enlace
+  const navLinks = document.querySelectorAll('.nav__dropdown a, .nav__item > .nav__link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 768) {
+        navToggle?.classList.remove('active');
+        navMenu?.classList.remove('active');
+      }
+    });
+  });
+</script>

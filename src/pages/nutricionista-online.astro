@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTABox from '../components/CTABox.astro';
+import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+
+import serviciosData from '../data/servicios.json';
+---
+
+<BaseLayout
+  title="Nutricionista online | María De la Vera · Consulta por Google Meet"
+  description="Consulta de nutrición online por Google Meet desde cualquier lugar de España. Colegiada MAD01182. Primera consulta 50€. Reserva cita."
+  canonical="/nutricionista-online"
+>
+  <Nav slot="nav" />
+
+  <Hero
+    badge="💻 Consulta online"
+    title="Nutricionista online por Google Meet"
+    titleAccent="Google Meet"
+    subtitle="Cuida tu salud desde casa con consultas online profesionales. Misma calidad que la consulta presencial, sin desplazamientos."
+    showImage={false}
+  />
+
+  <!-- Ventajas online -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Por qué consulta online?</h2>
+
+      <div class="grid grid--3">
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🏠</div>
+          <h3>Sin desplazamientos</h3>
+          <p style="color: var(--color-text-secondary);">
+            Desde la comodidad de tu casa, sin perder tiempo en desplazamientos ni esperas.
+          </p>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🌍</div>
+          <h3>Desde cualquier lugar</h3>
+          <p style="color: var(--color-text-secondary);">
+            Vivas donde vivas en España, puedes acceder a mis servicios de nutrición.
+          </p>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">⏰</div>
+          <h3>Horarios flexibles</h3>
+          <p style="color: var(--color-text-secondary);">
+            Mayor disponibilidad de horarios adaptados a tu agenda profesional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Cómo funciona la consulta online?</h2>
+
+      <div class="grid grid--3">
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">1️⃣</div>
+          <h3>Reserva tu cita</h3>
+          <p style="color: var(--color-text-secondary);">
+            Elige día y hora en el calendario. Recibirás un enlace de Google Meet por email.
+          </p>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">2️⃣</div>
+          <h3>Videoconsulta</h3>
+          <p style="color: var(--color-text-secondary);">
+            Entrevista nutricional completa por Google Meet, como si estuvieras en consulta presencial.
+          </p>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">3️⃣</div>
+          <h3>Plan por email</h3>
+          <p style="color: var(--color-text-secondary);">
+            En 24-72h recibes tu plan nutricional personalizado por email con todo el material.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Todos los servicios disponibles online</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+        Mismos servicios, misma calidad. Solo cambia la modalidad de la consulta.
+      </p>
+
+      <div class="grid grid--3">
+        {serviciosData.map(servicio => (
+          <ServiceCard
+            emoji={servicio.emoji}
+            title={servicio.title}
+            description={servicio.shortDesc}
+            href={`/${servicio.slug}`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservar -->
+  <section class="section" id="reservar-online">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Reserva tu consulta online</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+        Elige día y hora. Recibirás el enlace de Google Meet por email.
+      </p>
+
+      <CalendlyEmbed type="online" />
+
+      <p class="text-center" style="margin-top: var(--spacing-lg); color: var(--color-text-secondary);">
+        ¿Vienen en pareja? <a href="https://calendly.com/nutricionista-mariadelavera/primera-consulta-parejas" target="_blank" rel="noopener" style="color: var(--color-trust); font-weight: 600;">Reserva consulta para parejas aquí</a>
+      </p>
+    </div>
+  </section>
+
+  <CTABox
+    title="¿Prefieres consulta presencial?"
+    description="También atiendo en el Centro Médico Arboleda (Boadilla del Monte). Elige la modalidad que prefieras."
+    ctaText="Ver consulta presencial"
+    ctaHref="/"
+    variant="trust"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>

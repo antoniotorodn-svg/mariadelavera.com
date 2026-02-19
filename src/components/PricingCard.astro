@@ -1,0 +1,96 @@
+---
+interface Props {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+  savings?: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  title,
+  price,
+  description,
+  features,
+  highlighted = false,
+  savings,
+  ctaText = "Reservar",
+  ctaHref = "/reservar"
+} = Astro.props;
+---
+
+<div class={`pricing-card card ${highlighted ? 'pricing-card--highlighted' : ''}`}>
+  {savings && (
+    <div class="pricing-card__badge badge">
+      💰 Ahorro de {savings}
+    </div>
+  )}
+
+  <h3 class="pricing-card__title">{title}</h3>
+  <div class="pricing-card__price">{price}</div>
+  <p class="pricing-card__description">{description}</p>
+
+  <ul class="pricing-card__features">
+    {features.map(feature => (
+      <li>✓ {feature}</li>
+    ))}
+  </ul>
+
+  <a href={ctaHref} class={`btn ${highlighted ? 'btn--trust' : 'btn--primary'}`} style="width: 100%; margin-top: auto;">
+    {ctaText}
+  </a>
+</div>
+
+<style>
+  .pricing-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .pricing-card--highlighted {
+    border: 3px solid var(--color-trust);
+    transform: scale(1.02);
+  }
+
+  .pricing-card__badge {
+    background-color: var(--color-trust);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .pricing-card__title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+  }
+
+  .pricing-card__price {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--color-trust);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .pricing-card__description {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+    flex-grow: 1;
+  }
+
+  .pricing-card__features li {
+    padding: 0.5rem 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+  }
+</style>

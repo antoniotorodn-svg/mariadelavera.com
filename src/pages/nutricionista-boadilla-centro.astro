@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTABox from '../components/CTABox.astro';
+import BarrioTag from '../components/BarrioTag.astro';
+
+import serviciosData from '../data/servicios.json';
+import barriosData from '../data/barrios.json';
+
+const barrio = barriosData.find(b => b.slug === 'nutricionista-boadilla-centro')!;
+const otrosBarrios = barriosData.filter(b => b.id !== barrio.id).slice(0, 6);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": `Nutricionista en ${barrio.name} - María De la Vera`,
+  "description": barrio.description,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Siglo XXI, 13, local 13/14",
+    "addressLocality": "Boadilla del Monte",
+    "addressRegion": "Madrid",
+    "postalCode": "28660",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "40.4021",
+    "longitude": "-3.8777"
+  }
+};
+---
+
+<BaseLayout
+  title={barrio.metaTitle}
+  description={barrio.metaDescription}
+  canonical={`/${barrio.slug}`}
+  schema={schema}
+>
+  <Nav slot="nav" />
+
+  <Hero
+    badge={`📍 ${barrio.name}`}
+    title={`Nutricionista en ${barrio.name}`}
+    titleAccent={barrio.name}
+    subtitle={barrio.description}
+    showImage={false}
+  />
+
+  <!-- Landmarks y perfil -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="grid grid--2" style="align-items: start;">
+        <div class="card">
+          <h2 style="margin-bottom: var(--spacing-md);">Puntos de referencia</h2>
+          <ul class="landmarks-list">
+            {barrio.landmarks.map(landmark => (
+              <li>📍 {landmark}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 style="margin-bottom: var(--spacing-md);">Perfil de vecinos</h2>
+          <p style="color: var(--color-text-secondary); line-height: 1.7;">
+            {barrio.profile}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Servicios de nutrición en {barrio.name}</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+        Consulta presencial en el Centro Médico Arboleda, a pocos minutos de {barrio.name}.
+      </p>
+
+      <div class="grid grid--3">
+        {serviciosData.slice(0, 3).map(servicio => (
+          <ServiceCard
+            emoji={servicio.emoji}
+            title={servicio.title}
+            description={servicio.shortDesc}
+            href={`/${servicio.slug}`}
+          />
+        ))}
+      </div>
+
+      <div class="text-center" style="margin-top: var(--spacing-xl);">
+        <a href="/#servicios" class="btn btn--secondary">Ver todos los servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Otros barrios -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Otras zonas de Boadilla</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl);">
+        También atiendo pacientes de todos los barrios de Boadilla del Monte.
+      </p>
+
+      <div class="barrios-grid">
+        {otrosBarrios.map(b => (
+          <BarrioTag name={b.name} href={`/${b.slug}`} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABox
+    title={`¿Vives en ${barrio.name}?`}
+    description="Reserva tu primera consulta en el Centro Médico Arboleda, cerca de tu zona."
+    ctaText="Reservar cita"
+    ctaHref="/reservar"
+    variant="trust"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .landmarks-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .landmarks-list li {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .barrios-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+</style>

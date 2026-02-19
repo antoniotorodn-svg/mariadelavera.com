@@ -1,0 +1,107 @@
+[
+  {
+    "id": "boadilla-centro",
+    "slug": "nutricionista-boadilla-centro",
+    "name": "Boadilla Centro",
+    "description": "Nutricionista en el casco histórico de Boadilla del Monte, cerca de la Plaza del Castillo, el Palacio del Infante Don Luis y el Ayuntamiento.",
+    "landmarks": [
+      "Plaza del Castillo",
+      "Palacio del Infante Don Luis",
+      "Ayuntamiento de Boadilla",
+      "Parque de Juan Pablo II"
+    ],
+    "profile": "Vecinos del centro histórico, comerciantes, trabajadores del Ayuntamiento y familias tradicionales de Boadilla.",
+    "metaTitle": "Nutricionista Boadilla Centro | María De la Vera · Colegiada",
+    "metaDescription": "Nutricionista en Boadilla Centro, junto al Ayuntamiento y Palacio del Infante Don Luis. Consulta presencial y online. Reserva tu cita."
+  },
+  {
+    "id": "prado-del-espino",
+    "slug": "nutricionista-prado-del-espino",
+    "name": "Prado del Espino",
+    "description": "Nutricionista en Prado del Espino, zona joven de Boadilla con acceso directo al Metro Ligero ML2, cerca del C.C. El Zoco y CEIP Prado del Espino.",
+    "landmarks": [
+      "Metro Ligero ML2 (Prado del Espino)",
+      "Centro Comercial El Zoco",
+      "CEIP Prado del Espino",
+      "Instalaciones deportivas municipales"
+    ],
+    "profile": "Familias jóvenes con niños, teletrabajadores, deportistas y vecinos con fácil acceso al transporte público.",
+    "metaTitle": "Nutricionista Prado del Espino | Boadilla | María De la Vera",
+    "metaDescription": "Nutricionista en Prado del Espino (Boadilla), junto al Metro Ligero ML2 y C.C. El Zoco. Primera consulta 50€. Reserva cita."
+  },
+  {
+    "id": "olivar-de-boadilla",
+    "slug": "nutricionista-olivar-de-boadilla",
+    "name": "El Olivar de Boadilla",
+    "description": "Nutricionista en El Olivar de Boadilla, zona residencial de chalets cerca del Parque Forestal y el Club de Campo Villa de Madrid.",
+    "landmarks": [
+      "Parque Forestal (Adolfo Suárez)",
+      "Club de Campo Villa de Madrid",
+      "Centro Deportivo Olivar",
+      "Zona de chalets adosados y pareados"
+    ],
+    "profile": "Profesionales de 40-55 años, familias con vivienda propia, deportistas que usan el Parque Forestal y el Club de Campo.",
+    "metaTitle": "Nutricionista Olivar de Boadilla | María De la Vera",
+    "metaDescription": "Nutricionista en El Olivar de Boadilla, cerca del Parque Forestal y Club de Campo. Consulta presencial y online. Reserva."
+  },
+  {
+    "id": "bonanza",
+    "slug": "nutricionista-bonanza-boadilla",
+    "name": "Bonanza",
+    "description": "Nutricionista en Bonanza, urbanización consolidada de Boadilla con piscina comunitaria, zonas verdes y ambiente familiar.",
+    "landmarks": [
+      "Piscina comunitaria de Bonanza",
+      "Colegio Nuestra Señora de las Nieves",
+      "Zonas verdes y parques infantiles",
+      "Centro de salud cercano"
+    ],
+    "profile": "Matrimonios establecidos, familias con niños en edad escolar, jubilados activos y parejas de mediana edad.",
+    "metaTitle": "Nutricionista Bonanza Boadilla | María De la Vera · Colegiada",
+    "metaDescription": "Nutricionista en Bonanza (Boadilla del Monte). Consulta presencial en Centro Médico Arboleda. Primera consulta 50€. Reserva."
+  },
+  {
+    "id": "las-lomas",
+    "slug": "nutricionista-las-lomas-boadilla",
+    "name": "Las Lomas",
+    "description": "Nutricionista en Las Lomas, zona residencial premium de Boadilla con chalets, parcelas amplias y entorno tranquilo.",
+    "landmarks": [
+      "Zona de parcelas individuales",
+      "Parques privados y zonas ajardinadas",
+      "Colegio Internacional (cercano)",
+      "Acceso rápido a M-50 y M-501"
+    ],
+    "profile": "Directivos, ejecutivos, emprendedores y profesionales de alto nivel con vida familiar consolidada.",
+    "metaTitle": "Nutricionista Las Lomas Boadilla | María De la Vera",
+    "metaDescription": "Nutricionista en Las Lomas (Boadilla del Monte), zona residencial premium. Consulta presencial y online. Reserva tu cita."
+  },
+  {
+    "id": "valdecabanas",
+    "slug": "nutricionista-valdecabanas-boadilla",
+    "name": "Valdecabañas",
+    "description": "Nutricionista en Valdecabañas, zona con acceso directo a la M-501, viviendas unifamiliares y bloques de pisos.",
+    "landmarks": [
+      "Acceso directo a M-501",
+      "Colegios y centros educativos",
+      "Supermercados y comercios locales",
+      "Centro de salud Valdecabañas"
+    ],
+    "profile": "Trabajadores que se desplazan fuera de Boadilla, familias con hijos en colegios cercanos y vecinos con movilidad en coche.",
+    "metaTitle": "Nutricionista Valdecabañas Boadilla | María De la Vera",
+    "metaDescription": "Nutricionista en Valdecabañas (Boadilla), acceso fácil desde M-501. Consulta presencial y online. Primera consulta 50€."
+  },
+  {
+    "id": "sector-b",
+    "slug": "nutricionista-sector-b-boadilla",
+    "name": "Sector B",
+    "description": "Nutricionista en Sector B de Boadilla, zona de bloques de pisos con ambiente de barrio, cerca del Liceo Sorolla y CEIP Teresa de Calcuta.",
+    "landmarks": [
+      "Liceo Sorolla",
+      "CEIP Teresa de Calcuta",
+      "Centro Comercial de barrio",
+      "Instalaciones deportivas municipales"
+    ],
+    "profile": "Familias con niños pequeños, personas mayores de la tercera edad, matrimonios jóvenes y comunidad de vecinos activa.",
+    "metaTitle": "Nutricionista Sector B Boadilla | María De la Vera · Colegiada",
+    "metaDescription": "Nutricionista en Sector B de Boadilla del Monte, cerca de colegios y zonas residenciales. Consulta presencial. Reserva cita."
+  }
+]

@@ -1,0 +1,6 @@
+# mariadelavera.com robots.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://mariadelavera.com/sitemap-index.xml

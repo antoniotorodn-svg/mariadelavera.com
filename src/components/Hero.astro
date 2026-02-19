@@ -1,0 +1,215 @@
+---
+interface Props {
+  badge?: string;
+  title: string;
+  titleAccent?: string; // Parte del título en itálica dorada
+  subtitle: string;
+  ctaPrimary?: { text: string; href: string };
+  ctaSecondary?: { text: string; href: string };
+  proofItems?: string[];
+  showImage?: boolean;
+}
+
+const {
+  badge,
+  title,
+  titleAccent,
+  subtitle,
+  ctaPrimary = { text: "Reservar cita", href: "/reservar" },
+  ctaSecondary = { text: "WhatsApp", href: "https://wa.link/8y1ykx" },
+  proofItems = [
+    "⭐ 4.9 valoración Google",
+    "🎓 Colegiada MAD01182",
+    "👩‍⚕️ +700 pacientes atendidos"
+  ],
+  showImage = true
+} = Astro.props;
+
+// Separar el título si tiene acento
+let titleParts: string[] = [];
+if (titleAccent && title.includes(titleAccent)) {
+  const parts = title.split(titleAccent);
+  titleParts = [parts[0], titleAccent, parts[1]];
+} else {
+  titleParts = [title];
+}
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__grid">
+      <!-- Contenido -->
+      <div class="hero__content">
+        {badge && (
+          <div class="hero__badge badge">
+            {badge}
+          </div>
+        )}
+
+        <h1 class="hero__title">
+          {titleParts.length === 3 ? (
+            <>
+              {titleParts[0]}
+              <span class="hero__title-accent">{titleParts[1]}</span>
+              {titleParts[2]}
+            </>
+          ) : (
+            title
+          )}
+        </h1>
+
+        <p class="hero__subtitle">{subtitle}</p>
+
+        <!-- CTAs -->
+        <div class="hero__ctas">
+          <a href={ctaPrimary.href} class="btn btn--primary btn--large">
+            {ctaPrimary.text}
+          </a>
+          <a href={ctaSecondary.href} class="btn btn--whatsapp btn--large" target="_blank" rel="noopener">
+            💬 {ctaSecondary.text}
+          </a>
+        </div>
+
+        <!-- Proof bar -->
+        {proofItems && proofItems.length > 0 && (
+          <div class="hero__proof">
+            {proofItems.map(item => (
+              <span class="hero__proof-item">{item}</span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Imagen (placeholder para foto de María) -->
+      {showImage && (
+        <div class="hero__image">
+          <!-- REEMPLAZAR: Subir foto-maria.webp aquí -->
+          <div class="hero__image-placeholder">
+            <span class="hero__emoji">👩‍⚕️</span>
+            <p class="hero__placeholder-text">Foto de María<br>(subir imagen)</p>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: var(--spacing-3xl) 0;
+    background: var(--gradient-warm);
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+
+  .hero__content {
+    max-width: 600px;
+  }
+
+  .hero__badge {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-md);
+  }
+
+  @media (min-width: 768px) {
+    .hero__title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .hero__title-accent {
+    font-style: italic;
+    color: var(--color-trust);
+    background: linear-gradient(135deg, var(--color-trust) 0%, #6aa577 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  @media (min-width: 768px) {
+    .hero__subtitle {
+      font-size: 1.25rem;
+    }
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .btn--large {
+    padding: 1rem 2rem;
+    font-size: 1.0625rem;
+  }
+
+  .hero__proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-lg);
+    border-top: 2px solid rgba(61, 61, 61, 0.1);
+  }
+
+  .hero__proof-item {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  /* Imagen */
+  .hero__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero__image-placeholder {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #f7f3ee 0%, var(--color-accent) 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero__emoji {
+    font-size: 6rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero__placeholder-text {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    text-align: center;
+    font-style: italic;
+  }
+</style>

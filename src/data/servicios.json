@@ -1,0 +1,119 @@
+[
+  {
+    "id": "perdida-de-peso",
+    "slug": "perdida-de-peso",
+    "title": "Pérdida de peso",
+    "emoji": "⚖️",
+    "shortDesc": "Plan personalizado para perder peso de forma saludable y duradera, sin dietas milagro",
+    "description": "Alcanza tu peso ideal con un plan nutricional 100% personalizado. Sin dietas restrictivas, sin efecto rebote. Aprenderás a comer bien para siempre.",
+    "benefits": [
+      "Plan nutricional personalizado según tus gustos y estilo de vida",
+      "Menús semanales con recetas fáciles y adaptadas",
+      "Seguimiento cada 21 días para ajustar y motivarte",
+      "Educación nutricional para mantener resultados a largo plazo",
+      "Sin pasar hambre, sin prohibiciones extremas"
+    ],
+    "forWho": [
+      "Personas que han probado dietas sin éxito",
+      "Quien quiere perder peso sin efecto rebote",
+      "Adultos que buscan cambiar hábitos de forma definitiva"
+    ],
+    "metaTitle": "Pérdida de peso saludable | María De la Vera · Nutricionista",
+    "metaDescription": "Plan personalizado para perder peso sin dietas milagro. Nutricionista colegiada en Boadilla del Monte. Primera consulta 50€. Reserva cita."
+  },
+  {
+    "id": "nutricion-deportiva",
+    "slug": "nutricion-deportiva",
+    "title": "Nutrición deportiva",
+    "emoji": "🏃",
+    "shortDesc": "Planes para deportistas: runners, pádel, gimnasio, CrossFit. Rendimiento y recuperación",
+    "description": "Optimiza tu rendimiento deportivo y recuperación con un plan nutricional adaptado a tu entrenamiento. Para runners, ciclistas, gimnasio, pádel, CrossFit y más.",
+    "benefits": [
+      "Plan nutricional adaptado a tus entrenamientos y objetivos",
+      "Estrategias de nutrición antes, durante y después del ejercicio",
+      "Suplementación deportiva basada en evidencia (solo si es necesaria)",
+      "Composición corporal óptima para tu deporte",
+      "Mejora del rendimiento y recuperación muscular"
+    ],
+    "forWho": [
+      "Deportistas amateur y federados",
+      "Personas que entrenan en gimnasio (fuerza, hipertrofia, CrossFit)",
+      "Runners, ciclistas, nadadores y triatletas",
+      "Jugadores de pádel, tenis, fútbol"
+    ],
+    "metaTitle": "Nutrición deportiva | María De la Vera · Nutricionista Boadilla",
+    "metaDescription": "Nutrición para deportistas en Boadilla: runners, gimnasio, pádel, CrossFit. Mejora rendimiento y recuperación. Reserva tu consulta."
+  },
+  {
+    "id": "salud-digestiva",
+    "slug": "salud-digestiva",
+    "title": "Salud digestiva",
+    "emoji": "🌿",
+    "shortDesc": "Hinchazón, colon irritable, SIBO, FODMAP, reflujo, intolerancias",
+    "description": "Mejora tu salud digestiva con un plan nutricional específico. Tratamiento de colon irritable, SIBO, hinchazón, reflujo, intolerancias y malabsorción.",
+    "benefits": [
+      "Plan FODMAP bajo personalizado (si es tu caso)",
+      "Identificación y manejo de intolerancias alimentarias",
+      "Reducción de hinchazón, gases y malestar digestivo",
+      "Protocolos específicos para SIBO, reflujo, estreñimiento",
+      "Reintroducción progresiva de alimentos"
+    ],
+    "forWho": [
+      "Personas con síndrome de intestino irritable (SII)",
+      "Diagnóstico de SIBO o sospecha",
+      "Hinchazón abdominal frecuente",
+      "Intolerancias alimentarias (lactosa, fructosa, etc.)",
+      "Reflujo gastroesofágico, gastritis"
+    ],
+    "metaTitle": "Salud digestiva | Nutricionista Boadilla · María De la Vera",
+    "metaDescription": "Tratamiento nutricional para colon irritable, SIBO, hinchazón, intolerancias. Nutricionista en Boadilla del Monte. Reserva consulta."
+  },
+  {
+    "id": "salud-hormonal",
+    "slug": "salud-hormonal",
+    "title": "Salud hormonal femenina",
+    "emoji": "🌸",
+    "shortDesc": "Menopausia, SOP, embarazo, fertilidad, endometriosis",
+    "description": "Cuida tu salud hormonal con nutrición específica para cada etapa de la mujer. Menopausia, síndrome de ovario poliquístico, embarazo, fertilidad y endometriosis.",
+    "benefits": [
+      "Plan nutricional para síndrome de ovario poliquístico (SOP)",
+      "Alimentación en menopausia y premenopausia",
+      "Nutrición para mejorar fertilidad",
+      "Seguimiento nutricional durante embarazo",
+      "Manejo de síntomas: sofocos, resistencia insulina, inflamación"
+    ],
+    "forWho": [
+      "Mujeres con síndrome de ovario poliquístico (SOP)",
+      "Menopausia y premenopausia",
+      "Búsqueda de embarazo o embarazo actual",
+      "Endometriosis diagnosticada",
+      "Irregularidades menstruales"
+    ],
+    "metaTitle": "Salud hormonal femenina | Nutricionista Boadilla del Monte",
+    "metaDescription": "Nutrición para SOP, menopausia, fertilidad, embarazo. Nutricionista especializada en salud hormonal en Boadilla. Reserva cita."
+  },
+  {
+    "id": "nutricion-clinica",
+    "slug": "nutricion-clinica",
+    "title": "Nutrición clínica",
+    "emoji": "🩺",
+    "shortDesc": "Diabetes, colesterol, hipertensión, tiroides, hígado graso",
+    "description": "Mejora tu salud con nutrición terapéutica personalizada. Diabetes, colesterol alto, hipertensión, hipotiroidismo, hígado graso y más patologías.",
+    "benefits": [
+      "Plan nutricional adaptado a tu patología",
+      "Control de diabetes tipo 2 y resistencia a la insulina",
+      "Reducción de colesterol y triglicéridos",
+      "Alimentación para hipertensión arterial",
+      "Manejo de hipotiroidismo e hígado graso"
+    ],
+    "forWho": [
+      "Personas con diabetes tipo 2 o prediabetes",
+      "Colesterol o triglicéridos elevados",
+      "Hipertensión arterial",
+      "Hipotiroidismo o hipertiroidismo",
+      "Hígado graso (esteatosis hepática)"
+    ],
+    "metaTitle": "Nutrición clínica | Diabetes, colesterol | Nutricionista Boadilla",
+    "metaDescription": "Tratamiento nutricional para diabetes, colesterol, hipertensión, tiroides. Nutricionista clínica en Boadilla del Monte. Reserva."
+  }
+]

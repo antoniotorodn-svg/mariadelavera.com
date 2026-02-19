@@ -1,0 +1,28 @@
+---
+interface Props {
+  type: 'presencial' | 'online';
+}
+
+const { type } = Astro.props;
+
+const calendlyUrl = type === 'presencial'
+  ? 'https://calendly.com/nutricionista-mariadelavera/primera-consulta?hide_event_type_details=1&hide_gdpr_banner=1'
+  : 'https://calendly.com/nutricionista-mariadelavera/primera-consulta-online?hide_event_type_details=1&hide_gdpr_banner=1';
+---
+
+<div class="calendly-embed">
+  <div
+    class="calendly-inline-widget"
+    data-url={calendlyUrl}
+    style="min-width:320px;height:700px;"
+  ></div>
+</div>
+
+<script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<style>
+  .calendly-embed {
+    width: 100%;
+    margin: var(--spacing-lg) 0;
+  }
+</style>

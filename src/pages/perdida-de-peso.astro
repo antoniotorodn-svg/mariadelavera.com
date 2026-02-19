@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import CTABox from '../components/CTABox.astro';
+import BarrioTag from '../components/BarrioTag.astro';
+
+import serviciosData from '../data/servicios.json';
+import barriosData from '../data/barrios.json';
+
+const servicio = serviciosData.find(s => s.slug === 'perdida-de-peso')!;
+const barriosDestacados = barriosData.slice(0, 3);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Pérdida de peso - Nutricionista Boadilla",
+  "description": servicio.description,
+  "provider": {
+    "@type": "Dietitian",
+    "name": "María De la Vera",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Siglo XXI, 13, local 13/14",
+      "addressLocality": "Boadilla del Monte",
+      "postalCode": "28660",
+      "addressCountry": "ES"
+    }
+  },
+  "areaServed": "Boadilla del Monte",
+  "priceRange": "50€ - 140€"
+};
+---
+
+<BaseLayout
+  title={servicio.metaTitle}
+  description={servicio.metaDescription}
+  canonical={`/${servicio.slug}`}
+  schema={schema}
+>
+  <Nav slot="nav" />
+
+  <!-- Hero -->
+  <Hero
+    badge={`${servicio.emoji} ${servicio.title}`}
+    title={`${servicio.title} en Boadilla del Monte`}
+    titleAccent="Boadilla del Monte"
+    subtitle={servicio.description}
+    showImage={false}
+  />
+
+  <!-- Beneficios -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Qué incluye el servicio?</h2>
+
+      <div class="benefits-grid">
+        {servicio.benefits.map(benefit => (
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <p>{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Para quién -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Para quién es este servicio?</h2>
+
+      <div class="grid grid--3" style="max-width: 900px; margin: 0 auto;">
+        {servicio.forWho.map(item => (
+          <div class="card" style="text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">👤</div>
+            <p style="color: var(--color-text-primary); font-weight: 500;">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Cómo funciona?</h2>
+
+      <div class="grid grid--3">
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">1️⃣</div>
+          <h3>Primera consulta</h3>
+          <p style="color: var(--color-text-secondary);">
+            Valoración completa de tu situación actual, objetivos y estilo de vida. <strong>50€</strong>
+          </p>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">2️⃣</div>
+          <h3>Plan personalizado</h3>
+          <p style="color: var(--color-text-secondary);">
+            En 24-72h recibes tu plan nutricional 100% adaptado a ti, con menús y recetas.
+          </p>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">3️⃣</div>
+          <h3>Seguimiento continuo</h3>
+          <p style="color: var(--color-text-secondary);">
+            Revisiones cada 21 días para evaluar progresos y ajustar el plan. <strong>40€/revisión</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zonas -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Zonas de Boadilla donde atiendo</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Consulta presencial en el Centro Médico Arboleda, accesible desde toda Boadilla del Monte.
+      </p>
+
+      <div class="barrios-grid">
+        {barriosDestacados.map(barrio => (
+          <BarrioTag name={barrio.name} href={`/${barrio.slug}`} />
+        ))}
+        <BarrioTag name="Ver todas las zonas" href="/#barrios" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABox
+    title="¿Listo para alcanzar tu peso ideal?"
+    description="Reserva tu primera consulta y empieza tu transformación con un plan nutricional personalizado."
+    ctaText="Reservar primera consulta"
+    ctaHref="/reservar"
+    variant="trust"
+  />
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .benefit-icon {
+    font-size: 1.5rem;
+    color: var(--color-trust);
+    flex-shrink: 0;
+  }
+
+  .benefit-item p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .barrios-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+</style>

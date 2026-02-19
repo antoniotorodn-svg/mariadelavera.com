@@ -1,0 +1,228 @@
+---
+// Fat Footer con 5 columnas
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <!-- Columna 1: Sobre María -->
+      <div class="footer__column">
+        <h3 class="footer__title">María De la Vera</h3>
+        <p class="footer__text">
+          Dietista-Nutricionista colegiada MAD01182. Graduada en Nutrición por la Universidad CEU San Pablo y Máster en Nutrición Clínica por UDIMA. Más de 700 pacientes atendidos desde 2023.
+        </p>
+        <div class="footer__credentials">
+          <span class="badge">🎓 Col. MAD01182</span>
+          <span class="badge">⭐ 4.9 Google</span>
+        </div>
+      </div>
+
+      <!-- Columna 2: Servicios -->
+      <div class="footer__column">
+        <h4 class="footer__title">Servicios</h4>
+        <ul class="footer__list">
+          <li><a href="/perdida-de-peso">Pérdida de peso</a></li>
+          <li><a href="/nutricion-deportiva">Nutrición deportiva</a></li>
+          <li><a href="/salud-digestiva">Salud digestiva</a></li>
+          <li><a href="/salud-hormonal">Salud hormonal femenina</a></li>
+          <li><a href="/nutricion-clinica">Nutrición clínica</a></li>
+          <li><a href="/nutricionista-online">Consulta online</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Zonas Boadilla -->
+      <div class="footer__column">
+        <h4 class="footer__title">Zonas de Boadilla</h4>
+        <ul class="footer__list">
+          <li><a href="/nutricionista-boadilla-centro">Boadilla Centro</a></li>
+          <li><a href="/nutricionista-prado-del-espino">Prado del Espino</a></li>
+          <li><a href="/nutricionista-olivar-de-boadilla">El Olivar de Boadilla</a></li>
+          <li><a href="/nutricionista-bonanza-boadilla">Bonanza</a></li>
+          <li><a href="/nutricionista-las-lomas-boadilla">Las Lomas</a></li>
+          <li><a href="/nutricionista-valdecabanas-boadilla">Valdecabañas</a></li>
+          <li><a href="/nutricionista-sector-b-boadilla">Sector B</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Ciudades cercanas -->
+      <div class="footer__column">
+        <h4 class="footer__title">También atendemos</h4>
+        <ul class="footer__list">
+          <li><a href="/">Majadahonda</a></li>
+          <li><a href="/">Pozuelo de Alarcón</a></li>
+          <li><a href="/">Villaviciosa de Odón</a></li>
+          <li><a href="/">Las Rozas</a></li>
+          <li><a href="/">Alcorcón</a></li>
+          <li><a href="/">Móstoles</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 5: Contacto -->
+      <div class="footer__column">
+        <h4 class="footer__title">Contacto</h4>
+        <ul class="footer__contact">
+          <li>
+            <strong>📍 Dirección</strong>
+            <a href="https://www.google.es/maps/place//data=!4m2!3m1!1s0xd418ff572a44c05:0x4936e78853ca7fde" target="_blank" rel="noopener">
+              Av. Siglo XXI, 13, local 13/14<br>
+              28660 Boadilla del Monte, Madrid
+            </a>
+          </li>
+          <li>
+            <strong>📞 Teléfono</strong>
+            <a href="tel:+34611438679">611 43 86 79</a>
+          </li>
+          <li>
+            <strong>📧 Email</strong>
+            <a href="mailto:nutricionista.mariadelavera@gmail.com">nutricionista.mariadelavera@gmail.com</a>
+          </li>
+          <li>
+            <strong>🕒 Horario</strong>
+            <span>Lunes a Viernes<br>10:00 - 14:00 y 16:00 - 20:00</span>
+          </li>
+        </ul>
+        <a href="https://wa.link/8y1ykx" class="btn btn--whatsapp" target="_blank" rel="noopener" style="margin-top: 1rem; width: 100%;">
+          💬 WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="footer__bottom">
+      <p>&copy; 2026 María De la Vera - Nutricionista. Todos los derechos reservados.</p>
+      <p class="footer__legal">
+        Colegiada MAD01182 · Centro Médico Arboleda, Boadilla del Monte
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-text-primary);
+    color: var(--color-white);
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    margin-bottom: 70px; /* Espacio para mobile bottom bar */
+  }
+
+  @media (min-width: 768px) {
+    .footer {
+      margin-bottom: 0;
+    }
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  @media (min-width: 768px) {
+    .footer__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer__grid {
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1.25fr;
+    }
+  }
+
+  .footer__column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer__title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent);
+  }
+
+  .footer__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .footer__credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .footer__credentials .badge {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    font-size: 0.85rem;
+  }
+
+  .footer__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer__list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer__list a {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    transition: var(--transition-base);
+  }
+
+  .footer__list a:hover {
+    color: var(--color-accent);
+    padding-left: 0.5rem;
+  }
+
+  .footer__contact {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer__contact li {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .footer__contact strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+  }
+
+  .footer__contact a,
+  .footer__contact span {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: var(--transition-base);
+  }
+
+  .footer__contact a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .footer__bottom p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer__legal {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+</style>

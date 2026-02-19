@@ -1,0 +1,63 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+  service?: string;
+  rating?: number;
+}
+
+const { quote, author, service, rating = 5 } = Astro.props;
+
+const stars = "⭐".repeat(rating);
+---
+
+<div class="testimonial-card card">
+  <div class="testimonial-card__rating">{stars}</div>
+  <blockquote class="testimonial-card__quote">
+    "{quote}"
+  </blockquote>
+  <footer class="testimonial-card__footer">
+    <strong class="testimonial-card__author">{author}</strong>
+    {service && <span class="testimonial-card__service">{service}</span>}
+  </footer>
+</div>
+
+<style>
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .testimonial-card__rating {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .testimonial-card__quote {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+  }
+
+  .testimonial-card__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .testimonial-card__author {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  .testimonial-card__service {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  name: string;
+  href: string;
+}
+
+const { name, href } = Astro.props;
+---
+
+<a href={href} class="barrio-tag tag">
+  📍 {name}
+</a>
+
+<style>
+  .barrio-tag {
+    transition: var(--transition-fast);
+  }
+
+  .barrio-tag:hover {
+    transform: scale(1.05);
+    background-color: var(--color-trust);
+    color: var(--color-white);
+  }
+</style>

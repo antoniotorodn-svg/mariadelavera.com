@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import PricingCard from '../components/PricingCard.astro';
+---
+
+<BaseLayout
+  title="Reservar cita | María De la Vera · Nutricionista Boadilla del Monte"
+  description="Reserva tu consulta de nutrición en Boadilla del Monte. Presencial u online. Primera consulta 50€. Elige día y hora."
+  canonical="/reservar"
+>
+  <Nav slot="nav" />
+
+  <Hero
+    badge="📅 Reservar cita"
+    title="Reserva tu primera consulta"
+    subtitle="Elige la modalidad que prefieras: presencial en Boadilla del Monte u online por Google Meet. Selecciona día y hora en el calendario."
+    showImage={false}
+  />
+
+  <!-- Precios rápidos -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Opciones de consulta</h2>
+
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
+        <PricingCard
+          title="Consulta individual"
+          price="50€"
+          description="Primera consulta completa. Ideal para probar el servicio."
+          features={[
+            "Entrevista nutricional completa",
+            "Plan personalizado en 24-72h",
+            "Material de apoyo y recetas",
+            "Revisiones a 40€ cada 21 días"
+          ]}
+          ctaText="Reservar abajo ↓"
+          ctaHref="#calendario"
+        />
+
+        <PricingCard
+          title="Pack 4 sesiones"
+          price="140€"
+          description="Primera consulta + 3 revisiones. Ahorro de 30€."
+          features={[
+            "Primera consulta + 3 revisiones",
+            "Seguimiento durante 2 meses",
+            "Plan personalizado + ajustes",
+            "Ahorro de 30€ vs individual"
+          ]}
+          highlighted={true}
+          savings="30€"
+          ctaText="Reservar abajo ↓"
+          ctaHref="#calendario"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendario con tabs -->
+  <section class="section" id="calendario">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Elige modalidad y horario</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Selecciona si prefieres consulta presencial en Boadilla u online por Google Meet.
+      </p>
+
+      <div class="tabs">
+        <div class="tabs__buttons">
+          <button class="tabs__button tabs__button--active" data-tab="presencial">
+            📍 Presencial (Boadilla)
+          </button>
+          <button class="tabs__button" data-tab="online">
+            💻 Online (Google Meet)
+          </button>
+        </div>
+
+        <div class="tabs__content">
+          <div class="tabs__panel tabs__panel--active" id="tab-presencial">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/nutricionista-mariadelavera/primera-consulta?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+          </div>
+
+          <div class="tabs__panel" id="tab-online">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/nutricionista-mariadelavera/primera-consulta-online?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--spacing-xl); text-align: center;">
+        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">
+          <strong>¿Vienen en pareja?</strong>
+        </p>
+        <a href="https://calendly.com/nutricionista-mariadelavera/primera-consulta-parejas" target="_blank" rel="noopener" class="btn btn--secondary">
+          Reservar consulta para parejas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Información de contacto -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Otras formas de contacto</h2>
+
+      <div class="grid grid--3">
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">💬</div>
+          <h3>WhatsApp</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">
+            Contáctame directamente para resolver dudas o reservar.
+          </p>
+          <a href="https://wa.link/8y1ykx" class="btn btn--whatsapp" target="_blank" rel="noopener">
+            Abrir WhatsApp
+          </a>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">📞</div>
+          <h3>Teléfono</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">
+            Llámame de lunes a viernes de 10:00 a 20:00.
+          </p>
+          <a href="tel:+34611438679" class="btn btn--secondary">
+            611 43 86 79
+          </a>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">📧</div>
+          <h3>Email</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">
+            Escríbeme y te responderé en menos de 24h.
+          </p>
+          <a href="mailto:nutricionista.mariadelavera@gmail.com" class="btn btn--secondary">
+            Enviar email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<style>
+  /* Tabs */
+  .tabs__buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .tabs__button {
+    padding: 0.875rem 1.75rem;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: var(--transition-base);
+  }
+
+  .tabs__button:hover {
+    border-color: var(--color-trust);
+  }
+
+  .tabs__button--active {
+    background-color: var(--color-trust);
+    color: var(--color-white);
+    border-color: var(--color-trust);
+  }
+
+  .tabs__panel {
+    display: none;
+  }
+
+  .tabs__panel--active {
+    display: block;
+  }
+</style>
+
+<script>
+  // Tabs functionality
+  const tabButtons = document.querySelectorAll('.tabs__button');
+  const tabPanels = document.querySelectorAll('.tabs__panel');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+
+      // Remove active class from all buttons and panels
+      tabButtons.forEach(btn => btn.classList.remove('tabs__button--active'));
+      tabPanels.forEach(panel => panel.classList.remove('tabs__panel--active'));
+
+      // Add active class to clicked button and corresponding panel
+      button.classList.add('tabs__button--active');
+      document.getElementById(`tab-${tabId}`)?.classList.add('tabs__panel--active');
+    });
+  });
+</script>
