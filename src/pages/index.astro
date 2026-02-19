@@ -62,14 +62,6 @@ const testimonials = [
   }
 ];
 
-const ciudadesCercanas = [
-  { name: "Majadahonda", href: "/" },
-  { name: "Pozuelo de Alarcón", href: "/" },
-  { name: "Villaviciosa de Odón", href: "/" },
-  { name: "Las Rozas", href: "/" },
-  { name: "Alcorcón", href: "/" },
-  { name: "Móstoles", href: "/" }
-];
 ---
 
 <BaseLayout
@@ -267,17 +259,6 @@ const ciudadesCercanas = [
           <BarrioTag name={barrio.name} href={`/${barrio.slug}`} />
         ))}
         <BarrioTag name="Consulta online" href="/nutricionista-online" />
-      </div>
-
-      <div style="margin-top: var(--spacing-xl);">
-        <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">
-          <strong>También atendemos pacientes de:</strong>
-        </p>
-        <div class="barrios-grid">
-          {ciudadesCercanas.map(ciudad => (
-            <BarrioTag name={ciudad.name} href={ciudad.href} />
-          ))}
-        </div>
       </div>
     </div>
   </section>

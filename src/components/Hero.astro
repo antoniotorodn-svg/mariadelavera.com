@@ -1,4 +1,6 @@
 ---
+import VideoEmbed from './VideoEmbed.astro';
+
 interface Props {
   badge?: string;
   title: string;
@@ -8,6 +10,7 @@ interface Props {
   ctaSecondary?: { text: string; href: string };
   proofItems?: string[];
   showImage?: boolean;
+  showVideo?: boolean;
 }
 
 const {
@@ -18,11 +21,12 @@ const {
   ctaPrimary = { text: "Reservar cita", href: "/reservar" },
   ctaSecondary = { text: "WhatsApp", href: "https://wa.link/8y1ykx" },
   proofItems = [
-    "⭐ 4.9 valoración Google",
+    "⭐ 5.0 valoración Google",
     "🎓 Colegiada MAD01182",
     "👩‍⚕️ +700 pacientes atendidos"
   ],
-  showImage = true
+  showImage = true,
+  showVideo = false
 } = Astro.props;
 
 // Separar el título si tiene acento
@@ -80,8 +84,14 @@ if (titleAccent && title.includes(titleAccent)) {
         )}
       </div>
 
-      <!-- Imagen (placeholder para foto de María) -->
-      {showImage && (
+      <!-- Vídeo o Imagen -->
+      {showVideo && (
+        <div class="hero__video">
+          <VideoEmbed compact={true} />
+        </div>
+      )}
+
+      {showImage && !showVideo && (
         <div class="hero__image">
           <!-- REEMPLAZAR: Subir foto-maria.webp aquí -->
           <div class="hero__image-placeholder">
@@ -179,6 +189,13 @@ if (titleAccent && title.includes(titleAccent)) {
     font-size: 0.9rem;
     color: var(--color-text-secondary);
     font-weight: 500;
+  }
+
+  /* Vídeo */
+  .hero__video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   /* Imagen */
