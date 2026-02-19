@@ -10,19 +10,84 @@ const calendlyUrl = type === 'presencial'
   : 'https://calendly.com/nutricionista-mariadelavera/primera-consulta-online?hide_event_type_details=1&hide_gdpr_banner=1';
 ---
 
-<div class="calendly-embed">
+<div class="calendly-embed" data-calendly-url={calendlyUrl}>
+  <div class="calendly-placeholder">
+    <div class="calendly-placeholder__content">
+      <p>📅 Cargando calendario de reservas...</p>
+    </div>
+  </div>
   <div
     class="calendly-inline-widget"
     data-url={calendlyUrl}
-    style="min-width:320px;height:700px;"
+    style="min-width:320px;height:700px;display:none;"
   ></div>
 </div>
 
-<script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  let calendlyLoaded = false;
+
+  function loadCalendly() {
+    if (calendlyLoaded) return;
+    calendlyLoaded = true;
+
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const embeds = document.querySelectorAll('.calendly-embed');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const placeholder = entry.target.querySelector('.calendly-placeholder');
+          const widget = entry.target.querySelector('.calendly-inline-widget');
+
+          loadCalendly();
+
+          setTimeout(() => {
+            if (placeholder && widget) {
+              placeholder.style.display = 'none';
+              widget.style.display = 'block';
+            }
+          }, 500);
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '200px'
+    });
+
+    embeds.forEach((embed) => observer.observe(embed));
+  });
+</script>
 
 <style>
   .calendly-embed {
     width: 100%;
     margin: var(--spacing-lg) 0;
+  }
+
+  .calendly-placeholder {
+    min-width: 320px;
+    height: 700px;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .calendly-placeholder__content {
+    text-align: center;
+    color: var(--color-text-secondary);
+  }
+
+  .calendly-placeholder__content p {
+    font-size: 1.1rem;
+    margin: 0;
   }
 </style>

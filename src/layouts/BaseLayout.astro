@@ -102,8 +102,9 @@ const finalSchema = schema || defaultSchema;
   <script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
 
   <!-- Preconnect para optimización -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="dns-prefetch" href="https://vimeo.com">
 </head>
 <body>
   <slot name="nav" />
