@@ -1,98 +1,99 @@
 ---
-// Navegación sticky: logo a la izquierda, teléfono a la derecha
+// Nav sticky con blur, logo, links y hamburguesa
 ---
 
 <nav class="nav">
-  <div class="container">
-    <div class="nav__inner">
-      <!-- Logo -->
-      <a href="/" class="nav__logo">
-        <div class="logo-placeholder">
-          <svg width="180" height="50" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
-            <text x="10" y="25" font-family="DM Serif Display, serif" font-size="18" fill="#3d3d3d" font-weight="400">
-              MARIA DE LA VERA
-            </text>
-            <text x="10" y="42" font-family="DM Sans, sans-serif" font-size="11" fill="#4a7c59" font-weight="500">
-              Nutricionista
-            </text>
-          </svg>
-        </div>
-      </a>
-
-      <!-- Teléfono (clickable) -->
-      <a href="tel:+34611438679" class="nav__phone">
-        <span class="nav__phone-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-          </svg>
-        </span>
-        <span class="nav__phone-number">611 43 86 79</span>
-      </a>
-    </div>
-  </div>
+  <a href="/" class="nav-logo">
+    <svg width="180" height="38" viewBox="0 0 180 38" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="22" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#2D2D2D" font-weight="400">María De la Vera</text>
+      <text x="0" y="35" font-family="DM Sans, sans-serif" font-size="11" fill="#4A8B6F" font-weight="600">Nutricionista</text>
+    </svg>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#reservar">Reservar</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Abrir menú">&#9776;</button>
 </nav>
 
 <style>
   .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    background: rgba(253,248,243,0.92);
     position: sticky;
     top: 0;
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-md);
-    z-index: 1000;
-    padding: 1rem 0;
+    z-index: 100;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
   }
 
-  .nav__inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav__logo {
+  .nav-logo {
     display: block;
-  }
-
-  .logo-placeholder svg {
-    display: block;
-  }
-
-  .nav__phone {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--color-trust);
-    font-weight: 600;
-    font-size: 1.1rem;
     text-decoration: none;
-    padding: 0.6rem 1.25rem;
-    border: 2px solid var(--color-trust);
-    border-radius: var(--radius-full);
-    transition: var(--transition-base);
   }
 
-  .nav__phone:hover {
-    background-color: var(--color-trust);
-    color: var(--color-white);
-  }
-
-  .nav__phone-icon {
+  .nav-links {
     display: flex;
-    align-items: center;
+    gap: 32px;
+    list-style: none;
   }
 
-  .nav__phone-number {
-    font-family: var(--font-body);
+  .nav-links a {
+    font-size: 0.92em;
+    font-weight: 600;
+    color: var(--text);
+    transition: color 0.2s;
+    text-decoration: none;
   }
 
-  @media (max-width: 480px) {
-    .nav__phone {
-      font-size: 0.95rem;
-      padding: 0.5rem 1rem;
+  .nav-links a:hover {
+    color: var(--green-dark);
+  }
+
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: 2px solid var(--sand-dark);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  @media (max-width: 900px) {
+    .nav {
+      padding: 10px 16px;
     }
 
-    .logo-placeholder svg {
-      width: 140px;
-      height: 40px;
+    .nav-links {
+      display: none;
+    }
+
+    .nav-links.open {
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      padding: 20px 24px;
+      gap: 16px;
+      border-bottom: 1px solid var(--sand-dark);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      z-index: 200;
+    }
+
+    .nav-hamburger {
+      display: block;
     }
   }
 </style>
