@@ -3,35 +3,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import TrustStrip from '../components/TrustStrip.astro';
-import ServiceCard from '../components/ServiceCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import PricingCard from '../components/PricingCard.astro';
-import BarrioTag from '../components/BarrioTag.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import CTABox from '../components/CTABox.astro';
-import VideoEmbed from '../components/VideoEmbed.astro';
 import CalendlyEmbed from '../components/CalendlyEmbed.astro';
-
-import serviciosData from '../data/servicios.json';
-import barriosData from '../data/barrios.json';
+import ValueProposition from '../components/ValueProposition.astro';
+import MaterialFormativo from '../components/MaterialFormativo.astro';
 
 const faqItems = [
   {
-    question: "¿Cuánto cuesta?",
-    answer: "Primera consulta 50€ (incluye plan personalizado). Revisiones 40€ cada 21 días. Pack 4 sesiones: 140€ (ahorro de 30€)."
+    question: "¿Qué se hace en la primera consulta?",
+    answer: "En la primera consulta hacemos una entrevista completa sobre tu historial médico, hábitos alimenticios, objetivos y preferencias. Analizamos tu composición corporal y diseñamos una estrategia personalizada. Recibirás tu plan nutricional en 24-72h."
   },
   {
-    question: "¿Presencial u online?",
-    answer: "Ambas modalidades disponibles. Presencial en Centro Médico Arboleda (Boadilla) u online por Google Meet."
+    question: "¿Qué se hace en las revisiones?",
+    answer: "Evaluamos tu progreso, ajustamos el plan según tus resultados y resolvemos dudas. Las revisiones son clave para mantener la motivación y adaptar la estrategia a tu evolución."
   },
   {
-    question: "¿Cuánto tarda en verse resultados?",
-    answer: "En pérdida de peso, los primeros cambios se notan en 2-3 semanas. Depende de tu objetivo y situación inicial."
+    question: "¿Cada cuánto se hacen las revisiones?",
+    answer: "Recomiendo revisiones cada 21 días para un seguimiento óptimo. Este intervalo permite ver cambios significativos y hacer ajustes efectivos sin perder el ritmo."
   },
   {
-    question: "¿Dietas estrictas?",
-    answer: "No. Educación nutricional y planes personalizados. Sin prohibiciones extremas ni dietas milagro."
+    question: "¿Trabajas con personas veganas o vegetarianas?",
+    answer: "Sí, adapto los planes a cualquier patrón alimentario: vegano, vegetariano, flexitariano, etc. Lo importante es que el plan sea equilibrado y cubra todas tus necesidades nutricionales."
+  },
+  {
+    question: "¿Cómo son los planes que mandas?",
+    answer: "Planes 100% personalizados con menús semanales, recetas detalladas, lista de la compra y material educativo. Todo adaptado a tus gustos, horarios y objetivos. Nada de planes genéricos."
+  },
+  {
+    question: "¿Necesito tomar algún tipo de suplemento?",
+    answer: "Depende de cada caso. Primero valoro tu alimentación y analíticas. Solo recomiendo suplementación cuando es realmente necesaria y está justificada. La base siempre es la comida real."
   }
 ];
 
@@ -63,44 +66,13 @@ const testimonials = [
     badge="📍 Nutricionista en Boadilla del Monte"
     title="Tu nutricionista en Boadilla del Monte"
     titleAccent="Boadilla del Monte"
-    subtitle="Planes 100% personalizados. Sin dietas milagro, sin efecto rebote. Primera consulta 50€."
+    subtitle="Con más de 700 pacientes atendidos, ayudo a personas como tú a alcanzar su mejor versión a través de la nutrición. Consulta presencial en Centro Médico Arboleda (Boadilla del Monte) o modalidad online. Sin dietas milagro, solo educación nutricional y planes 100% personalizados."
   />
 
-  <!-- Vídeo presentación -->
-  <section class="section section--alt" id="video">
+  <!-- Proceso / Metodología -->
+  <section class="section section--alt" id="proceso">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-lg);">Conóceme en 1 minuto</h2>
-      <div style="max-width: 900px; margin: 0 auto;">
-        <VideoEmbed title="Presentación María De la Vera - Nutricionista" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust bar -->
-  <TrustStrip />
-
-  <!-- Servicios -->
-  <section class="section" id="servicios">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿En qué puedo ayudarte?</h2>
-
-      <div class="grid grid--3">
-        {serviciosData.map(servicio => (
-          <ServiceCard
-            emoji={servicio.emoji}
-            title={servicio.title}
-            description={servicio.shortDesc}
-            href={`/${servicio.slug}`}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Cómo funciona -->
-  <section class="section section--alt" id="como-funciona">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Cómo funciona?</h2>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Cómo funciona</h2>
 
       <div class="grid grid--3">
         <div class="card" style="text-align: center;">
@@ -167,7 +139,44 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Testimonios -->
+  <!-- Ubicación / Contacto -->
+  <section class="section section--alt" id="ubicacion">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Dónde estoy</h2>
+
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto; align-items: start;">
+        <div class="card">
+          <h3 style="margin-bottom: var(--spacing-md);">📍 Dirección</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            <strong>Centro Médico Arboleda</strong><br>
+            Av. Siglo XXI, 13, local 13/14<br>
+            28660 Boadilla del Monte, Madrid
+          </p>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            <strong>🚇 Metro Ligero:</strong> ML2 (a 5 min andando)
+          </p>
+          <p style="color: var(--color-text-secondary);">
+            <strong>🅿️ Parking:</strong> Gratuito en el centro
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom: var(--spacing-md);">📞 Contacto</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            <strong>WhatsApp:</strong> <a href="https://wa.me/34690917004" target="_blank" rel="noopener" style="color: var(--mentaris-green-dark);">690 917 004</a>
+          </p>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            <strong>Email:</strong> <a href="mailto:nutricionista@mariadelavera.com" style="color: var(--mentaris-green-dark);">nutricionista@mariadelavera.com</a>
+          </p>
+          <p style="color: var(--color-text-secondary);">
+            <strong>Horario:</strong> Lunes a Viernes 9:00-20:00h
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservar cita con Calendly -->
   <section class="section section--alt" id="testimonios">
     <div class="container">
       <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Lo que dicen mis pacientes</h2>
@@ -261,6 +270,51 @@ const testimonials = [
     </div>
   </section>
 
+  <!-- Propuesta de valor (1ª aparición) -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Por qué elegir mi consulta?</h2>
+      <ValueProposition />
+    </div>
+  </section>
+
+  <!-- Precios (2ª aparición) -->
+  <section class="section" id="precios-2">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Precios</h2>
+
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
+        <PricingCard
+          title="Consulta individual"
+          price="50€"
+          description="Ideal para empezar o si prefieres ir sesión por sesión."
+          features={[
+            "Primera consulta completa (50€)",
+            "Plan nutricional personalizado",
+            "Material de apoyo y recetas",
+            "Revisiones a 40€ cada 21 días"
+          ]}
+          ctaText="Reservar primera consulta"
+        />
+
+        <PricingCard
+          title="Pack 4 sesiones"
+          price="140€"
+          description="La opción más elegida: compromiso y ahorro desde el inicio."
+          features={[
+            "Primera consulta + 3 revisiones",
+            "Plan nutricional personalizado",
+            "Seguimiento durante 2 meses",
+            "Ahorro de 30€ vs pago individual"
+          ]}
+          highlighted={true}
+          savings="30€"
+          ctaText="Reservar pack completo"
+        />
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="section section--alt" id="faq">
     <div class="container">
@@ -269,6 +323,53 @@ const testimonials = [
       <div style="max-width: 800px; margin: 0 auto;">
         <FAQAccordion items={faqItems} />
       </div>
+    </div>
+  </section>
+
+  <!-- Propuesta de valor (2ª aparición) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Mi compromiso contigo</h2>
+      <ValueProposition />
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="section section--alt" id="testimonios">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Lo que dicen mis pacientes</h2>
+
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+        Más de 700 pacientes han transformado su relación con la comida. Estos son algunos de sus testimonios.
+      </p>
+
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
+        {testimonials.map(testimonial => (
+          <TestimonialCard
+            quote={testimonial.quote}
+            author={testimonial.author}
+            service={testimonial.service}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+
+      <div class="text-center" style="margin-top: var(--spacing-lg);">
+        <p style="color: var(--color-text-secondary); font-size: 0.9rem;">
+          💬 Testimonios verificados de pacientes reales
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Material formativo -->
+  <section class="section" id="material-formativo">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Material formativo incluido</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+        Todos mis pacientes reciben material educativo de calidad para entender la nutrición desde la ciencia y aplicarla en su día a día.
+      </p>
+      <MaterialFormativo />
     </div>
   </section>
 
@@ -285,47 +386,6 @@ const testimonials = [
 </BaseLayout>
 
 <style>
-  /* About grid */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
-    align-items: center;
-  }
-
-  @media (min-width: 1024px) {
-    .about-grid {
-      grid-template-columns: 1.2fr 0.8fr;
-    }
-  }
-
-  .about-content p {
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-  }
-
-  .about-image-placeholder {
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #f7f3ee 0%, var(--color-accent) 100%);
-    border-radius: var(--radius-lg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-lg);
-    margin: 0 auto;
-  }
-
-  /* Barrios grid */
-  .barrios-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-sm);
-  }
-
   /* Tabs */
   .tabs__buttons {
     display: flex;
