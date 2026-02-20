@@ -18,48 +18,34 @@ import barriosData from '../data/barrios.json';
 
 const faqItems = [
   {
-    question: "¿Cuánto cuesta la primera consulta?",
-    answer: "La primera consulta cuesta 50€ e incluye entrevista nutricional completa, análisis de tu situación actual, plan nutricional personalizado y material de apoyo. El plan lo recibes en 24-72h tras la consulta."
+    question: "¿Cuánto cuesta?",
+    answer: "Primera consulta 50€ (incluye plan personalizado). Revisiones 40€ cada 21 días. Pack 4 sesiones: 140€ (ahorro de 30€)."
   },
   {
-    question: "¿Cada cuánto tiempo son las revisiones?",
-    answer: "Las revisiones se realizan cada 21 días. Este tiempo es ideal para evaluar progresos, resolver dudas, ajustar el plan si es necesario y mantenerte motivada. Cada revisión cuesta 40€."
+    question: "¿Presencial u online?",
+    answer: "Ambas modalidades disponibles. Presencial en Centro Médico Arboleda (Boadilla) u online por Google Meet."
   },
   {
-    question: "¿Ofrecen consulta online o solo presencial?",
-    answer: "Ofrezco ambas modalidades. Puedes elegir consulta presencial en el Centro Médico Arboleda (Boadilla del Monte) o consulta online por Google Meet. La calidad del servicio es la misma en ambos formatos."
+    question: "¿Cuánto tarda en verse resultados?",
+    answer: "En pérdida de peso, los primeros cambios se notan en 2-3 semanas. Depende de tu objetivo y situación inicial."
   },
   {
-    question: "¿Cuánto tiempo tarda en verse resultados?",
-    answer: "Depende de tu objetivo y situación inicial. En pérdida de peso, los primeros cambios suelen notarse en 2-3 semanas. En salud digestiva o patologías, puede variar. Lo importante es que trabajaremos juntos con un seguimiento constante cada 21 días."
-  },
-  {
-    question: "¿Tengo que seguir una dieta estricta?",
-    answer: "No. Mi enfoque se basa en educación nutricional, no en dietas restrictivas. Crearemos un plan personalizado adaptado a tus gustos, estilo de vida y objetivos. Aprenderás a comer bien de forma sostenible, sin prohibiciones extremas."
-  },
-  {
-    question: "¿Hay garantía de devolución si no estoy satisfecho?",
-    answer: "No ofrezco garantía de devolución, ya que cada persona es diferente y los resultados dependen del compromiso y adherencia al plan. Sin embargo, me comprometo a darte seguimiento cercano y ajustar el plan según tus necesidades en cada revisión."
+    question: "¿Dietas estrictas?",
+    answer: "No. Educación nutricional y planes personalizados. Sin prohibiciones extremas ni dietas milagro."
   }
 ];
 
 const testimonials = [
   {
-    quote: "Perdí 12 kilos en 4 meses con María y lo mejor es que no he recuperado nada. Aprendí a comer bien de verdad, sin pasar hambre. El seguimiento cada 21 días me mantuvo motivada todo el tiempo.",
+    quote: "Perdí 12 kilos en 4 meses y no he recuperado nada. Aprendí a comer bien sin pasar hambre.",
     author: "Laura M.",
     service: "Pérdida de peso",
     rating: 5
   },
   {
-    quote: "Llevo años con colon irritable y María me cambió la vida. Con el plan FODMAP personalizado y su seguimiento, reduje la hinchazón en un 80%. Ahora puedo comer sin miedo.",
+    quote: "María me cambió la vida. Con el plan FODMAP reduje la hinchazón en un 80%. Ahora como sin miedo.",
     author: "Carlos R.",
     service: "Salud digestiva",
-    rating: 5
-  },
-  {
-    quote: "Como corredora de maratones, necesitaba mejorar mi alimentación. María me hizo un plan específico para entrenamientos y carreras. He mejorado mis marcas y mi recuperación es mucho mejor.",
-    author: "Ana G.",
-    service: "Nutrición deportiva",
     rating: 5
   }
 ];
@@ -77,13 +63,13 @@ const testimonials = [
     badge="📍 Nutricionista en Boadilla del Monte"
     title="Tu nutricionista en Boadilla del Monte"
     titleAccent="Boadilla del Monte"
-    subtitle="Alcanza tus objetivos con planes nutricionales 100% personalizados. Sin dietas milagro, sin efecto rebote. Colegiada MAD01182 con más de 700 pacientes atendidos."
+    subtitle="Planes 100% personalizados. Sin dietas milagro, sin efecto rebote. Primera consulta 50€."
   />
 
   <!-- Vídeo presentación -->
   <section class="section section--alt" id="video">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Conóceme en 1 minuto</h2>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-lg);">Conóceme en 1 minuto</h2>
       <div style="max-width: 900px; margin: 0 auto;">
         <VideoEmbed title="Presentación María De la Vera - Nutricionista" />
       </div>
@@ -96,10 +82,7 @@ const testimonials = [
   <!-- Servicios -->
   <section class="section" id="servicios">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">¿En qué puedo ayudarte?</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
-        Ofrezco planes nutricionales personalizados para diferentes objetivos de salud y bienestar.
-      </p>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿En qué puedo ayudarte?</h2>
 
       <div class="grid grid--3">
         {serviciosData.map(servicio => (
@@ -124,23 +107,23 @@ const testimonials = [
           <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">1️⃣</div>
           <h3>Primera consulta</h3>
           <p style="color: var(--color-text-secondary);">
-            Entrevista nutricional completa, análisis de tu situación y objetivos. <strong>50€</strong>
+            Entrevista completa y análisis. <strong>50€</strong>
           </p>
         </div>
 
         <div class="card" style="text-align: center;">
           <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">2️⃣</div>
-          <h3>Recibes tu plan</h3>
+          <h3>Tu plan en 24-72h</h3>
           <p style="color: var(--color-text-secondary);">
-            En <strong>24-72h</strong> recibirás tu plan nutricional personalizado con menús, recetas y pautas adaptadas.
+            Plan personalizado con menús y recetas.
           </p>
         </div>
 
         <div class="card" style="text-align: center;">
           <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">3️⃣</div>
-          <h3>Revisiones cada 21 días</h3>
+          <h3>Revisiones</h3>
           <p style="color: var(--color-text-secondary);">
-            Evaluamos progresos, ajustamos el plan y resolvemos dudas. <strong>40€ cada revisión</strong>
+            Cada 21 días. <strong>40€/revisión</strong>
           </p>
         </div>
       </div>
@@ -150,10 +133,7 @@ const testimonials = [
   <!-- Precios -->
   <section class="section" id="precios">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Precios transparentes</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
-        Elige la opción que mejor se adapte a tus necesidades. Sin letra pequeña, sin sorpresas.
-      </p>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Precios</h2>
 
       <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
         <PricingCard
@@ -190,12 +170,9 @@ const testimonials = [
   <!-- Testimonios -->
   <section class="section section--alt" id="testimonios">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Lo que dicen mis pacientes</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
-        Más de 700 personas han confiado en mí para mejorar su salud y alcanzar sus objetivos.
-      </p>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Lo que dicen mis pacientes</h2>
 
-      <div class="grid grid--3">
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
         {testimonials.map(testimonial => (
           <TestimonialCard
             quote={testimonial.quote}
@@ -215,16 +192,13 @@ const testimonials = [
         <div class="about-content">
           <h2 style="margin-bottom: var(--spacing-md);">Hola, soy María De la Vera</h2>
           <p style="margin-bottom: var(--spacing-md);">
-            Dietista-Nutricionista colegiada <strong>MAD01182</strong>, graduada en Nutrición Humana y Dietética por la <strong>Universidad CEU San Pablo (2019-2023)</strong> y con Máster en Nutrición para la Práctica Clínica y Prevención de Patologías por la <strong>Universidad UDIMA (2023-2025)</strong>.
+            Dietista-Nutricionista colegiada <strong>MAD01182</strong>. Graduada por la <strong>Universidad CEU San Pablo</strong> y con Máster en Nutrición Clínica por <strong>UDIMA</strong>.
           </p>
           <p style="margin-bottom: var(--spacing-md);">
-            Desde 2023 he atendido a <strong>más de 700 pacientes</strong> en Leganés y Móstoles, y ahora continúo mi consulta en <strong>Boadilla del Monte</strong> en el Centro Médico Arboleda.
-          </p>
-          <p style="margin-bottom: var(--spacing-md);">
-            Mi enfoque se basa en la <strong>educación nutricional</strong> y planes 100% personalizados. Nada de dietas milagro ni restricciones extremas. Aprenderás a comer bien para siempre, de forma sostenible y adaptada a tu vida real.
+            Más de <strong>700 pacientes atendidos</strong> desde 2023. Ahora en <strong>Boadilla del Monte</strong> (Centro Médico Arboleda).
           </p>
           <p>
-            Trabajo tanto de forma <strong>presencial</strong> en Boadilla del Monte como <strong>online</strong> por Google Meet, para que puedas elegir la modalidad que mejor te venga.
+            Mi enfoque: <strong>educación nutricional</strong> y planes 100% personalizados. Sin dietas milagro. Consulta <strong>presencial</strong> u <strong>online</strong>.
           </p>
         </div>
 
@@ -244,10 +218,7 @@ const testimonials = [
   <!-- Barrios -->
   <section class="section section--alt" id="barrios">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Zonas de Boadilla que atiendo</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
-        Consulta presencial en el Centro Médico Arboleda, accesible desde todos los barrios de Boadilla del Monte.
-      </p>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Zonas de Boadilla</h2>
 
       <div class="barrios-grid">
         {barriosData.map(barrio => (
@@ -261,10 +232,7 @@ const testimonials = [
   <!-- Reservar cita con Calendly -->
   <section class="section" id="reservar">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Reserva tu cita</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
-        Elige la modalidad que prefieras: presencial en Boadilla del Monte u online por Google Meet.
-      </p>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Reserva tu cita</h2>
 
       <div class="tabs">
         <div class="tabs__buttons">
@@ -296,10 +264,7 @@ const testimonials = [
   <!-- FAQ -->
   <section class="section section--alt" id="faq">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Preguntas frecuentes</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
-        Resuelvo las dudas más comunes sobre mis servicios y consultas.
-      </p>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Preguntas frecuentes</h2>
 
       <div style="max-width: 800px; margin: 0 auto;">
         <FAQAccordion items={faqItems} />
