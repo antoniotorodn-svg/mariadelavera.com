@@ -7,7 +7,7 @@ import TestimonialCard from '../components/TestimonialCard.astro';
 import PricingCard from '../components/PricingCard.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import CTABox from '../components/CTABox.astro';
-import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+import CalendlySection from '../components/CalendlySection.astro';
 import ValueProposition from '../components/ValueProposition.astro';
 import MaterialFormativo from '../components/MaterialFormativo.astro';
 
@@ -239,36 +239,7 @@ const testimonials = [
   </section>
 
   <!-- Reservar cita con Calendly -->
-  <section class="section" id="reservar">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Reserva tu cita</h2>
-
-      <div class="tabs">
-        <div class="tabs__buttons">
-          <button class="tabs__button tabs__button--active" data-tab="presencial">
-            📍 Presencial (Boadilla)
-          </button>
-          <button class="tabs__button" data-tab="online">
-            💻 Online (Google Meet)
-          </button>
-        </div>
-
-        <div class="tabs__content">
-          <div class="tabs__panel tabs__panel--active" id="tab-presencial">
-            <CalendlyEmbed type="presencial" />
-          </div>
-
-          <div class="tabs__panel" id="tab-online">
-            <CalendlyEmbed type="online" />
-          </div>
-        </div>
-      </div>
-
-      <p class="text-center" style="margin-top: var(--spacing-lg); color: var(--color-text-secondary);">
-        ¿Vienen en pareja? <a href="https://calendly.com/nutricionista-mariadelavera/primera-consulta-parejas" target="_blank" rel="noopener" style="color: var(--color-trust); font-weight: 600;">Reserva consulta para parejas aquí</a>
-      </p>
-    </div>
-  </section>
+  <CalendlySection />
 
   <!-- Propuesta de valor (1ª aparición) -->
   <section class="section section--alt">
@@ -378,71 +349,10 @@ const testimonials = [
     title="¿Listo para empezar?"
     description="Reserva tu primera consulta y da el primer paso hacia tus objetivos de salud."
     ctaText="Reservar cita ahora"
-    ctaHref="/reservar"
+    ctaHref="#reservar"
     variant="trust"
   />
 
   <Footer slot="footer" />
 </BaseLayout>
 
-<style>
-  /* Tabs */
-  .tabs__buttons {
-    display: flex;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .tabs__button {
-    padding: 0.875rem 1.75rem;
-    background-color: var(--color-white);
-    border: 2px solid var(--color-bg-secondary);
-    border-radius: var(--radius-full);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    cursor: pointer;
-    transition: var(--transition-base);
-  }
-
-  .tabs__button:hover {
-    border-color: var(--color-trust);
-  }
-
-  .tabs__button--active {
-    background-color: var(--color-trust);
-    color: var(--color-white);
-    border-color: var(--color-trust);
-  }
-
-  .tabs__panel {
-    display: none;
-  }
-
-  .tabs__panel--active {
-    display: block;
-  }
-</style>
-
-<script>
-  // Tabs functionality
-  const tabButtons = document.querySelectorAll('.tabs__button');
-  const tabPanels = document.querySelectorAll('.tabs__panel');
-
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const tabId = button.getAttribute('data-tab');
-
-      // Remove active class from all buttons and panels
-      tabButtons.forEach(btn => btn.classList.remove('tabs__button--active'));
-      tabPanels.forEach(panel => panel.classList.remove('tabs__panel--active'));
-
-      // Add active class to clicked button and corresponding panel
-      button.classList.add('tabs__button--active');
-      document.getElementById(`tab-${tabId}`)?.classList.add('tabs__panel--active');
-    });
-  });
-</script>

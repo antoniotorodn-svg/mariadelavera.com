@@ -7,6 +7,7 @@ import CTABox from '../components/CTABox.astro';
 import BarrioTag from '../components/BarrioTag.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import RelatedServices from '../components/RelatedServices.astro';
+import CalendlySection from '../components/CalendlySection.astro';
 
 import serviciosData from '../data/servicios.json';
 import barriosData from '../data/barrios.json';
@@ -127,11 +128,14 @@ const schema = {
     relatedIds={["perdida-de-peso", "salud-hormonal"]}
   />
 
+  <!-- Calendario de reservas -->
+  <CalendlySection />
+
   <CTABox
     title="Mejora tu salud digestiva"
     description="Reserva tu primera consulta y olvídate de la hinchazón, gases y molestias digestivas."
     ctaText="Reservar consulta"
-    ctaHref="/reservar"
+    ctaHref="#reservar"
     variant="trust"
   />
 

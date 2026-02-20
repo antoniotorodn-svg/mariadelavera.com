@@ -7,6 +7,7 @@ import CTABox from '../components/CTABox.astro';
 import BarrioTag from '../components/BarrioTag.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import RelatedServices from '../components/RelatedServices.astro';
+import CalendlySection from '../components/CalendlySection.astro';
 
 import serviciosData from '../data/servicios.json';
 import barriosData from '../data/barrios.json';
@@ -146,12 +147,15 @@ const schema = {
     relatedIds={["nutricion-deportiva", "nutricion-clinica"]}
   />
 
+  <!-- Calendario de reservas -->
+  <CalendlySection />
+
   <!-- CTA -->
   <CTABox
     title="¿Listo para alcanzar tu peso ideal?"
     description="Reserva tu primera consulta y empieza tu transformación con un plan nutricional personalizado."
     ctaText="Reservar primera consulta"
-    ctaHref="/reservar"
+    ctaHref="#reservar"
     variant="trust"
   />
 
