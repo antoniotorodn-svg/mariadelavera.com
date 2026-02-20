@@ -7,6 +7,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import CTABox from '../components/CTABox.astro';
 import BarrioTag from '../components/BarrioTag.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import CalendlySection from '../components/CalendlySection.astro';
 
 import serviciosData from '../data/servicios.json';
 import barriosData from '../data/barrios.json';
@@ -112,11 +113,14 @@ const schema = {
     </div>
   </section>
 
+  <!-- Calendario de reservas -->
+  <CalendlySection />
+
   <CTABox
     title={`¿Vives en ${barrio.name}?`}
     description="Reserva tu primera consulta en el Centro Médico Arboleda, fácil acceso desde el Metro Ligero ML2."
     ctaText="Reservar cita"
-    ctaHref="/reservar"
+    ctaHref="#reservar"
     variant="trust"
   />
 

@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTABox from '../components/CTABox.astro';
-import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+import CalendlySection from '../components/CalendlySection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 
 import serviciosData from '../data/servicios.json';
@@ -113,21 +113,8 @@ import serviciosData from '../data/servicios.json';
     </div>
   </section>
 
-  <!-- Reservar -->
-  <section class="section" id="reservar-online">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Reserva tu consulta online</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
-        Elige día y hora. Recibirás el enlace de Google Meet por email.
-      </p>
-
-      <CalendlyEmbed type="online" />
-
-      <p class="text-center" style="margin-top: var(--spacing-lg); color: var(--color-text-secondary);">
-        ¿Vienen en pareja? <a href="https://calendly.com/nutricionista-mariadelavera/primera-consulta-parejas" target="_blank" rel="noopener" style="color: var(--color-trust); font-weight: 600;">Reserva consulta para parejas aquí</a>
-      </p>
-    </div>
-  </section>
+  <!-- Calendario de reservas -->
+  <CalendlySection />
 
   <CTABox
     title="¿Prefieres consulta presencial?"
