@@ -10,6 +10,8 @@ import PricingCard from '../components/PricingCard.astro';
 import BarrioTag from '../components/BarrioTag.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import CTABox from '../components/CTABox.astro';
+import VideoEmbed from '../components/VideoEmbed.astro';
+import CalendlyEmbed from '../components/CalendlyEmbed.astro';
 
 import serviciosData from '../data/servicios.json';
 import barriosData from '../data/barrios.json';
@@ -82,15 +84,8 @@ const testimonials = [
   <section class="section section--alt" id="video">
     <div class="container">
       <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Conóceme en 1 minuto</h2>
-      <div class="video-wrapper">
-        <iframe
-          src="https://player.vimeo.com/video/1137833163?h=7317f4af36&title=0&byline=0&portrait=0"
-          style="width:100%;height:100%;"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          title="Presentación María De la Vera - Nutricionista"
-        ></iframe>
+      <div style="max-width: 900px; margin: 0 auto;">
+        <VideoEmbed title="Presentación María De la Vera - Nutricionista" />
       </div>
     </div>
   </section>
@@ -283,11 +278,11 @@ const testimonials = [
 
         <div class="tabs__content">
           <div class="tabs__panel tabs__panel--active" id="tab-presencial">
-            <div class="calendly-inline-widget" data-url="https://calendly.com/nutricionista-mariadelavera/primera-consulta?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+            <CalendlyEmbed type="presencial" />
           </div>
 
           <div class="tabs__panel" id="tab-online">
-            <div class="calendly-inline-widget" data-url="https://calendly.com/nutricionista-mariadelavera/primera-consulta-online?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+            <CalendlyEmbed type="online" />
           </div>
         </div>
       </div>
@@ -324,29 +319,7 @@ const testimonials = [
   <Footer slot="footer" />
 </BaseLayout>
 
-<script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
 <style>
-  /* Video wrapper para responsive */
-  .video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 900px;
-    margin: 0 auto;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
   /* About grid */
   .about-grid {
     display: grid;
