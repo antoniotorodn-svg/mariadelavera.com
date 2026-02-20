@@ -1,26 +1,41 @@
 /* ========================================
    MARIADELAVERA.COM - Estilos Globales
+   Basados en MENTARIS BLOG STYLES
    ======================================== */
 
-/* ========================================
-   Variables CSS
-   ======================================== */
-
+/* ===== MENTARIS VARIABLES ===== */
 :root {
-  /* Colores */
+  /* Paleta Mentaris (verdes + crema + gris) */
+  --mentaris-green: #7CB69D;
+  --mentaris-green-dark: #4A8B6F;
+  --mentaris-green-light: #E8F5EE;
+  --mentaris-green-hover: #3D7A5E;
+  --mentaris-cream: #F9E8D2;
+  --mentaris-cream-light: #FDF6ED;
+  --mentaris-bg: #F5F4F4;
+  --mentaris-text: #3d3d3d;
+  --mentaris-text-light: #6b6b6b;
+  --mentaris-white: #FFFFFF;
+  --mentaris-border: #e0e0e0;
+  --mentaris-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --mentaris-shadow-hover: 0 4px 20px rgba(0,0,0,0.1);
+  --mentaris-radius: 14px;
+  --mentaris-radius-sm: 10px;
+
+  /* Colores del sistema (usando paleta Mentaris) */
   --color-white: #FFFFFF;
   --color-bg-secondary: #F5F4F4;
-  --color-accent: #f7ddab;
+  --color-accent: #F9E8D2; /* Crema Mentaris */
   --color-text-primary: #3d3d3d;
-  --color-text-secondary: #5a5a5a;
-  --color-trust: #4a7c59;
+  --color-text-secondary: #6b6b6b;
+  --color-trust: #4A8B6F; /* Verde Mentaris */
 
   /* Gradientes */
-  --gradient-warm: linear-gradient(135deg, #FFFFFF 0%, #f7f3ee 50%, #f7ddab 100%);
+  --gradient-warm: linear-gradient(135deg, #E8F5EE 0%, #FDF6ED 50%, #F9E8D2 100%);
 
-  /* Tipografía - System Fonts */
-  --font-display: Georgia, 'Times New Roman', serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Tipografía */
+  --font-display: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
 
   /* Espaciado */
   --spacing-xs: 0.5rem;
@@ -31,20 +46,14 @@
   --spacing-2xl: 4rem;
   --spacing-3xl: 6rem;
 
-  /* Breakpoints (para referencias) */
-  --bp-mobile: 320px;
-  --bp-tablet: 768px;
-  --bp-desktop: 1024px;
-  --bp-wide: 1280px;
+  /* Sombras (usando Mentaris) */
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.1);
 
-  /* Sombras */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-
-  /* Radios */
-  --radius-sm: 8px;
-  --radius-md: 12px;
+  /* Radios (usando Mentaris) */
+  --radius-sm: 10px;
+  --radius-md: 14px;
   --radius-lg: 16px;
   --radius-full: 9999px;
 
@@ -77,7 +86,8 @@ body {
   font-family: var(--font-body);
   color: var(--color-text-primary);
   background-color: var(--color-white);
-  line-height: 1.6;
+  line-height: 1.8; /* Mentaris usa 1.8 */
+  font-size: 17px; /* Mentaris base size */
   overflow-x: hidden;
 }
 
@@ -88,22 +98,26 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--color-text-primary);
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 800;
   margin-bottom: var(--spacing-md);
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-weight: 700;
   margin-bottom: var(--spacing-md);
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-weight: 700;
+  color: var(--mentaris-green-dark);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -113,18 +127,26 @@ h4 {
 }
 
 p {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 1.2rem;
   color: var(--color-text-secondary);
+  line-height: 1.8;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
-  transition: var(--transition-base);
+  color: var(--mentaris-green-dark);
+  text-decoration: underline;
+  text-decoration-color: rgba(74, 139, 111, 0.3);
+  text-underline-offset: 3px;
+  transition: all 0.2s;
+}
+
+a:hover {
+  color: var(--mentaris-green-hover);
+  text-decoration-color: var(--mentaris-green-hover);
 }
 
 strong {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* ========================================
@@ -163,74 +185,80 @@ strong {
 }
 
 /* ========================================
-   Buttons
+   Buttons (estilo Mentaris)
    ======================================== */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-xs);
-  padding: 0.875rem 1.75rem;
-  min-height: 44px; /* Touch target minimum */
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  min-height: 44px;
   font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   border: none;
-  border-radius: var(--radius-full);
+  border-radius: 50px;
   cursor: pointer;
-  transition: var(--transition-base);
+  transition: all 0.3s;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .btn--primary {
-  background-color: var(--color-accent);
-  color: var(--color-text-primary);
+  background-color: var(--mentaris-green-dark);
+  color: var(--color-white) !important;
   box-shadow: var(--shadow-md);
 }
 
 .btn--primary:hover {
+  background-color: var(--mentaris-green-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 4px 15px rgba(74, 139, 111, 0.3);
+  text-decoration: none;
 }
 
 .btn--secondary {
-  background-color: transparent;
-  color: var(--color-text-primary);
-  border: 2px solid var(--color-text-primary);
+  background-color: white;
+  color: var(--mentaris-green-dark);
+  border: 2px solid var(--mentaris-green);
 }
 
 .btn--secondary:hover {
-  background-color: var(--color-text-primary);
-  color: var(--color-white);
+  background-color: var(--mentaris-green-light);
+  transform: translateY(-2px);
+  text-decoration: none;
 }
 
 .btn--trust {
-  background-color: var(--color-trust);
-  color: var(--color-white);
+  background-color: var(--mentaris-green-dark);
+  color: var(--color-white) !important;
   box-shadow: var(--shadow-md);
 }
 
 .btn--trust:hover {
+  background-color: var(--mentaris-green-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 4px 15px rgba(74, 139, 111, 0.3);
+  text-decoration: none;
 }
 
 .btn--whatsapp {
-  background-color: #25D366;
-  color: var(--color-white);
+  background-color: #25d366;
+  color: var(--color-white) !important;
   box-shadow: var(--shadow-md);
 }
 
 .btn--whatsapp:hover {
-  background-color: #128C7E;
+  background-color: #128c7e;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  text-decoration: none;
 }
 
 /* ========================================
-   Grid
+   Grid System
    ======================================== */
 
 .grid {
@@ -238,27 +266,15 @@ strong {
   gap: var(--spacing-lg);
 }
 
-.grid--2 {
-  grid-template-columns: 1fr;
-}
-
-.grid--3 {
-  grid-template-columns: 1fr;
-}
-
+.grid--2,
+.grid--3,
 .grid--4 {
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
-  .grid--2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid--3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
+  .grid--2,
+  .grid--3,
   .grid--4 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -275,24 +291,25 @@ strong {
 }
 
 /* ========================================
-   Cards
+   Cards (estilo Mentaris)
    ======================================== */
 
 .card {
   background-color: var(--color-white);
-  border-radius: var(--radius-md);
+  border-radius: var(--mentaris-radius);
   padding: var(--spacing-lg);
-  box-shadow: var(--shadow-md);
-  transition: var(--transition-base);
+  box-shadow: var(--mentaris-shadow);
+  border: 1px solid #f0f0f0;
+  transition: all 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  box-shadow: var(--mentaris-shadow-hover);
 }
 
 /* ========================================
-   Badges & Tags
+   Badges & Tags (estilo Mentaris)
    ======================================== */
 
 .badge {
@@ -300,22 +317,29 @@ strong {
   align-items: center;
   gap: var(--spacing-xs);
   padding: 0.5rem 1rem;
-  background-color: var(--color-bg-secondary);
+  background-color: var(--mentaris-green-light);
+  color: var(--mentaris-green-dark);
   border-radius: var(--radius-full);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .tag {
   display: inline-block;
   padding: 0.375rem 0.875rem;
-  min-height: 36px; /* Touch-friendly */
-  background-color: var(--color-accent);
-  color: var(--color-text-primary);
-  border-radius: var(--radius-sm);
+  min-height: 36px;
+  background-color: var(--mentaris-green-light);
+  color: var(--mentaris-green-dark);
+  border-radius: var(--mentaris-radius-sm);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition-fast);
+}
+
+.tag:hover {
+  background-color: var(--mentaris-green);
+  color: var(--color-white);
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -323,10 +347,6 @@ strong {
     font-size: 0.8125rem;
     padding: 0.5rem 1rem;
   }
-}
-
-.tag:hover {
-  transform: scale(1.05);
 }
 
 /* ========================================
@@ -339,7 +359,7 @@ strong {
   left: 0;
   right: 0;
   background-color: var(--color-white);
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
   padding: var(--spacing-sm);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -350,56 +370,6 @@ strong {
 @media (min-width: 768px) {
   .mobile-bottom-bar {
     display: none;
-  }
-}
-
-/* ========================================
-   Responsive Typography
-   ======================================== */
-
-/* Mobile optimizations */
-@media (max-width: 767px) {
-  h1 {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-
-  h2 {
-    font-size: 1.75rem;
-    line-height: 1.3;
-  }
-
-  h3 {
-    font-size: 1.375rem;
-  }
-
-  p {
-    font-size: 0.9375rem;
-    line-height: 1.6;
-  }
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2.5rem;
-  }
-
-  h3 {
-    font-size: 1.75rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 3.5rem;
-  }
-
-  h2 {
-    font-size: 2.75rem;
   }
 }
 
@@ -416,7 +386,7 @@ strong {
 }
 
 .text-trust {
-  color: var(--color-trust);
+  color: var(--mentaris-green-dark);
 }
 
 .italic {
@@ -434,9 +404,145 @@ strong {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ========================================
+   Accessibility
+   ======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--mentaris-green);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--mentaris-green);
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   MENTARIS HIGHLIGHT BOX
+   ========================================== */
+
+.mentaris-highlight {
+  background: linear-gradient(135deg, var(--mentaris-green-light) 0%, var(--mentaris-cream-light) 100%);
+  border-radius: var(--mentaris-radius);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  border: 1px solid rgba(124, 182, 157, 0.2);
+}
+
+.mentaris-highlight p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   MENTARIS TIP BOX
+   ========================================== */
+
+.mentaris-tip {
+  background: var(--mentaris-green-light);
+  border-radius: var(--mentaris-radius);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.mentaris-tip::before {
+  content: '💡';
+  position: absolute;
+  top: -5px;
+  right: 15px;
+  font-size: 40px;
+  opacity: 0.15;
+}
+
+.mentaris-tip-title {
+  font-weight: 700;
+  color: var(--mentaris-green-dark);
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+}
+
+.mentaris-tip p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   MENTARIS CTA BLOCK
+   ========================================== */
+
+.mentaris-cta {
+  background: linear-gradient(135deg, var(--mentaris-green-light) 0%, var(--mentaris-cream) 100%);
+  border-radius: var(--mentaris-radius);
+  padding: 2.5rem 2rem;
+  margin: 3rem 0 1rem;
+  text-align: center;
+  border: 1px solid rgba(124, 182, 157, 0.3);
+}
+
+.mentaris-cta h3 {
+  color: var(--mentaris-text);
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.mentaris-cta p {
+  color: var(--mentaris-text-light);
+  font-size: 16px;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================
+   Responsive Typography
+   ======================================== */
+
+@media (max-width: 767px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
 }
 
 /* ========================================
@@ -444,11 +550,11 @@ strong {
    ======================================== */
 
 @keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
     transform: translateY(20px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -456,19 +562,4 @@ strong {
 
 .animate-fade-in {
   animation: fadeIn 0.6s ease forwards;
-}
-
-/* ========================================
-   Focus Styles (Accessibility)
-   ======================================== */
-
-:focus-visible {
-  outline: 2px solid var(--color-trust);
-  outline-offset: 2px;
-}
-
-button:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--color-trust);
-  outline-offset: 2px;
 }
