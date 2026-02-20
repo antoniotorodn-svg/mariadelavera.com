@@ -101,7 +101,7 @@ const testimonials = [
 >
   <Nav slot="nav" />
 
-  <!-- Hero -->
+  <!-- 1. Hero -->
   <Hero
     badge="📍 Nutricionista en Boadilla del Monte"
     title="Tu nutricionista en Boadilla del Monte"
@@ -109,7 +109,7 @@ const testimonials = [
     subtitle="Con más de 700 pacientes atendidos, ayudo a personas como tú a alcanzar su mejor versión a través de la nutrición. Consulta presencial en Centro Médico Arboleda (Boadilla del Monte) o modalidad online. Sin dietas milagro, solo educación nutricional y planes 100% personalizados."
   />
 
-  <!-- Proceso / Metodología -->
+  <!-- 2. Proceso / Cómo funciona -->
   <section class="section section--alt" id="proceso">
     <div class="container">
       <h2 class="text-center" style="margin-bottom: var(--spacing-sm);">Cómo funciona</h2>
@@ -163,7 +163,7 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Precios -->
+  <!-- 3. Precios -->
   <section class="section" id="precios">
     <div class="container">
       <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Precios</h2>
@@ -200,7 +200,7 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Ubicación / Contacto -->
+  <!-- 4. Ubicación / Contacto -->
   <section class="section section--alt" id="ubicacion">
     <div class="container">
       <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Dónde estoy</h2>
@@ -237,7 +237,56 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Sobre mí -->
+  <!-- 5. Reservar cita con Calendly -->
+  <CalendlySection />
+
+  <!-- 6. ¿Por qué elegir mi consulta? -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Por qué elegir mi consulta?</h2>
+      <ValueProposition />
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Preguntas frecuentes</h2>
+
+      <div style="max-width: 800px; margin: 0 auto;">
+        <FAQAccordion items={faqItems} />
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Testimonios -->
+  <section class="section section--alt" id="testimonios">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Lo que dicen mis pacientes</h2>
+
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+        Más de 700 pacientes han transformado su relación con la comida. Estos son algunos de sus testimonios.
+      </p>
+
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
+        {testimonials.map(testimonial => (
+          <TestimonialCard
+            quote={testimonial.quote}
+            author={testimonial.author}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+
+      <div class="text-center" style="margin-top: var(--spacing-lg);">
+        <p style="color: var(--color-text-secondary); font-size: 0.9rem;">
+          💬 Testimonios verificados de pacientes reales
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Sobre mí -->
   <section class="section" id="sobre-mi">
     <div class="container">
       <div class="about-grid">
@@ -255,7 +304,6 @@ const testimonials = [
         </div>
 
         <div class="about-image">
-          <!-- REEMPLAZAR: Subir foto-maria-perfil.webp aquí -->
           <div class="about-image-placeholder">
             <span style="font-size: 6rem;">👩‍⚕️</span>
             <p style="color: var(--color-text-secondary); font-style: italic; text-align: center;">
@@ -267,8 +315,19 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Barrios -->
-  <section class="section section--alt" id="barrios">
+  <!-- 10. Material formativo -->
+  <section class="section section--alt" id="material-formativo">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Material formativo incluido</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+        Todos mis pacientes reciben material educativo de calidad para entender la nutrición desde la ciencia y aplicarla en su día a día.
+      </p>
+      <MaterialFormativo />
+    </div>
+  </section>
+
+  <!-- 11. Barrios -->
+  <section class="section" id="barrios">
     <div class="container">
       <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Zonas de Boadilla</h2>
 
@@ -281,68 +340,7 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Reservar cita con Calendly -->
-  <CalendlySection />
-
-  <!-- Propuesta de valor (1ª aparición) -->
-  <section class="section section--alt">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Por qué elegir mi consulta?</h2>
-      <ValueProposition />
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section section--alt" id="faq">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Preguntas frecuentes</h2>
-
-      <div style="max-width: 800px; margin: 0 auto;">
-        <FAQAccordion items={faqItems} />
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonios -->
-  <section class="section section--alt" id="testimonios">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Lo que dicen mis pacientes</h2>
-
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
-        Más de 700 pacientes han transformado su relación con la comida. Estos son algunos de sus testimonios.
-      </p>
-
-      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
-        {testimonials.map(testimonial => (
-          <TestimonialCard
-            quote={testimonial.quote}
-            author={testimonial.author}
-            service={testimonial.service}
-            rating={testimonial.rating}
-          />
-        ))}
-      </div>
-
-      <div class="text-center" style="margin-top: var(--spacing-lg);">
-        <p style="color: var(--color-text-secondary); font-size: 0.9rem;">
-          💬 Testimonios verificados de pacientes reales
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Material formativo -->
-  <section class="section" id="material-formativo">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Material formativo incluido</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
-        Todos mis pacientes reciben material educativo de calidad para entender la nutrición desde la ciencia y aplicarla en su día a día.
-      </p>
-      <MaterialFormativo />
-    </div>
-  </section>
-
-  <!-- CTA Final -->
+  <!-- 12. CTA Final -->
   <CTABox
     title="¿Listo para empezar?"
     description="Reserva tu primera consulta y da el primer paso hacia tus objetivos de salud."
@@ -353,4 +351,3 @@ const testimonials = [
 
   <Footer slot="footer" />
 </BaseLayout>
-
