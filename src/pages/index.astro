@@ -74,30 +74,51 @@ const testimonials = [
   <!-- Proceso / Metodología -->
   <section class="section section--alt" id="proceso">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Cómo funciona</h2>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-sm);">Cómo funciona</h2>
+      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+        Un proceso sencillo y transparente, pensado para que desde el primer día sepas exactamente qué esperar y cómo vamos a trabajar juntos.
+      </p>
 
       <div class="grid grid--3">
         <div class="card" style="text-align: center;">
           <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">1️⃣</div>
           <h3>Primera consulta</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            Nos conocemos en persona o por videollamada. Hago una <strong>entrevista completa</strong> sobre tu historial médico, hábitos alimenticios, rutina diaria, gustos y objetivos.
+          </p>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            Realizamos un <strong>análisis de composición corporal</strong> (peso, grasa, masa muscular) para tener datos objetivos de partida.
+          </p>
           <p style="color: var(--color-text-secondary);">
-            Entrevista completa y análisis. <strong>50€</strong>
+            <strong>50€</strong> · Duración aprox. 60 minutos
           </p>
         </div>
 
         <div class="card" style="text-align: center;">
           <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">2️⃣</div>
           <h3>Tu plan en 24-72h</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            Con toda la información recogida, diseño un <strong>plan nutricional 100% personalizado</strong>: menús semanales adaptados a tus horarios, recetas fáciles y una lista de la compra organizada.
+          </p>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            Además recibirás <strong>material educativo</strong> para que entiendas el porqué de cada decisión y aprendas a comer bien de forma autónoma.
+          </p>
           <p style="color: var(--color-text-secondary);">
-            Plan personalizado con menús y recetas.
+            Lo recibes todo por email en formato digital, listo para usar.
           </p>
         </div>
 
         <div class="card" style="text-align: center;">
           <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">3️⃣</div>
-          <h3>Revisiones</h3>
+          <h3>Revisiones cada 21 días</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            Nos vemos cada 3 semanas para <strong>evaluar tu progreso</strong>, resolver dudas y ajustar el plan según tus resultados y cómo te sientes.
+          </p>
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+            Este intervalo es el óptimo: suficiente para ver <strong>cambios reales</strong> y poder hacer ajustes efectivos sin perder el ritmo.
+          </p>
           <p style="color: var(--color-text-secondary);">
-            Cada 21 días. <strong>40€/revisión</strong>
+            <strong>40€/revisión</strong> · Duración aprox. 30 minutos
           </p>
         </div>
       </div>
@@ -178,24 +199,6 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Reservar cita con Calendly -->
-  <section class="section section--alt" id="testimonios">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Lo que dicen mis pacientes</h2>
-
-      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
-        {testimonials.map(testimonial => (
-          <TestimonialCard
-            quote={testimonial.quote}
-            author={testimonial.author}
-            service={testimonial.service}
-            rating={testimonial.rating}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- Sobre mí -->
   <section class="section" id="sobre-mi">
     <div class="container">
@@ -251,43 +254,6 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Precios (2ª aparición) -->
-  <section class="section" id="precios-2">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Precios</h2>
-
-      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
-        <PricingCard
-          title="Consulta individual"
-          price="50€"
-          description="Ideal para empezar o si prefieres ir sesión por sesión."
-          features={[
-            "Primera consulta completa (50€)",
-            "Plan nutricional personalizado",
-            "Material de apoyo y recetas",
-            "Revisiones a 40€ cada 21 días"
-          ]}
-          ctaText="Reservar primera consulta"
-        />
-
-        <PricingCard
-          title="Pack 4 sesiones"
-          price="140€"
-          description="La opción más elegida: compromiso y ahorro desde el inicio."
-          features={[
-            "Primera consulta + 3 revisiones",
-            "Plan nutricional personalizado",
-            "Seguimiento durante 2 meses",
-            "Ahorro de 30€ vs pago individual"
-          ]}
-          highlighted={true}
-          savings="30€"
-          ctaText="Reservar pack completo"
-        />
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="section section--alt" id="faq">
     <div class="container">
@@ -296,14 +262,6 @@ const testimonials = [
       <div style="max-width: 800px; margin: 0 auto;">
         <FAQAccordion items={faqItems} />
       </div>
-    </div>
-  </section>
-
-  <!-- Propuesta de valor (2ª aparición) -->
-  <section class="section">
-    <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Mi compromiso contigo</h2>
-      <ValueProposition />
     </div>
   </section>
 
