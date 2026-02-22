@@ -2,8 +2,12 @@
 import VideoEmbed from './VideoEmbed.astro';
 
 interface Props {
+  // Homepage mode (name | role)
   name?: string;
   role?: string;
+  // Service/barrio page mode (custom title)
+  title?: string;
+  // Shared props
   location?: string;
   description?: string;
   showVideo?: boolean;
@@ -11,13 +15,19 @@ interface Props {
 }
 
 const {
-  name = "María De la Vera",
-  role = "Nutricionista",
+  name,
+  role,
+  title,
   location = "Boadilla del Monte",
   description = "",
   showVideo = true,
   benefits = []
 } = Astro.props;
+
+// Determine if we're in homepage mode (name|role) or service page mode (title)
+const isHomepage = !title && (name || role);
+const displayName = name || "María De la Vera";
+const displayRole = role || "Nutricionista";
 ---
 
 <section class="hero">
@@ -34,9 +44,13 @@ const {
         <!-- Location -->
         <p class="hero__location">{location}</p>
 
-        <!-- Title: Name | Role -->
+        <!-- Title -->
         <h1 class="hero__title">
-          {name} <span class="hero__sep">|</span> {role}
+          {isHomepage ? (
+            <>{displayName} <span class="hero__sep">|</span> {displayRole}</>
+          ) : (
+            title
+          )}
         </h1>
 
         <!-- Action pills row -->

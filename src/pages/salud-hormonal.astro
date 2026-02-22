@@ -44,10 +44,9 @@ const schema = {
   ]} />
 
   <Hero
-    badge={`${servicio.emoji} ${servicio.title}`}
     title={`${servicio.title} en Boadilla del Monte`}
-    titleAccent="Boadilla del Monte"
-    subtitle={servicio.description}
+    description={servicio.description}
+    location="Boadilla del Monte"
     showVideo={true}
   />
 
@@ -163,7 +162,7 @@ const schema = {
 
   .benefit-icon {
     font-size: 1.5rem;
-    color: var(--color-trust);
+    color: #1a1a1a;
     flex-shrink: 0;
   }
 

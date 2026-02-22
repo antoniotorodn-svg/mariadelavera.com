@@ -24,10 +24,9 @@ const otrosBarrios = barriosData.filter(b => b.id !== barrio.id).slice(0, 6);
   <Nav slot="nav" />
 
   <Hero
-    badge={`📍 ${barrio.name}`}
     title={`Nutricionista en ${barrio.name}`}
-    titleAccent={barrio.name}
-    subtitle={barrio.description}
+    description={barrio.description}
+    location={barrio.name}
     showVideo={true}
   />
 
