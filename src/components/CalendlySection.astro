@@ -92,11 +92,11 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
   }
 
   .tabs__panel {
-    display: none;
+    display: none !important;
   }
 
   .tabs__panel--active {
-    display: block;
+    display: block !important;
   }
 </style>
 
@@ -110,10 +110,21 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
         const tabId = button.getAttribute('data-tab');
 
         tabButtons.forEach(btn => btn.classList.remove('tabs__button--active'));
-        tabPanels.forEach(panel => panel.classList.remove('tabs__panel--active'));
+        tabPanels.forEach(panel => {
+          panel.classList.remove('tabs__panel--active');
+          // Force-hide Calendly widgets in inactive panels
+          const widget = panel.querySelector('.calendly-inline-widget');
+          if (widget) (widget as HTMLElement).style.display = 'none';
+        });
 
         button.classList.add('tabs__button--active');
-        document.getElementById(`tab-${tabId}`)?.classList.add('tabs__panel--active');
+        const activePanel = document.getElementById(`tab-${tabId}`);
+        if (activePanel) {
+          activePanel.classList.add('tabs__panel--active');
+          // Show the Calendly widget in the active panel
+          const widget = activePanel.querySelector('.calendly-inline-widget');
+          if (widget) (widget as HTMLElement).style.display = 'block';
+        }
       });
     });
   });
