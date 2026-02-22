@@ -444,7 +444,7 @@ img {
   gap: 6px;
   padding: 12px 8px;
   border-radius: 12px;
-  font-size: 0.82em;
+  font-size: 0.88em;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.2s;
@@ -457,7 +457,7 @@ img {
 }
 
 .mobile-bottom-bar .bn-call {
-  background: var(--green-dark);
+  background: #3B7359;
   color: var(--white);
 }
 
@@ -466,7 +466,7 @@ img {
 }
 
 .mobile-bottom-bar .bn-wa {
-  background: #25D366;
+  background: #1A8042;
   color: var(--white);
 }
 
@@ -475,7 +475,7 @@ img {
 }
 
 .mobile-bottom-bar .bn-reserva {
-  background: var(--gold);
+  background: #946B1D;
   color: var(--white);
 }
 
@@ -532,11 +532,11 @@ img {
 }
 
 .float-wa {
-  background: #25D366;
+  background: #1A8042;
 }
 
 .float-reserva {
-  background: var(--gold);
+  background: #946B1D;
 }
 
 .float-btn svg {
@@ -689,7 +689,7 @@ button:focus-visible {
 
 @media (max-width: 767px) {
   body {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   h1 {
@@ -698,16 +698,16 @@ button:focus-visible {
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     line-height: 1.2;
   }
 
   h3 {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
 
   p {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     line-height: 1.7;
   }
 }
@@ -807,27 +807,27 @@ button:focus-visible {
 
 @media (max-width: 900px) {
   .section-title {
-    font-size: 1.35em;
+    font-size: 1.4em;
     margin-bottom: 6px;
   }
 
   .section-sub {
-    font-size: 0.82em;
+    font-size: 0.9em;
     margin-bottom: 24px;
   }
 
   .proof-bar {
-    font-size: 0.82em;
+    font-size: 0.88em;
     padding: 14px 16px;
   }
 }
 
 @media (max-width: 420px) {
   .section-title {
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 
   .section-sub {
-    font-size: 0.78em;
+    font-size: 0.85em;
   }
 }
