@@ -42,15 +42,19 @@ const calendlyUrl = type === 'presencial'
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const placeholder = entry.target.querySelector('.calendly-placeholder');
-          const widget = entry.target.querySelector('.calendly-inline-widget');
+          const placeholder = entry.target.querySelector('.calendly-placeholder') as HTMLElement;
+          const widget = entry.target.querySelector('.calendly-inline-widget') as HTMLElement;
 
           loadCalendly();
 
           setTimeout(() => {
             if (placeholder && widget) {
               placeholder.style.display = 'none';
-              widget.style.display = 'block';
+              // Only show widget if its parent tab panel is active
+              const parentPanel = entry.target.closest('.tabs__panel');
+              if (!parentPanel || parentPanel.classList.contains('tabs__panel--active')) {
+                widget.style.display = 'block';
+              }
             }
           }, 500);
 
