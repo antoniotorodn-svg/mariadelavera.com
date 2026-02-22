@@ -12,17 +12,53 @@ const {
 // Video de Vimeo - formato vertical
 const videoId = "1137833163";
 const videoHash = "7317f4af36";
+const thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
 ---
 
-<div class={`hero-video ${vertical ? 'hero-video--vertical' : ''}`}>
-  <iframe
-    src={`https://player.vimeo.com/video/${videoId}?h=${videoHash}&autoplay=1&loop=1&muted=1&background=1`}
-    allow="autoplay; fullscreen"
-    allowfullscreen
-    loading="lazy"
-    title={title}
-  ></iframe>
+<div class={`hero-video ${vertical ? 'hero-video--vertical' : ''}`} data-video-id={videoId} data-video-hash={videoHash}>
+  <div class="hero-video__thumbnail">
+    <img src={thumbnailUrl} alt={title} loading="lazy" />
+    <button class="hero-video__play" aria-label="Reproducir video">
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="28" fill="rgba(0,0,0,0.55)"/>
+        <polygon points="22,16 42,28 22,40" fill="white"/>
+      </svg>
+    </button>
+  </div>
+  <div class="hero-video__player" style="display: none;"></div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('.hero-video[data-video-id]');
+
+    videos.forEach((container) => {
+      const button = container.querySelector('.hero-video__play');
+      const thumbnail = container.querySelector('.hero-video__thumbnail') as HTMLElement | null;
+      const playerContainer = container.querySelector('.hero-video__player') as HTMLElement | null;
+      const videoId = container.getAttribute('data-video-id');
+      const videoHash = container.getAttribute('data-video-hash');
+
+      button?.addEventListener('click', () => {
+        if (thumbnail && playerContainer && videoId) {
+          thumbnail.style.display = 'none';
+          playerContainer.style.display = 'block';
+
+          const hashParam = videoHash ? `&h=${videoHash}` : '';
+          const iframe = document.createElement('iframe');
+          iframe.src = `https://player.vimeo.com/video/${videoId}?${hashParam}&autoplay=1&title=0&byline=0&portrait=0`;
+          iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+          iframe.allowFullscreen = true;
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+          iframe.style.border = 'none';
+
+          playerContainer.appendChild(iframe);
+        }
+      });
+    });
+  });
+</script>
 
 <style>
   .hero-video {
@@ -32,12 +68,48 @@ const videoHash = "7317f4af36";
     overflow: hidden;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
     background: #000;
+    position: relative;
   }
 
-  .hero-video iframe {
+  .hero-video__thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    cursor: pointer;
+  }
+
+  .hero-video__thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-video__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
     border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.9;
+  }
+
+  .hero-video__play:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+
+  .hero-video__player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   /* Mobile */
