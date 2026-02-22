@@ -1,40 +1,48 @@
 /* ========================================
    MARIADELAVERA.COM - Estilos Globales
    Estética MENTARIS: DM Serif Display + DM Sans
+   Paleta cálida: crema, arena, verde, dorado
    ======================================== */
 
 /* ===== MENTARIS VARIABLES ===== */
 :root {
-  /* Paleta Mentaris (verdes + crema + gris) */
+  /* Paleta Mentaris (cálida: arena + crema + verde + dorado) */
+  --sand: #F5F0EB;
+  --sand-dark: #EBE3D9;
+  --cream: #FDF8F3;
+  --green: #7CB69D;
+  --green-dark: #4A8B6F;
+  --green-pale: #EEF6F1;
+  --gold: #C9982E;
+  --gold-light: #F9E8D2;
+  --text: #2D2D2D;
+  --text-light: #6B6B6B;
+  --white: #FFFFFF;
+  --radius: 20px;
+
+  /* Aliases de sistema */
   --mentaris-green: #7CB69D;
   --mentaris-green-dark: #4A8B6F;
-  --mentaris-green-light: #E8F5EE;
-  --mentaris-green-hover: #3D7A5E;
-  --mentaris-green-subtle: #f0faf5;
+  --mentaris-green-light: #EEF6F1;
   --mentaris-cream: #F9E8D2;
-  --mentaris-cream-light: #FDF6ED;
-  --mentaris-bg: #FAFAF8;
-  --mentaris-text: #2d2d2d;
-  --mentaris-text-light: #6b6b6b;
+  --mentaris-bg: #FDF8F3;
+  --mentaris-text: #2D2D2D;
+  --mentaris-text-light: #6B6B6B;
   --mentaris-white: #FFFFFF;
-  --mentaris-border: #e8e6e3;
+  --mentaris-border: #EBE3D9;
   --mentaris-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
   --mentaris-shadow-hover: 0 8px 30px rgba(74, 139, 111, 0.12);
-  --mentaris-radius: 16px;
-  --mentaris-radius-sm: 12px;
+  --mentaris-radius: 20px;
+  --mentaris-radius-sm: 14px;
 
   /* Colores del sistema */
   --color-white: #FFFFFF;
-  --color-bg-secondary: #FAFAF8;
+  --color-bg: #FDF8F3;
+  --color-bg-secondary: #F5F0EB;
   --color-accent: #F9E8D2;
-  --color-text-primary: #2d2d2d;
-  --color-text-secondary: #6b6b6b;
+  --color-text-primary: #2D2D2D;
+  --color-text-secondary: #6B6B6B;
   --color-trust: #4A8B6F;
-
-  /* Gradientes */
-  --gradient-warm: linear-gradient(135deg, #f0faf5 0%, #FDF6ED 50%, #fef5e7 100%);
-  --gradient-section: linear-gradient(180deg, #FAFAF8 0%, #FFFFFF 100%);
-  --gradient-green: linear-gradient(135deg, #4A8B6F 0%, #6aa577 50%, #7CB69D 100%);
 
   /* Tipografía Mentaris */
   --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
@@ -49,7 +57,7 @@
   --spacing-2xl: 4rem;
   --spacing-3xl: 6rem;
 
-  /* Sombras refinadas */
+  /* Sombras */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -57,8 +65,8 @@
   --shadow-green: 0 8px 30px rgba(74, 139, 111, 0.15);
 
   /* Radios */
-  --radius-sm: 12px;
-  --radius-md: 16px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
   --radius-lg: 20px;
   --radius-xl: 24px;
   --radius-full: 9999px;
@@ -90,8 +98,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-text-primary);
-  background-color: var(--color-white);
+  color: var(--text);
+  background-color: var(--cream);
   line-height: 1.75;
   font-size: 16px;
   overflow-x: hidden;
@@ -106,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   line-height: 1.15;
   font-weight: 400;
-  color: var(--color-text-primary);
+  color: var(--text);
   letter-spacing: -0.02em;
 }
 
@@ -122,7 +130,7 @@ h2 {
 
 h3 {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
-  color: var(--color-text-primary);
+  color: var(--text);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -133,26 +141,28 @@ h4 {
 
 p {
   margin-bottom: 1.2rem;
-  color: var(--color-text-secondary);
+  color: var(--text-light);
   line-height: 1.75;
 }
 
 a {
-  color: #1a1a1a;
-  text-decoration: underline;
-  text-decoration-color: rgba(0, 0, 0, 0.15);
-  text-underline-offset: 3px;
-  transition: all var(--transition-base);
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 a:hover {
-  color: #000;
-  text-decoration-color: #1a1a1a;
+  color: var(--green-dark);
 }
 
 strong {
   font-weight: 600;
-  color: var(--color-text-primary);
+  color: var(--text);
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 /* ========================================
@@ -161,38 +171,57 @@ strong {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 24px;
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 var(--spacing-sm);
+    padding: 0 16px;
   }
 }
 
 .section {
-  padding: var(--spacing-3xl) 0;
+  padding: 64px 0;
   position: relative;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: var(--spacing-2xl) 0;
+    padding: 32px 0;
   }
 }
 
 .section--alt {
-  background-color: #fafafa;
+  background-color: var(--sand);
 }
 
 .section--gradient {
-  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  background: linear-gradient(180deg, var(--sand) 0%, var(--cream) 100%);
 }
 
 /* ========================================
-   Buttons (estilo Mentaris premium)
+   Section headers (estilo Mentaris)
+   ======================================== */
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.6em;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.95em;
+  margin-bottom: 40px;
+}
+
+/* ========================================
+   Buttons (estilo Mentaris cálido)
    ======================================== */
 
 .btn {
@@ -206,9 +235,9 @@ strong {
   font-size: 15px;
   font-weight: 600;
   border: none;
-  border-radius: 50px;
+  border-radius: 100px;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.2s;
   text-decoration: none;
   white-space: nowrap;
   letter-spacing: 0.01em;
@@ -217,55 +246,56 @@ strong {
 }
 
 .btn--primary {
-  background: #1a1a1a;
-  color: var(--color-white) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--gold);
+  color: var(--white) !important;
+  box-shadow: 0 2px 8px rgba(201, 152, 46, 0.2);
 }
 
 .btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(201, 152, 46, 0.3);
   text-decoration: none;
-  background: #333;
+  background: #B8891E;
 }
 
 .btn--secondary {
-  background-color: white;
-  color: #1a1a1a;
-  border: 1.5px solid #e0e0e0;
+  background-color: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
 }
 
 .btn--secondary:hover {
-  border-color: #1a1a1a;
-  background-color: #fafafa;
+  background: var(--gold);
+  color: var(--white);
   transform: translateY(-2px);
   text-decoration: none;
 }
 
 .btn--trust {
-  background: #1a1a1a;
-  color: var(--color-white) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--green-dark);
+  color: var(--white) !important;
+  box-shadow: 0 2px 8px rgba(74, 139, 111, 0.2);
 }
 
 .btn--trust:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(74, 139, 111, 0.3);
   text-decoration: none;
-  background: #333;
+  background: #3D7A5E;
 }
 
 .btn--whatsapp {
-  background-color: #25d366;
-  color: var(--color-white) !important;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+  background-color: #25D366;
+  color: var(--white) !important;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
 }
 
 .btn--whatsapp:hover {
-  background-color: #22c55e;
+  background-color: #1fb855;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
   text-decoration: none;
+  color: var(--white) !important;
 }
 
 /* ========================================
@@ -302,22 +332,20 @@ strong {
 }
 
 /* ========================================
-   Cards (estilo Mentaris premium)
+   Cards (estilo Mentaris cálido)
    ======================================== */
 
 .card {
-  background-color: var(--color-white);
-  border-radius: var(--radius-md);
+  background-color: var(--white);
+  border-radius: var(--radius);
   padding: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--mentaris-border);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
   transition: all var(--transition-base);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: #ddd;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
 }
 
 /* ========================================
@@ -329,8 +357,8 @@ strong {
   align-items: center;
   gap: var(--spacing-xs);
   padding: 0.5rem 1rem;
-  background-color: #f5f5f5;
-  color: #1a1a1a;
+  background-color: var(--gold-light);
+  color: var(--text);
   border-radius: var(--radius-full);
   font-size: 0.875rem;
   font-weight: 600;
@@ -341,21 +369,22 @@ strong {
   display: inline-block;
   padding: 0.5rem 1rem;
   min-height: 36px;
-  background-color: #f5f5f5;
-  color: #1a1a1a;
+  background-color: var(--gold-light);
+  color: var(--text);
   border-radius: var(--radius-full);
   font-size: 0.875rem;
   font-weight: 600;
   font-family: var(--font-body);
-  transition: all var(--transition-base);
-  border: 1.5px solid #e0e0e0;
+  transition: all 0.2s;
+  border: 2px solid var(--gold-light);
 }
 
 .tag:hover {
-  background-color: #1a1a1a;
-  color: var(--color-white);
+  background-color: var(--gold);
+  color: var(--white);
+  border-color: var(--gold);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(201, 152, 46, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -366,27 +395,158 @@ strong {
 }
 
 /* ========================================
+   Proof Bar
+   ======================================== */
+
+.proof-bar {
+  background: var(--gold-light);
+  text-align: center;
+  padding: 18px 24px;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.proof-stars {
+  color: var(--gold);
+  margin-right: 8px;
+}
+
+/* ========================================
    Mobile Bottom Bar
    ======================================== */
 
 .mobile-bottom-bar {
+  display: none;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  z-index: 998;
+  background: var(--white);
+  border-top: 1px solid var(--sand-dark);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-  padding: var(--spacing-sm);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-sm);
+  padding: 10px 16px;
+}
+
+.mobile-bottom-bar .bottom-nav-inner {
+  display: flex;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mobile-bottom-bar .bottom-nav-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: 12px;
+  font-size: 0.82em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.mobile-bottom-bar .bottom-nav-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.mobile-bottom-bar .bn-call {
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+.mobile-bottom-bar .bn-call svg {
+  fill: var(--white);
+}
+
+.mobile-bottom-bar .bn-wa {
+  background: #25D366;
+  color: var(--white);
+}
+
+.mobile-bottom-bar .bn-wa svg {
+  fill: var(--white);
+}
+
+.mobile-bottom-bar .bn-reserva {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.mobile-bottom-bar .bn-reserva svg {
+  fill: var(--white);
+}
+
+@media (max-width: 900px) {
+  .mobile-bottom-bar {
+    display: block;
+  }
+
+  body {
+    padding-bottom: 66px;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-bottom-bar {
+    display: none;
+  }
+}
+
+/* ========================================
+   Floating Buttons (desktop)
+   ======================================== */
+
+.floating-btns {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   z-index: 999;
 }
 
-@media (min-width: 768px) {
-  .mobile-bottom-bar {
+.float-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.float-btn:hover {
+  transform: scale(1.1);
+}
+
+.float-wa {
+  background: #25D366;
+}
+
+.float-reserva {
+  background: var(--gold);
+}
+
+.float-btn svg {
+  width: 26px;
+  height: 26px;
+  fill: var(--white);
+}
+
+@media (max-width: 900px) {
+  .floating-btns {
     display: none;
   }
 }
@@ -400,11 +560,11 @@ strong {
 }
 
 .text-accent {
-  color: var(--color-accent);
+  color: var(--gold);
 }
 
 .text-trust {
-  color: #1a1a1a;
+  color: var(--green-dark);
 }
 
 .italic {
@@ -432,13 +592,13 @@ strong {
    ======================================== */
 
 :focus-visible {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid var(--green-dark);
   outline-offset: 2px;
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid var(--green-dark);
   outline-offset: 2px;
 }
 
@@ -447,11 +607,11 @@ button:focus-visible {
    ========================================== */
 
 .mentaris-highlight {
-  background: #fafafa;
-  border-radius: var(--radius-md);
+  background: var(--sand);
+  border-radius: var(--radius);
   padding: 1.5rem 2rem;
   margin: 2rem 0;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--sand-dark);
 }
 
 .mentaris-highlight p:last-child {
@@ -463,13 +623,13 @@ button:focus-visible {
    ========================================== */
 
 .mentaris-tip {
-  background: #fafafa;
-  border-radius: var(--radius-md);
+  background: var(--sand);
+  border-radius: var(--radius);
   padding: 1.5rem 2rem;
   margin: 2rem 0;
   position: relative;
   overflow: hidden;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--sand-dark);
 }
 
 .mentaris-tip::before {
@@ -479,12 +639,12 @@ button:focus-visible {
   left: 0;
   width: 4px;
   height: 100%;
-  background: #1a1a1a;
+  background: var(--green-dark);
 }
 
 .mentaris-tip-title {
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text);
   margin-bottom: 0.5rem;
   font-size: 16px;
   font-family: var(--font-body);
@@ -499,23 +659,23 @@ button:focus-visible {
    ========================================== */
 
 .mentaris-cta {
-  background: #fafafa;
-  border-radius: var(--radius-lg);
+  background: var(--sand);
+  border-radius: var(--radius);
   padding: 2.5rem 2rem;
   margin: 3rem 0 1rem;
   text-align: center;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--sand-dark);
 }
 
 .mentaris-cta h3 {
-  color: var(--mentaris-text);
+  color: var(--text);
   font-size: 1.4rem;
   margin-top: 0;
   margin-bottom: 0.75rem;
 }
 
 .mentaris-cta p {
-  color: var(--mentaris-text-light);
+  color: var(--text-light);
   font-size: 16px;
   margin-bottom: 1.5rem;
   max-width: 500px;
@@ -619,7 +779,7 @@ button:focus-visible {
   width: 100%;
   max-width: 320px;
   aspect-ratio: 1;
-  background: #f5f5f5;
+  background: var(--sand);
   border-radius: var(--radius-xl);
   display: flex;
   flex-direction: column;
@@ -627,6 +787,7 @@ button:focus-visible {
   justify-content: center;
   box-shadow: var(--shadow-lg);
   margin: 0 auto;
+  border: 3px solid var(--gold-light);
 }
 
 /* ========================================
@@ -638,4 +799,35 @@ button:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--spacing-sm);
+}
+
+/* ========================================
+   Mobile responsive adjustments
+   ======================================== */
+
+@media (max-width: 900px) {
+  .section-title {
+    font-size: 1.35em;
+    margin-bottom: 6px;
+  }
+
+  .section-sub {
+    font-size: 0.82em;
+    margin-bottom: 24px;
+  }
+
+  .proof-bar {
+    font-size: 0.82em;
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .section-title {
+    font-size: 1.2em;
+  }
+
+  .section-sub {
+    font-size: 0.78em;
+  }
 }

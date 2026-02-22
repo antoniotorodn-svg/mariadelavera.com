@@ -1,48 +1,66 @@
 ---
-// Nav minimalista estilo Mentaris
+// Nav estilo Mentaris - crema con blur, hamburger en móvil
 ---
 
 <nav class="nav">
-  <div class="container">
-    <div class="nav__inner">
-      <!-- Logo -->
-      <a href="/" class="nav__logo">
-        <span class="nav__logo-name">MARÍA DE LA VERA</span>
-      </a>
+  <div class="nav__inner">
+    <!-- Logo -->
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-name">MARÍA DE LA VERA</span>
+    </a>
 
-      <!-- Links -->
-      <div class="nav__links">
-        <a href="#servicios" class="nav__link">Servicios</a>
-        <a href="#proceso" class="nav__link">Proceso</a>
-        <a href="#precios" class="nav__link">Precios</a>
-        <a href="#sobre-mi" class="nav__link">Sobre mí</a>
+    <!-- Links desktop -->
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#servicios" class="nav__link">Servicios</a></li>
+      <li><a href="#proceso" class="nav__link">Proceso</a></li>
+      <li><a href="#precios" class="nav__link">Precios</a></li>
+      <li><a href="#sobre-mi" class="nav__link">Sobre mí</a></li>
+      <li>
         <a href="tel:+34611438679" class="nav__link nav__link--phone">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
           </svg>
           611 43 86 79
         </a>
-      </div>
-    </div>
+      </li>
+    </ul>
+
+    <!-- Hamburger button (mobile) -->
+    <button class="nav__hamburger" id="navHamburger" aria-label="Abrir menu de navegacion">&#9776;</button>
   </div>
 </nav>
 
+<script>
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('nav__links--open');
+    });
+  }
+</script>
+
 <style>
   .nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 40px;
+    background: rgba(253, 248, 243, 0.92);
     position: sticky;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid #f0f0f0;
     z-index: 1000;
-    padding: 1rem 0;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
 
   .nav__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 1100px;
   }
 
   .nav__logo {
@@ -57,7 +75,7 @@
     font-family: var(--font-body);
     font-size: 0.8125rem;
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--text);
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
@@ -65,21 +83,24 @@
   .nav__links {
     display: flex;
     align-items: center;
-    gap: 1.75rem;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   .nav__link {
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: 0.88em;
     font-weight: 500;
-    color: #666;
+    color: var(--text);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
     white-space: nowrap;
   }
 
   .nav__link:hover {
-    color: #1a1a1a;
+    color: var(--green-dark);
     text-decoration: none;
   }
 
@@ -87,29 +108,61 @@
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    color: #1a1a1a;
+    color: var(--text);
     font-weight: 600;
   }
 
-  /* Mobile: hide text links, show only logo + phone */
-  @media (max-width: 768px) {
-    .nav__links {
-      gap: 0;
-    }
-
-    .nav__link:not(.nav__link--phone) {
-      display: none;
-    }
+  /* Hamburger */
+  .nav__hamburger {
+    display: none;
+    background: none;
+    border: 2px solid var(--sand-dark);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+    color: var(--text);
   }
 
-  @media (max-width: 480px) {
+  /* Mobile open state */
+  .nav__links--open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 20px 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--sand-dark);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    z-index: 200;
+  }
+
+  /* Mobile: hide links, show hamburger */
+  @media (max-width: 900px) {
+    .nav {
+      padding: 10px 16px;
+    }
+
     .nav__logo-name {
       font-size: 0.6875rem;
       letter-spacing: 0.1em;
     }
 
-    .nav__link--phone {
-      font-size: 0.8125rem;
+    .nav__links {
+      display: none;
+    }
+
+    .nav__hamburger {
+      display: block;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav__logo-name {
+      font-size: 0.625rem;
     }
   }
 </style>

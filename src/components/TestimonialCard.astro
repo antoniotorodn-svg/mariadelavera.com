@@ -4,114 +4,119 @@ interface Props {
   author: string;
   service?: string;
   rating?: number;
+  meta?: string;
 }
 
-const { quote, author, service, rating = 5 } = Astro.props;
+const { quote, author, service, rating = 5, meta } = Astro.props;
 
-const stars = "★".repeat(rating);
-const initials = author.split(' ').map(n => n[0]).join('').slice(0, 2);
+const stars = "\u2605".repeat(rating);
+const initials = author.split(' ').map(n => n[0]).join('').slice(0, 1);
 ---
 
-<div class="testimonial-card">
-  <div class="testimonial-card__header">
-    <div class="testimonial-card__avatar">{initials}</div>
-    <div class="testimonial-card__meta">
-      <strong class="testimonial-card__author">{author}</strong>
-      <div class="testimonial-card__rating">{stars}</div>
+<div class="resena-card">
+  <div class="resena-header">
+    <div class="resena-avatar">{initials}</div>
+    <div>
+      <div class="resena-name">{author}</div>
+      {meta && <div class="resena-meta">{meta}</div>}
     </div>
   </div>
-  <blockquote class="testimonial-card__quote">
-    <span class="testimonial-card__quote-mark">"</span>
-    {quote}
-  </blockquote>
-  {service && <span class="testimonial-card__service">{service}</span>}
+  <div class="resena-stars">{stars}</div>
+  <p class="resena-text">{quote}</p>
+  {service && <span class="resena-badge">{service}</span>}
 </div>
 
 <style>
-  .testimonial-card {
-    background-color: var(--color-white);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--mentaris-border);
-    transition: all var(--transition-base);
+  .resena-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
-    position: relative;
+    gap: 10px;
+    transition: all var(--transition-base);
   }
 
-  .testimonial-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: #ddd;
+  .resena-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
   }
 
-  .testimonial-card__header {
+  .resena-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: var(--spacing-md);
+    gap: 10px;
   }
 
-  .testimonial-card__avatar {
-    width: 44px;
-    height: 44px;
+  .resena-avatar {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: #1a1a1a;
-    color: white;
+    background: var(--sand);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.875rem;
-    letter-spacing: 0.02em;
+    font-weight: 700;
+    font-size: 0.85em;
+    color: var(--green-dark);
     flex-shrink: 0;
   }
 
-  .testimonial-card__meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
+  .resena-name {
+    font-weight: 700;
+    font-size: 0.88em;
+    color: var(--text);
   }
 
-  .testimonial-card__author {
-    font-size: 0.95rem;
-    color: var(--color-text-primary);
-    font-weight: 600;
-    font-family: var(--font-body);
+  .resena-meta {
+    font-size: 0.75em;
+    color: var(--text-light);
   }
 
-  .testimonial-card__rating {
-    font-size: 0.8rem;
-    color: #f5a623;
-    letter-spacing: 1px;
+  .resena-stars {
+    color: var(--gold);
+    font-size: 0.85em;
   }
 
-  .testimonial-card__quote {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--color-text-secondary);
+  .resena-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: 700;
+    background: var(--green-pale);
+    color: var(--green-dark);
+    width: fit-content;
+  }
+
+  .resena-text {
+    font-size: 0.84em;
+    color: var(--text-light);
+    line-height: 1.55;
     margin: 0;
-    flex-grow: 1;
-    position: relative;
   }
 
-  .testimonial-card__quote-mark {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    color: #e8e8e8;
-    position: absolute;
-    top: -0.75rem;
-    left: -0.25rem;
-    line-height: 1;
-    pointer-events: none;
-  }
+  /* Mobile */
+  @media (max-width: 900px) {
+    .resena-card {
+      padding: 16px;
+    }
 
-  .testimonial-card__service {
-    font-size: 0.8125rem;
-    color: var(--color-text-secondary);
-    margin-top: var(--spacing-sm);
-    font-family: var(--font-body);
+    .resena-name {
+      font-size: 0.82em;
+    }
+
+    .resena-meta {
+      font-size: 0.7em;
+    }
+
+    .resena-stars {
+      font-size: 0.78em;
+    }
+
+    .resena-text {
+      font-size: 0.8em;
+    }
   }
 </style>

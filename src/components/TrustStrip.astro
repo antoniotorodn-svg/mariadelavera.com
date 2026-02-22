@@ -10,10 +10,10 @@ interface Props {
 
 const {
   items = [
-    { icon: "✓", text: "Colegiada oficial MAD01182" },
-    { icon: "✓", text: "CEU San Pablo + UDIMA" },
-    { icon: "✓", text: "+700 pacientes atendidos" },
-    { icon: "✓", text: "Presencial + Online" }
+    { icon: "\u2713", text: "Colegiada oficial MAD01182" },
+    { icon: "\u2713", text: "CEU San Pablo + UDIMA" },
+    { icon: "\u2713", text: "+700 pacientes atendidos" },
+    { icon: "\u2713", text: "Presencial + Online" }
   ]
 } = Astro.props;
 ---
@@ -34,9 +34,9 @@ const {
 <style>
   .trust-strip {
     padding: var(--spacing-md) 0;
-    background-color: #fafafa;
-    border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
+    background-color: var(--gold-light);
+    border-top: 1px solid var(--sand-dark);
+    border-bottom: 1px solid var(--sand-dark);
   }
 
   .trust-strip__grid {
@@ -66,15 +66,15 @@ const {
   }
 
   .trust-strip__icon {
-    color: #1a1a1a;
+    color: var(--green-dark);
     font-weight: 700;
     font-size: 0.875rem;
   }
 
   .trust-strip__text {
     font-size: 0.9rem;
-    font-weight: 500;
-    color: #1a1a1a;
+    font-weight: 600;
+    color: var(--text);
     font-family: var(--font-body);
   }
 </style>
