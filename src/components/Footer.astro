@@ -84,6 +84,13 @@
     <!-- Footer bottom -->
     <div class="footer__bottom">
       <p>&copy; 2026 María De la Vera — Nutricionista. Todos los derechos reservados.</p>
+      <p class="footer__legal-links">
+        <a href="/aviso-legal">Aviso legal</a>
+        <span>·</span>
+        <a href="/politica-de-privacidad">Política de privacidad</a>
+        <span>·</span>
+        <a href="/politica-de-cookies">Política de cookies</a>
+      </p>
       <p class="footer__legal">
         Colegiada MAD01182 · Centro Médico Arboleda, Boadilla del Monte
       </p>
@@ -252,6 +259,32 @@
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.85rem;
     margin-bottom: 0.375rem;
+  }
+
+  .footer__legal-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .footer__legal-links a {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  .footer__legal-links a:hover {
+    color: var(--mentaris-cream);
+    text-decoration: none;
+  }
+
+  .footer__legal-links span {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.8rem;
   }
 
   .footer__legal {

@@ -54,7 +54,7 @@ const schema = {
 
   <section class="section section--alt">
     <div class="container">
-      <div class="grid grid--2" style="align-items: start;">
+      <div style="max-width: 600px; margin: 0 auto;">
         <div class="card">
           <h2 style="margin-bottom: var(--spacing-md);">Puntos de referencia</h2>
           <ul class="landmarks-list">
@@ -62,13 +62,6 @@ const schema = {
               <li>📍 {landmark}</li>
             ))}
           </ul>
-        </div>
-
-        <div class="card">
-          <h2 style="margin-bottom: var(--spacing-md);">Perfil de vecinos</h2>
-          <p style="color: var(--color-text-secondary); line-height: 1.7;">
-            {barrio.profile}
-          </p>
         </div>
       </div>
     </div>

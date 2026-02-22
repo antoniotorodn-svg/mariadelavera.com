@@ -11,7 +11,9 @@ import CalendlySection from '../components/CalendlySection.astro';
 import ValueProposition from '../components/ValueProposition.astro';
 import MaterialFormativo from '../components/MaterialFormativo.astro';
 import BarrioTag from '../components/BarrioTag.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 import barriosData from '../data/barrios.json';
+import serviciosData from '../data/servicios.json';
 
 const faqItems = [
   {
@@ -93,11 +95,24 @@ const testimonials = [
   }
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
 ---
 
 <BaseLayout
-  title="Nutricionista en Boadilla del Monte | María De la Vera · MAD01182"
-  description="Nutricionista colegiada en Boadilla del Monte. Pérdida de peso, nutrición deportiva, salud digestiva y hormonal. Primera consulta 50€. Reserva cita."
+  title="Nutricionista en Boadilla del Monte | María De la Vera · Colegiada MAD01182"
+  description="Nutricionista colegiada en Boadilla del Monte. Pérdida de peso, nutrición deportiva, salud digestiva y hormonal. Consulta presencial en Centro Médico Arboleda y online. Primera consulta 50€."
+  schema={faqSchema}
 >
   <Nav slot="nav" />
 
@@ -109,7 +124,36 @@ const testimonials = [
     subtitle="Con más de 700 pacientes atendidos, ayudo a personas como tú a alcanzar su mejor versión a través de la nutrición. Consulta presencial en Centro Médico Arboleda (Boadilla del Monte) o modalidad online. Sin dietas milagro, solo educación nutricional y planes 100% personalizados."
   />
 
-  <!-- 2. Proceso / Cómo funciona -->
+  <!-- 2. Servicios -->
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Servicios de nutrición en Boadilla del Monte</h2>
+        <p class="text-center section-intro__text">
+          Consultas personalizadas de nutrición y dietética, presenciales y online. Cada plan se adapta a tus objetivos, gustos y estilo de vida.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        {serviciosData.map(servicio => (
+          <ServiceCard
+            emoji={servicio.emoji}
+            title={servicio.title}
+            description={servicio.shortDesc}
+            href={`/${servicio.slug}`}
+          />
+        ))}
+        <ServiceCard
+          emoji="💻"
+          title="Consulta online"
+          description="Misma calidad desde cualquier lugar de España, por Google Meet"
+          href="/nutricionista-online"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Proceso / Cómo funciona -->
   <section class="section section--alt" id="proceso">
     <div class="container">
       <div class="section-intro">

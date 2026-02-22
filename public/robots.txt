@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mariadelavera.com/sitemap-index.xml
+Sitemap: https://mariadelavera.com/sitemap.xml
