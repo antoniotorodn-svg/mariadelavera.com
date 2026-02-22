@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
   title: string;
@@ -152,6 +153,9 @@ const schemas = schema ? [defaultSchema, schema] : [defaultSchema];
       </a>
     </div>
   </div>
+
+  <!-- Cookie Consent Banner -->
+  <CookieBanner />
 
   <!-- Scroll Reveal Animation -->
   <script>
