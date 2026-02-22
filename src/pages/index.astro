@@ -118,10 +118,16 @@ const faqSchema = {
 
   <!-- 1. Hero -->
   <Hero
-    badge="📍 Nutricionista en Boadilla del Monte"
-    title="Tu nutricionista en Boadilla del Monte"
-    titleAccent="Boadilla del Monte"
-    subtitle="Con más de 700 pacientes atendidos, ayudo a personas como tú a alcanzar su mejor versión a través de la nutrición. Consulta presencial en Centro Médico Arboleda (Boadilla del Monte) o modalidad online. Sin dietas milagro, solo educación nutricional y planes 100% personalizados."
+    name="María De la Vera"
+    role="Nutricionista"
+    location="Boadilla del Monte"
+    description="Con más de 700 pacientes atendidos, ayudo a personas como tú a alcanzar su mejor versión a través de la nutrición. Consulta presencial en Centro Médico Arboleda o modalidad online. Sin dietas milagro, solo educación nutricional y planes 100% personalizados."
+    benefits={[
+      { emoji: "🎓", text: "Colegiada MAD01182" },
+      { emoji: "⭐", text: "5.0 en Google" },
+      { emoji: "👥", text: "+700 pacientes" },
+      { emoji: "📍", text: "Centro Médico Arboleda" }
+    ]}
   />
 
   <!-- 2. Servicios -->
@@ -436,7 +442,7 @@ const faqSchema = {
   .step-card__number {
     font-family: var(--font-display);
     font-size: 2.5rem;
-    color: var(--mentaris-green-light);
+    color: #e8e8e8;
     position: absolute;
     top: var(--spacing-lg);
     right: var(--spacing-lg);
@@ -456,11 +462,11 @@ const faqSchema = {
   }
 
   .step-card__price {
-    color: var(--mentaris-green-dark) !important;
+    color: #1a1a1a !important;
     font-weight: 600;
     font-size: 0.9375rem;
     padding-top: var(--spacing-sm);
-    border-top: 1px solid var(--mentaris-border);
+    border-top: 1px solid #f0f0f0;
     margin-top: var(--spacing-sm);
     margin-bottom: 0 !important;
   }

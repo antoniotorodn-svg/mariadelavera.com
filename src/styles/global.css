@@ -122,7 +122,7 @@ h2 {
 
 h3 {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
-  color: var(--mentaris-green-dark);
+  color: var(--color-text-primary);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -138,16 +138,16 @@ p {
 }
 
 a {
-  color: var(--mentaris-green-dark);
+  color: #1a1a1a;
   text-decoration: underline;
-  text-decoration-color: rgba(74, 139, 111, 0.25);
+  text-decoration-color: rgba(0, 0, 0, 0.15);
   text-underline-offset: 3px;
   transition: all var(--transition-base);
 }
 
 a:hover {
-  color: var(--mentaris-green-hover);
-  text-decoration-color: var(--mentaris-green-hover);
+  color: #000;
+  text-decoration-color: #1a1a1a;
 }
 
 strong {
@@ -184,11 +184,11 @@ strong {
 }
 
 .section--alt {
-  background-color: var(--color-bg-secondary);
+  background-color: #fafafa;
 }
 
 .section--gradient {
-  background: var(--gradient-warm);
+  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
 }
 
 /* ========================================
@@ -217,41 +217,42 @@ strong {
 }
 
 .btn--primary {
-  background: var(--gradient-green);
+  background: #1a1a1a;
   color: var(--color-white) !important;
-  box-shadow: var(--shadow-green);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(74, 139, 111, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   text-decoration: none;
-  filter: brightness(1.05);
+  background: #333;
 }
 
 .btn--secondary {
   background-color: white;
-  color: var(--mentaris-green-dark);
-  border: 2px solid var(--mentaris-green);
+  color: #1a1a1a;
+  border: 1.5px solid #e0e0e0;
 }
 
 .btn--secondary:hover {
-  background-color: var(--mentaris-green-light);
+  border-color: #1a1a1a;
+  background-color: #fafafa;
   transform: translateY(-2px);
   text-decoration: none;
 }
 
 .btn--trust {
-  background: var(--gradient-green);
+  background: #1a1a1a;
   color: var(--color-white) !important;
-  box-shadow: var(--shadow-green);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn--trust:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(74, 139, 111, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   text-decoration: none;
-  filter: brightness(1.05);
+  background: #333;
 }
 
 .btn--whatsapp {
@@ -316,7 +317,7 @@ strong {
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(124, 182, 157, 0.3);
+  border-color: #ddd;
 }
 
 /* ========================================
@@ -328,8 +329,8 @@ strong {
   align-items: center;
   gap: var(--spacing-xs);
   padding: 0.5rem 1rem;
-  background-color: var(--mentaris-green-light);
-  color: var(--mentaris-green-dark);
+  background-color: #f5f5f5;
+  color: #1a1a1a;
   border-radius: var(--radius-full);
   font-size: 0.875rem;
   font-weight: 600;
@@ -340,21 +341,21 @@ strong {
   display: inline-block;
   padding: 0.5rem 1rem;
   min-height: 36px;
-  background-color: var(--mentaris-green-light);
-  color: var(--mentaris-green-dark);
+  background-color: #f5f5f5;
+  color: #1a1a1a;
   border-radius: var(--radius-full);
   font-size: 0.875rem;
   font-weight: 600;
   font-family: var(--font-body);
   transition: all var(--transition-base);
-  border: 1px solid transparent;
+  border: 1.5px solid #e0e0e0;
 }
 
 .tag:hover {
-  background-color: var(--mentaris-green-dark);
+  background-color: #1a1a1a;
   color: var(--color-white);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-green);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {
@@ -403,7 +404,7 @@ strong {
 }
 
 .text-trust {
-  color: var(--mentaris-green-dark);
+  color: #1a1a1a;
 }
 
 .italic {
@@ -431,13 +432,13 @@ strong {
    ======================================== */
 
 :focus-visible {
-  outline: 2px solid var(--mentaris-green);
+  outline: 2px solid #1a1a1a;
   outline-offset: 2px;
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--mentaris-green);
+  outline: 2px solid #1a1a1a;
   outline-offset: 2px;
 }
 
@@ -446,11 +447,11 @@ button:focus-visible {
    ========================================== */
 
 .mentaris-highlight {
-  background: linear-gradient(135deg, var(--mentaris-green-light) 0%, var(--mentaris-cream-light) 100%);
+  background: #fafafa;
   border-radius: var(--radius-md);
   padding: 1.5rem 2rem;
   margin: 2rem 0;
-  border: 1px solid rgba(124, 182, 157, 0.15);
+  border: 1px solid #e8e8e8;
 }
 
 .mentaris-highlight p:last-child {
@@ -462,13 +463,13 @@ button:focus-visible {
    ========================================== */
 
 .mentaris-tip {
-  background: var(--mentaris-green-light);
+  background: #fafafa;
   border-radius: var(--radius-md);
   padding: 1.5rem 2rem;
   margin: 2rem 0;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(124, 182, 157, 0.15);
+  border: 1px solid #e8e8e8;
 }
 
 .mentaris-tip::before {
@@ -478,12 +479,12 @@ button:focus-visible {
   left: 0;
   width: 4px;
   height: 100%;
-  background: var(--gradient-green);
+  background: #1a1a1a;
 }
 
 .mentaris-tip-title {
   font-weight: 600;
-  color: var(--mentaris-green-dark);
+  color: #1a1a1a;
   margin-bottom: 0.5rem;
   font-size: 16px;
   font-family: var(--font-body);
@@ -498,12 +499,12 @@ button:focus-visible {
    ========================================== */
 
 .mentaris-cta {
-  background: linear-gradient(135deg, var(--mentaris-green-light) 0%, var(--mentaris-cream) 100%);
+  background: #fafafa;
   border-radius: var(--radius-lg);
   padding: 2.5rem 2rem;
   margin: 3rem 0 1rem;
   text-align: center;
-  border: 1px solid rgba(124, 182, 157, 0.2);
+  border: 1px solid #e8e8e8;
 }
 
 .mentaris-cta h3 {
@@ -618,7 +619,7 @@ button:focus-visible {
   width: 100%;
   max-width: 320px;
   aspect-ratio: 1;
-  background: linear-gradient(135deg, var(--mentaris-green-light) 0%, var(--mentaris-cream) 100%);
+  background: #f5f5f5;
   border-radius: var(--radius-xl);
   display: flex;
   flex-direction: column;
