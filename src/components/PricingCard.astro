@@ -22,10 +22,12 @@ const {
 } = Astro.props;
 ---
 
-<div class={`pricing-card card ${highlighted ? 'pricing-card--highlighted' : ''}`}>
+<div class={`pricing-card ${highlighted ? 'pricing-card--highlighted' : ''}`}>
+  {highlighted && <div class="pricing-card__ribbon">Más popular</div>}
+
   {savings && (
-    <div class="pricing-card__badge badge">
-      💰 Ahorro de {savings}
+    <div class="pricing-card__badge">
+      Ahorro de {savings}
     </div>
   )}
 
@@ -35,11 +37,14 @@ const {
 
   <ul class="pricing-card__features">
     {features.map(feature => (
-      <li>✓ {feature}</li>
+      <li>
+        <span class="pricing-card__check">✓</span>
+        {feature}
+      </li>
     ))}
   </ul>
 
-  <a href={ctaHref} class={`btn ${highlighted ? 'btn--trust' : 'btn--primary'}`} style="width: 100%; margin-top: auto;">
+  <a href={ctaHref} class={`btn ${highlighted ? 'btn--trust' : 'btn--secondary'}`} style="width: 100%; margin-top: auto;">
     {ctaText}
   </a>
 </div>
@@ -49,36 +54,82 @@ const {
     display: flex;
     flex-direction: column;
     position: relative;
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--mentaris-border);
+    transition: all var(--transition-base);
+    overflow: hidden;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
   }
 
   .pricing-card--highlighted {
-    border: 3px solid var(--color-trust);
-    transform: scale(1.02);
+    border: 2px solid var(--color-trust);
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(180deg, rgba(232, 245, 238, 0.3) 0%, var(--color-white) 20%);
+  }
+
+  .pricing-card--highlighted:hover {
+    box-shadow: var(--shadow-green);
+  }
+
+  .pricing-card__ribbon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--gradient-green);
+    color: white;
+    text-align: center;
+    padding: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+  }
+
+  .pricing-card--highlighted {
+    padding-top: calc(var(--spacing-xl) + 1.5rem);
   }
 
   .pricing-card__badge {
-    background-color: var(--color-trust);
-    color: var(--color-white);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    background-color: var(--mentaris-cream);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-family: var(--font-body);
     margin-bottom: var(--spacing-md);
+    width: fit-content;
   }
 
   .pricing-card__title {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin-bottom: var(--spacing-xs);
     color: var(--color-text-primary);
   }
 
   .pricing-card__price {
     font-family: var(--font-display);
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     color: var(--color-trust);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.1;
   }
 
   .pricing-card__description {
-    font-size: 0.95rem;
+    font-size: 0.9375rem;
     color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
   }
 
   .pricing-card__features {
@@ -89,8 +140,19 @@ const {
   }
 
   .pricing-card__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
     padding: 0.5rem 0;
     color: var(--color-text-secondary);
-    font-size: 0.95rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .pricing-card__check {
+    color: var(--mentaris-green-dark);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
   }
 </style>

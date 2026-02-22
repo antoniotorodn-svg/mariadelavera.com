@@ -21,7 +21,11 @@ const { items } = Astro.props;
         id={`faq-question-${index}`}
       >
         <span>{item.question}</span>
-        <span class="faq-accordion__icon">+</span>
+        <span class="faq-accordion__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </span>
       </button>
       <div
         class="faq-accordion__answer"
@@ -41,14 +45,20 @@ const { items } = Astro.props;
   .faq-accordion {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
   }
 
   .faq-accordion__item {
     background-color: var(--color-white);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--mentaris-border);
     overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .faq-accordion__item:has(.faq-accordion__question[aria-expanded="true"]) {
+    border-color: rgba(124, 182, 157, 0.3);
+    box-shadow: var(--shadow-sm);
   }
 
   .faq-accordion__question {
@@ -62,39 +72,47 @@ const { items } = Astro.props;
     cursor: pointer;
     text-align: left;
     font-family: var(--font-body);
-    font-size: 1.0625rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--color-text-primary);
-    transition: var(--transition-base);
+    transition: all var(--transition-base);
   }
 
   .faq-accordion__question:hover {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--mentaris-green-subtle, #f8fdf9);
   }
 
   .faq-accordion__icon {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--color-trust);
-    transition: transform var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--mentaris-green-light);
+    color: var(--mentaris-green-dark);
     flex-shrink: 0;
     margin-left: var(--spacing-md);
+    transition: all var(--transition-base);
   }
 
   .faq-accordion__question[aria-expanded="true"] .faq-accordion__icon {
-    transform: rotate(45deg);
+    transform: rotate(180deg);
+    background: var(--mentaris-green-dark);
+    color: white;
   }
 
   .faq-accordion__answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .faq-accordion__answer-content {
     padding: 0 var(--spacing-lg) var(--spacing-md);
     color: var(--color-text-secondary);
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 0.95rem;
   }
 
   .faq-accordion__question[aria-expanded="true"] + .faq-accordion__answer {
@@ -103,21 +121,18 @@ const { items } = Astro.props;
 </style>
 
 <script>
-  // Accordion functionality
   const accordionButtons = document.querySelectorAll('.faq-accordion__question');
 
   accordionButtons.forEach(button => {
     button.addEventListener('click', () => {
       const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
-      // Cerrar otros (comportamiento de uno a la vez)
       accordionButtons.forEach(otherButton => {
         if (otherButton !== button) {
           otherButton.setAttribute('aria-expanded', 'false');
         }
       });
 
-      // Toggle el actual
       button.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
     });
   });

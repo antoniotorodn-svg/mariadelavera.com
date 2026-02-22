@@ -10,10 +10,10 @@ interface Props {
 
 const {
   items = [
-    { icon: "✅", text: "Colegiada oficial MAD01182" },
-    { icon: "🎓", text: "CEU San Pablo + UDIMA" },
-    { icon: "👩‍⚕️", text: "+700 pacientes atendidos" },
-    { icon: "💻", text: "Presencial + Online" }
+    { icon: "✓", text: "Colegiada oficial MAD01182" },
+    { icon: "✓", text: "CEU San Pablo + UDIMA" },
+    { icon: "✓", text: "+700 pacientes atendidos" },
+    { icon: "✓", text: "Presencial + Online" }
   ]
 } = Astro.props;
 ---
@@ -33,14 +33,16 @@ const {
 
 <style>
   .trust-strip {
-    padding: var(--spacing-lg) 0;
-    background-color: var(--color-bg-secondary);
+    padding: var(--spacing-md) 0;
+    background-color: var(--mentaris-green-light);
+    border-top: 1px solid rgba(124, 182, 157, 0.15);
+    border-bottom: 1px solid rgba(124, 182, 157, 0.15);
   }
 
   .trust-strip__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     text-align: center;
   }
 
@@ -60,16 +62,19 @@ const {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-xs);
+    gap: 0.5rem;
   }
 
   .trust-strip__icon {
-    font-size: 1.5rem;
+    color: var(--mentaris-green-dark);
+    font-weight: 700;
+    font-size: 0.875rem;
   }
 
   .trust-strip__text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: var(--color-text-primary);
+    color: var(--mentaris-green-dark);
+    font-family: var(--font-body);
   }
 </style>

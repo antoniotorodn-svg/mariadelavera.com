@@ -98,6 +98,11 @@ const finalSchema = schema || defaultSchema;
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
+  <!-- Google Fonts: DM Serif Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
 
@@ -124,5 +129,29 @@ const finalSchema = schema || defaultSchema;
       📅 Reservar cita
     </a>
   </div>
+
+  <!-- Scroll Reveal Animation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('.section, .card, .hero, .cta-box, .value-item, .material-card, .testimonial-card, .benefit-item, .pricing-card, .trust-strip__item');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach((el) => {
+        el.classList.add('reveal-on-scroll');
+        observer.observe(el);
+      });
+    });
+  </script>
 </body>
 </html>

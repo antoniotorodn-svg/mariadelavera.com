@@ -112,51 +112,53 @@ const testimonials = [
   <!-- 2. Proceso / Cómo funciona -->
   <section class="section section--alt" id="proceso">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-sm);">Cómo funciona</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
-        Un proceso sencillo y transparente, pensado para que desde el primer día sepas exactamente qué esperar y cómo vamos a trabajar juntos.
-      </p>
+      <div class="section-intro">
+        <h2 class="text-center">Cómo funciona</h2>
+        <p class="text-center section-intro__text">
+          Un proceso sencillo y transparente, pensado para que desde el primer día sepas exactamente qué esperar.
+        </p>
+      </div>
 
       <div class="grid grid--3">
-        <div class="card" style="text-align: center;">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">1️⃣</div>
+        <div class="card step-card">
+          <div class="step-card__number">01</div>
           <h3>Primera consulta</h3>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+          <p>
             Nos conocemos en persona o por videollamada. Hago una <strong>entrevista completa</strong> sobre tu historial médico, hábitos alimenticios, rutina diaria, gustos y objetivos.
           </p>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+          <p>
             Realizamos un <strong>análisis de composición corporal</strong> (peso, grasa, masa muscular) para tener datos objetivos de partida.
           </p>
-          <p style="color: var(--color-text-secondary);">
-            <strong>50€</strong> · Duración aprox. 60 minutos
+          <p class="step-card__price">
+            <strong>50€</strong> · 60 min aprox.
           </p>
         </div>
 
-        <div class="card" style="text-align: center;">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">2️⃣</div>
+        <div class="card step-card">
+          <div class="step-card__number">02</div>
           <h3>Tu plan en 24-72h</h3>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+          <p>
             Con toda la información recogida, diseño un <strong>plan nutricional 100% personalizado</strong>: menús semanales adaptados a tus horarios, recetas fáciles y una lista de la compra organizada.
           </p>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+          <p>
             Además recibirás <strong>material educativo</strong> para que entiendas el porqué de cada decisión y aprendas a comer bien de forma autónoma.
           </p>
-          <p style="color: var(--color-text-secondary);">
-            Lo recibes todo por email en formato digital, listo para usar.
+          <p class="step-card__detail">
+            Lo recibes todo por email en formato digital.
           </p>
         </div>
 
-        <div class="card" style="text-align: center;">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">3️⃣</div>
+        <div class="card step-card">
+          <div class="step-card__number">03</div>
           <h3>Revisiones cada 21 días</h3>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+          <p>
             Nos vemos cada 3 semanas para <strong>evaluar tu progreso</strong>, resolver dudas y ajustar el plan según tus resultados y cómo te sientes.
           </p>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+          <p>
             Este intervalo es el óptimo: suficiente para ver <strong>cambios reales</strong> y poder hacer ajustes efectivos sin perder el ritmo.
           </p>
-          <p style="color: var(--color-text-secondary);">
-            <strong>40€/revisión</strong> · Duración aprox. 30 minutos
+          <p class="step-card__price">
+            <strong>40€/revisión</strong> · 30 min aprox.
           </p>
         </div>
       </div>
@@ -166,7 +168,9 @@ const testimonials = [
   <!-- 3. Precios -->
   <section class="section" id="precios">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Precios</h2>
+      <div class="section-intro">
+        <h2 class="text-center">Precios</h2>
+      </div>
 
       <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
         <PricingCard
@@ -203,33 +207,37 @@ const testimonials = [
   <!-- 4. Ubicación / Contacto -->
   <section class="section section--alt" id="ubicacion">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Dónde estoy</h2>
+      <div class="section-intro">
+        <h2 class="text-center">Dónde estoy</h2>
+      </div>
 
       <div class="grid grid--2" style="max-width: 900px; margin: 0 auto; align-items: start;">
         <div class="card">
-          <h3 style="margin-bottom: var(--spacing-md);">📍 Dirección</h3>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
+          <div class="card-header-icon">📍</div>
+          <h3>Dirección</h3>
+          <p>
             <strong>Centro Médico Arboleda</strong><br>
             Av. Siglo XXI, 13, local 13/14<br>
             28660 Boadilla del Monte, Madrid
           </p>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
-            <strong>🚇 Metro Ligero:</strong> ML2 (a 5 min andando)
+          <p>
+            <strong>Metro Ligero:</strong> ML2 (a 5 min andando)
           </p>
-          <p style="color: var(--color-text-secondary);">
-            <strong>🅿️ Parking:</strong> Gratuito en el centro
+          <p style="margin-bottom: 0;">
+            <strong>Parking:</strong> Gratuito en el centro
           </p>
         </div>
 
         <div class="card">
-          <h3 style="margin-bottom: var(--spacing-md);">📞 Contacto</h3>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
-            <strong>WhatsApp:</strong> <a href="https://wa.me/34690917004" target="_blank" rel="noopener" style="color: var(--mentaris-green-dark);">690 917 004</a>
+          <div class="card-header-icon">📞</div>
+          <h3>Contacto</h3>
+          <p>
+            <strong>WhatsApp:</strong> <a href="https://wa.me/34690917004" target="_blank" rel="noopener">690 917 004</a>
           </p>
-          <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
-            <strong>Email:</strong> <a href="mailto:nutricionista@mariadelavera.com" style="color: var(--mentaris-green-dark);">nutricionista@mariadelavera.com</a>
+          <p>
+            <strong>Email:</strong> <a href="mailto:nutricionista@mariadelavera.com">nutricionista@mariadelavera.com</a>
           </p>
-          <p style="color: var(--color-text-secondary);">
+          <p style="margin-bottom: 0;">
             <strong>Horario:</strong> Lunes a Viernes 9:00-20:00h
           </p>
         </div>
@@ -243,7 +251,9 @@ const testimonials = [
   <!-- 6. ¿Por qué elegir mi consulta? -->
   <section class="section section--alt">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">¿Por qué elegir mi consulta?</h2>
+      <div class="section-intro">
+        <h2 class="text-center">¿Por qué elegir mi consulta?</h2>
+      </div>
       <ValueProposition />
     </div>
   </section>
@@ -251,7 +261,9 @@ const testimonials = [
   <!-- 7. FAQ -->
   <section class="section" id="faq">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Preguntas frecuentes</h2>
+      <div class="section-intro">
+        <h2 class="text-center">Preguntas frecuentes</h2>
+      </div>
 
       <div style="max-width: 800px; margin: 0 auto;">
         <FAQAccordion items={faqItems} />
@@ -262,11 +274,12 @@ const testimonials = [
   <!-- 8. Testimonios -->
   <section class="section section--alt" id="testimonios">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Lo que dicen mis pacientes</h2>
-
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
-        Más de 700 pacientes han transformado su relación con la comida. Estos son algunos de sus testimonios.
-      </p>
+      <div class="section-intro">
+        <h2 class="text-center">Lo que dicen mis pacientes</h2>
+        <p class="text-center section-intro__text">
+          Más de 700 pacientes han transformado su relación con la comida. Estos son algunos de sus testimonios.
+        </p>
+      </div>
 
       <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
         {testimonials.map(testimonial => (
@@ -277,12 +290,6 @@ const testimonials = [
           />
         ))}
       </div>
-
-      <div class="text-center" style="margin-top: var(--spacing-lg);">
-        <p style="color: var(--color-text-secondary); font-size: 0.9rem;">
-          💬 Testimonios verificados de pacientes reales
-        </p>
-      </div>
     </div>
   </section>
 
@@ -291,11 +298,11 @@ const testimonials = [
     <div class="container">
       <div class="about-grid">
         <div class="about-content">
-          <h2 style="margin-bottom: var(--spacing-md);">Hola, soy María De la Vera</h2>
-          <p style="margin-bottom: var(--spacing-md);">
+          <h2>Hola, soy María De la Vera</h2>
+          <p>
             Dietista-Nutricionista colegiada <strong>MAD01182</strong>. Graduada por la <strong>Universidad CEU San Pablo</strong> y con Máster en Nutrición Clínica por <strong>UDIMA</strong>.
           </p>
-          <p style="margin-bottom: var(--spacing-md);">
+          <p>
             Más de <strong>700 pacientes atendidos</strong> desde 2023. Ahora en <strong>Boadilla del Monte</strong> (Centro Médico Arboleda).
           </p>
           <p>
@@ -305,8 +312,8 @@ const testimonials = [
 
         <div class="about-image">
           <div class="about-image-placeholder">
-            <span style="font-size: 6rem;">👩‍⚕️</span>
-            <p style="color: var(--color-text-secondary); font-style: italic; text-align: center;">
+            <span style="font-size: 5rem;">👩‍⚕️</span>
+            <p style="color: var(--color-text-secondary); font-style: italic; text-align: center; font-size: 0.875rem;">
               Foto de María<br>(subir imagen)
             </p>
           </div>
@@ -318,10 +325,12 @@ const testimonials = [
   <!-- 10. Material formativo -->
   <section class="section section--alt" id="material-formativo">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-md);">Material formativo incluido</h2>
-      <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
-        Todos mis pacientes reciben material educativo de calidad para entender la nutrición desde la ciencia y aplicarla en su día a día.
-      </p>
+      <div class="section-intro">
+        <h2 class="text-center">Material formativo incluido</h2>
+        <p class="text-center section-intro__text">
+          Todos mis pacientes reciben material educativo de calidad para entender la nutrición desde la ciencia y aplicarla en su día a día.
+        </p>
+      </div>
       <MaterialFormativo />
     </div>
   </section>
@@ -329,7 +338,9 @@ const testimonials = [
   <!-- 11. Barrios -->
   <section class="section" id="barrios">
     <div class="container">
-      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Zonas de Boadilla</h2>
+      <div class="section-intro">
+        <h2 class="text-center">Zonas de Boadilla</h2>
+      </div>
 
       <div class="barrios-grid">
         {barriosData.map(barrio => (
@@ -351,3 +362,74 @@ const testimonials = [
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<style>
+  /* Section intro styling */
+  .section-intro {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-intro h2 {
+    font-family: var(--font-display);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-intro__text {
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.0625rem;
+  }
+
+  /* Step cards */
+  .step-card {
+    text-align: left;
+    position: relative;
+    padding-top: var(--spacing-xl);
+  }
+
+  .step-card__number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--mentaris-green-light);
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .step-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .step-card p {
+    font-size: 0.9375rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .step-card__price {
+    color: var(--mentaris-green-dark) !important;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--mentaris-border);
+    margin-top: var(--spacing-sm);
+    margin-bottom: 0 !important;
+  }
+
+  .step-card__detail {
+    font-style: italic;
+    font-size: 0.875rem !important;
+    color: var(--color-text-secondary);
+  }
+
+  /* Card header icon */
+  .card-header-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+</style>
