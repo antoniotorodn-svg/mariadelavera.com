@@ -19,7 +19,7 @@ const calendlyUrl = type === 'presencial'
   <div
     class="calendly-inline-widget"
     data-url={calendlyUrl}
-    style="min-width:320px;height:700px;display:none;"
+    style="min-width:280px;height:700px;display:none;"
   ></div>
 </div>
 
@@ -50,11 +50,7 @@ const calendlyUrl = type === 'presencial'
           setTimeout(() => {
             if (placeholder && widget) {
               placeholder.style.display = 'none';
-              // Only show widget if its parent tab panel is active
-              const parentPanel = entry.target.closest('.tabs__panel');
-              if (!parentPanel || parentPanel.classList.contains('tabs__panel--active')) {
-                widget.style.display = 'block';
-              }
+              widget.style.display = 'block';
             }
           }, 500);
 
@@ -72,11 +68,11 @@ const calendlyUrl = type === 'presencial'
 <style>
   .calendly-embed {
     width: 100%;
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-sm) 0;
   }
 
   .calendly-placeholder {
-    min-width: 320px;
+    min-width: 280px;
     height: 700px;
     background: var(--color-bg-secondary);
     border-radius: var(--radius-md);

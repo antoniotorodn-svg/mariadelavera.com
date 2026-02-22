@@ -11,26 +11,21 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
       </p>
     </div>
 
-    <div class="tabs">
-      <div class="tabs__buttons">
-        <button class="tabs__button tabs__button--active" data-tab="presencial">
-          <span class="tabs__button-icon">&#128205;</span>
+    <div class="calendly-grid">
+      <div class="calendly-col">
+        <div class="calendly-col__label">
+          <span class="calendly-col__icon">&#128205;</span>
           Presencial
-        </button>
-        <button class="tabs__button" data-tab="online">
-          <span class="tabs__button-icon">&#128187;</span>
-          Online
-        </button>
+        </div>
+        <CalendlyEmbed type="presencial" />
       </div>
 
-      <div class="tabs__content">
-        <div class="tabs__panel tabs__panel--active" id="tab-presencial">
-          <CalendlyEmbed type="presencial" />
+      <div class="calendly-col">
+        <div class="calendly-col__label">
+          <span class="calendly-col__icon">&#128187;</span>
+          Online
         </div>
-
-        <div class="tabs__panel" id="tab-online">
-          <CalendlyEmbed type="online" />
-        </div>
+        <CalendlyEmbed type="online" />
       </div>
     </div>
 
@@ -45,87 +40,36 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
     margin-bottom: var(--spacing-xl);
   }
 
-  .tabs__buttons {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: var(--spacing-lg);
-    justify-content: center;
-    flex-wrap: wrap;
-    background: var(--sand);
-    border-radius: var(--radius-full);
-    padding: 0.375rem;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
+  .calendly-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
 
-  .tabs__button {
-    flex: 1;
+  @media (max-width: 900px) {
+    .calendly-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .calendly-col__label {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.375rem;
-    padding: 0.75rem 1.5rem;
-    background-color: transparent;
-    border: none;
+    padding: 0.625rem 1.25rem;
+    background: var(--sand);
     border-radius: var(--radius-full);
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 600;
-    color: var(--text-light);
-    cursor: pointer;
-    transition: all var(--transition-base);
-  }
-
-  .tabs__button:hover {
     color: var(--text);
+    max-width: 180px;
+    margin: 0 auto;
   }
 
-  .tabs__button--active {
-    background: var(--white);
-    color: var(--text);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .tabs__button-icon {
+  .calendly-col__icon {
     font-size: 1rem;
   }
-
-  .tabs__panel {
-    display: none !important;
-  }
-
-  .tabs__panel--active {
-    display: block !important;
-  }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tabButtons = document.querySelectorAll('.tabs__button');
-    const tabPanels = document.querySelectorAll('.tabs__panel');
-
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const tabId = button.getAttribute('data-tab');
-
-        tabButtons.forEach(btn => btn.classList.remove('tabs__button--active'));
-        tabPanels.forEach(panel => {
-          panel.classList.remove('tabs__panel--active');
-          // Force-hide Calendly widgets in inactive panels
-          const widget = panel.querySelector('.calendly-inline-widget');
-          if (widget) (widget as HTMLElement).style.display = 'none';
-        });
-
-        button.classList.add('tabs__button--active');
-        const activePanel = document.getElementById(`tab-${tabId}`);
-        if (activePanel) {
-          activePanel.classList.add('tabs__panel--active');
-          // Show the Calendly widget in the active panel
-          const widget = activePanel.querySelector('.calendly-inline-widget');
-          if (widget) (widget as HTMLElement).style.display = 'block';
-        }
-      });
-    });
-  });
-</script>
