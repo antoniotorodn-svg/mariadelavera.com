@@ -5,8 +5,8 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
 <section class="section" id="reservar">
   <div class="container">
     <div class="calendly-header">
-      <h2 class="text-center">Reserva tu cita</h2>
-      <p class="text-center calendly-subtitle">
+      <h2 class="section-title">Reserva tu cita</h2>
+      <p class="section-sub">
         Elige la modalidad que prefieras y selecciona el día y hora que mejor te convenga.
       </p>
     </div>
@@ -14,11 +14,11 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
     <div class="tabs">
       <div class="tabs__buttons">
         <button class="tabs__button tabs__button--active" data-tab="presencial">
-          <span class="tabs__button-icon">📍</span>
+          <span class="tabs__button-icon">&#128205;</span>
           Presencial
         </button>
         <button class="tabs__button" data-tab="online">
-          <span class="tabs__button-icon">💻</span>
+          <span class="tabs__button-icon">&#128187;</span>
           Online
         </button>
       </div>
@@ -34,8 +34,8 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
       </div>
     </div>
 
-    <p class="text-center" style="margin-top: var(--spacing-lg); color: var(--color-text-secondary);">
-      ¿Vienen en pareja? <a href="https://calendly.com/nutricionista-mariadelavera/primera-consulta-parejas" target="_blank" rel="noopener" style="color: #1a1a1a; font-weight: 600;">Reserva consulta para parejas aquí</a>
+    <p class="text-center" style="margin-top: var(--spacing-lg); color: var(--text-light);">
+      ¿Vienen en pareja? <a href="https://calendly.com/nutricionista-mariadelavera/primera-consulta-parejas" target="_blank" rel="noopener" style="color: var(--green-dark); font-weight: 600;">Reserva consulta para parejas aquí</a>
     </p>
   </div>
 </section>
@@ -45,20 +45,13 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
     margin-bottom: var(--spacing-xl);
   }
 
-  .calendly-subtitle {
-    color: var(--color-text-secondary);
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .tabs__buttons {
     display: flex;
     gap: 0.5rem;
     margin-bottom: var(--spacing-lg);
     justify-content: center;
     flex-wrap: wrap;
-    background: var(--color-bg-secondary);
+    background: var(--sand);
     border-radius: var(--radius-full);
     padding: 0.375rem;
     max-width: 320px;
@@ -79,18 +72,18 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 600;
-    color: var(--color-text-secondary);
+    color: var(--text-light);
     cursor: pointer;
     transition: all var(--transition-base);
   }
 
   .tabs__button:hover {
-    color: var(--color-text-primary);
+    color: var(--text);
   }
 
   .tabs__button--active {
-    background: var(--color-white);
-    color: #1a1a1a;
+    background: var(--white);
+    color: var(--text);
     box-shadow: var(--shadow-sm);
   }
 
