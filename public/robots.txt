@@ -1,6 +1,6 @@
-# mariadelavera.com robots.txt
+# nutricionistaenboadilla.com robots.txt
 
 User-agent: *
 Allow: /
 
-Sitemap: https://mariadelavera.com/sitemap.xml
+Sitemap: https://nutricionistaenboadilla.com/sitemap.xml

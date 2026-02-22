@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-const siteUrl = 'https://mariadelavera.com';
+const siteUrl = 'https://nutricionistaenboadilla.com';
 
 const pages = [
   { url: '/', priority: '1.0', changefreq: 'weekly' },
