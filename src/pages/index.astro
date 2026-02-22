@@ -288,18 +288,20 @@ const faqSchema = {
   <!-- 10. Sobre mí -->
   <section class="section" id="sobre-mi">
     <div class="container">
-      <h2 class="section-title">Hola, soy María De la Vera</h2>
-      <p class="section-sub">Dietista-Nutricionista colegiada, comprometida con tu bienestar.</p>
+      <h2 class="section-title">Conoce a tu nutricionista</h2>
+      <p class="section-sub">Profesional colegiada, especializada y comprometida con tu bienestar.</p>
 
       <div class="equipo-cards">
         <div class="equipo-psi-card">
           <div class="equipo-psi-foto">
-            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:var(--sand);">&#x1F469;&#x200D;&#x2695;&#xFE0F;</div>
+            <img src="/img/maria-de-la-vera.jpg" alt="María De la Vera López — Nutricionista colegiada MAD01182 en Boadilla del Monte" loading="lazy" />
           </div>
           <div class="equipo-psi-info">
-            <h3>María De la Vera</h3>
-            <span class="equipo-psi-role">Dietista-Nutricionista · MAD01182</span>
-            <p>Graduada por la <strong>Universidad CEU San Pablo</strong> y con Máster en Nutrición Clínica por <strong>UDIMA</strong>. Más de <strong>700 pacientes atendidos</strong> desde 2023. Consulta presencial en Boadilla del Monte y online.</p>
+            <h3>María De la Vera López</h3>
+            <span class="equipo-psi-role">Dietista-Nutricionista · Col. MAD01182</span>
+            <p>Dietista-Nutricionista colegiada con experiencia en diversas patologías: <strong>sobrepeso y obesidad, diabetes, hipotiroidismo, síndrome de ovario poliquístico, SIBO</strong> y nutrición deportiva.</p>
+            <p>Graduada en <strong>Nutrición Humana y Dietética</strong> por la Universidad CEU San Pablo y con <strong>Máster en Nutrición Clínica</strong> por la Universidad UDIMA. Con experiencia en clínica privada realizando dietas personalizadas y evaluación del estado nutricional de cada paciente.</p>
+            <p>Apasionada de la nutrición, cuidar de la salud de las personas y ayudarlas a alcanzar sus objetivos es mi mayor motivación. Más de <strong>700 pacientes atendidos</strong> desde 2023.</p>
           </div>
         </div>
       </div>
@@ -538,6 +540,13 @@ const faqSchema = {
     overflow: hidden;
     border: 3px solid var(--gold-light);
     flex-shrink: 0;
+  }
+
+  .equipo-psi-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .equipo-psi-info {

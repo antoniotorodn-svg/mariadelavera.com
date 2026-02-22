@@ -1,127 +1,58 @@
 ---
 interface Props {
   title?: string;
-  compact?: boolean;
+  vertical?: boolean;
 }
 
 const {
   title = "Presentación María De la Vera - Nutricionista",
-  compact = false
+  vertical = false
 } = Astro.props;
 
-const videoId = "1137833163";
-const videoHash = "7317f4af36";
-const thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
+// Video de Vimeo - formato vertical
+const videoId = "1154645790";
+const videoHash = "178aedbe81";
 ---
 
-<div class={`video-embed ${compact ? 'video-embed--compact' : ''}`}>
-  <div class="video-embed__wrapper" data-video-id={videoId} data-video-hash={videoHash}>
-    <div class="video-embed__thumbnail">
-      <img src={thumbnailUrl} alt={title} loading="lazy" width="640" height="360" />
-      <button class="video-embed__play" aria-label="Reproducir video">
-        <svg width="68" height="48" viewBox="0 0 68 48" fill="none">
-          <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/>
-          <path d="M45 24L27 14v20" fill="white"/>
-        </svg>
-      </button>
-    </div>
-    <div class="video-embed__player"></div>
-  </div>
+<div class={`hero-video ${vertical ? 'hero-video--vertical' : ''}`}>
+  <iframe
+    src={`https://player.vimeo.com/video/${videoId}?h=${videoHash}&autoplay=1&loop=1&muted=1&background=1`}
+    allow="autoplay; fullscreen"
+    allowfullscreen
+    loading="lazy"
+    title={title}
+  ></iframe>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const wrappers = document.querySelectorAll('.video-embed__wrapper');
-
-    wrappers.forEach((wrapper) => {
-      const button = wrapper.querySelector('.video-embed__play');
-      const thumbnail = wrapper.querySelector('.video-embed__thumbnail');
-      const playerContainer = wrapper.querySelector('.video-embed__player');
-      const videoId = wrapper.getAttribute('data-video-id');
-      const videoHash = wrapper.getAttribute('data-video-hash');
-
-      button?.addEventListener('click', () => {
-        if (thumbnail && playerContainer && videoId) {
-          thumbnail.style.display = 'none';
-
-          const iframe = document.createElement('iframe');
-          iframe.src = `https://player.vimeo.com/video/${videoId}?h=${videoHash}&autoplay=1&title=0&byline=0&portrait=0`;
-          iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-          iframe.allowFullscreen = true;
-          iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
-          iframe.title = 'Video de presentación';
-
-          playerContainer.appendChild(iframe);
-        }
-      });
-    });
-  });
-</script>
-
 <style>
-  .video-embed {
-    width: 100%;
-  }
-
-  .video-embed__wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
+  .hero-video {
+    width: 280px;
+    height: 500px;
+    border-radius: 24px;
     overflow: hidden;
-    border-radius: 20px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-    background-color: #000;
+    background: #000;
   }
 
-  .video-embed--compact .video-embed__wrapper {
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  }
-
-  .video-embed__thumbnail {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .hero-video iframe {
     width: 100%;
     height: 100%;
-    cursor: pointer;
-  }
-
-  .video-embed__thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .video-embed__play {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: none;
     border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: transform 0.2s ease;
-    z-index: 1;
   }
 
-  .video-embed__play:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+  /* Mobile */
+  @media (max-width: 900px) {
+    .hero-video {
+      width: 200px;
+      height: 356px;
+      border-radius: 18px;
+      margin: 0 auto;
+    }
   }
 
-  .video-embed__player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Responsive ajustes */
-  @media (max-width: 767px) {
-    .video-embed__wrapper {
-      border-radius: var(--radius-sm);
+  @media (max-width: 420px) {
+    .hero-video {
+      display: none;
     }
   }
 </style>

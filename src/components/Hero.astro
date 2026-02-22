@@ -34,11 +34,9 @@ const displayRole = role || "Nutricionista";
   <div class="container">
     <div class="hero__grid">
       <div class="hero__content">
-        <!-- Profile avatar -->
+        <!-- Profile avatar with real photo -->
         <div class="hero__avatar-wrap">
-          <div class="hero__avatar">
-            <span>&#x1F469;&#x200D;&#x2695;&#xFE0F;</span>
-          </div>
+          <img class="hero__avatar" src="/img/maria-de-la-vera.jpg" alt="María De la Vera — Nutricionista en Boadilla del Monte" />
         </div>
 
         <!-- Location -->
@@ -68,10 +66,10 @@ const displayRole = role || "Nutricionista";
         {description && <p class="hero__desc">{description}</p>}
       </div>
 
-      <!-- Video / Media -->
+      <!-- Video / Media - Vertical format -->
       {showVideo && (
         <div class="hero__media">
-          <VideoEmbed />
+          <VideoEmbed vertical={true} />
         </div>
       )}
     </div>
@@ -106,10 +104,6 @@ const displayRole = role || "Nutricionista";
   }
 
   @media (min-width: 1024px) {
-    .hero {
-      padding: 56px 0 40px;
-    }
-
     .hero__grid {
       grid-template-columns: 7fr 3fr;
       gap: 48px;
@@ -120,7 +114,7 @@ const displayRole = role || "Nutricionista";
     max-width: 660px;
   }
 
-  /* Avatar */
+  /* Avatar - real photo */
   .hero__avatar-wrap {
     margin-bottom: 16px;
   }
@@ -130,11 +124,9 @@ const displayRole = role || "Nutricionista";
     height: 56px;
     border-radius: 50%;
     background: var(--sand);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.75rem;
     border: 3px solid var(--gold-light);
+    object-fit: cover;
+    object-position: center top;
   }
 
   /* Location */
@@ -238,7 +230,8 @@ const displayRole = role || "Nutricionista";
 
   /* Media / Video */
   .hero__media {
-    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   /* Benefits row */
@@ -318,6 +311,10 @@ const displayRole = role || "Nutricionista";
       line-height: 1.6;
     }
 
+    .hero__media {
+      justify-content: center;
+    }
+
     .hero__benefits {
       justify-content: center;
       gap: 1.25rem;
@@ -344,10 +341,6 @@ const displayRole = role || "Nutricionista";
 
     .hero__desc {
       font-size: 0.8em;
-    }
-
-    .hero__media {
-      display: none;
     }
   }
 </style>
