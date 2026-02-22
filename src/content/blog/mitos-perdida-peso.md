@@ -5,21 +5,13 @@ date: "2025-11-20"
 tags: ["Pérdida de peso"]
 ---
 
-Internet está lleno de información sobre pérdida de peso. El problema es que gran parte de esa información es inexacta, descontextualizada o directamente falsa. Después de años trabajando con pacientes en consulta, he comprobado que muchos de estos mitos se repiten una y otra vez, y que son precisamente los que más dificultan el proceso de quienes quieren mejorar su peso y su salud.
-
-Vamos a desmontar los 10 más extendidos con la evidencia científica en la mano.
+Internet está lleno de información sobre pérdida de peso, y gran parte es inexacta o directamente falsa. Estos mitos se repiten una y otra vez en consulta, y son precisamente los que más dificultan el proceso. Vamos a desmontar los 10 más extendidos.
 
 ## Mito 1: "Saltarse comidas adelgaza"
 
-Es uno de los mitos más arraigados y más dañinos. La idea de que si comes menos veces al día perderás más peso parece lógica, pero la realidad es más compleja.
+Cuando te saltas comidas de forma habitual, llegas a la siguiente con **más hambre**, se producen fluctuaciones bruscas de glucosa que generan antojos, y tu cuerpo puede reducir el gasto energético como mecanismo de defensa.
 
-Cuando te saltas comidas de forma habitual:
-
-- Llegas a la siguiente comida con **más hambre**, lo que te lleva a comer más cantidad y peor
-- Se producen **fluctuaciones bruscas de glucosa** que generan ansiedad y antojos
-- Tu cuerpo puede interpretar la restricción como una amenaza y **reducir el gasto energético**
-
-**Lo que funciona es la regularidad.** Un patrón de comidas estructurado, adaptado a tus horarios y necesidades, es mucho más efectivo que pasar hambre.
+**Lo que funciona es la regularidad.** Un patrón de comidas estructurado y adaptado a tus horarios es mucho más efectivo que pasar hambre.
 
 ## Mito 2: "Los hidratos de carbono engordan"
 
@@ -35,9 +27,7 @@ Quemagrasas, batidos sustitutivos, pastillas "naturales"... La inmensa mayoría 
 
 ## Mito 4: "La misma dieta funciona para todos"
 
-Si una dieta le funcionó a tu compañera de trabajo, a tu cuñado o a un influencer, eso no significa absolutamente nada para ti. Cada persona tiene una genética diferente, un metabolismo diferente, una microbiota diferente, unos hábitos diferentes y una relación con la comida diferente.
-
-Un plan de [pérdida de peso](/perdida-de-peso) efectivo debe ser **totalmente personalizado**, teniendo en cuenta tu historia clínica, tus análisis, tu composición corporal, tu estilo de vida y tus preferencias alimentarias.
+Que una dieta le funcionara a tu compañera de trabajo o a un influencer no significa nada para ti. Cada persona tiene una genética, un metabolismo, una microbiota y unos hábitos diferentes. Un plan de [pérdida de peso](/perdida-de-peso) efectivo debe ser **totalmente personalizado**.
 
 ## Mito 5: "Comer menos es siempre la respuesta"
 
@@ -51,7 +41,7 @@ Las dietas muy restrictivas provocan:
 - **Efecto rebote** cuando inevitablemente vuelves a comer normal
 - **Malestar emocional**, ansiedad y una mala relación con la comida
 
-**El objetivo no es comer menos, sino comer mejor.** Y en muchos casos, mis pacientes acaban comiendo más cantidad de la que comían antes y aun así mejoran su composición corporal.
+**El objetivo no es comer menos, sino comer mejor.** Muchos de mis pacientes acaban comiendo más cantidad y aun así mejoran su composición corporal.
 
 ## Mito 6: "La fruta engorda por su azúcar"
 
@@ -59,16 +49,7 @@ La fruta contiene fructosa, sí, pero también contiene **fibra, vitaminas, mine
 
 ## Mito 7: "Las dietas detox limpian tu cuerpo"
 
-Tu cuerpo ya tiene un sistema de "detox" increíblemente eficiente: se llama **hígado y riñones**. No necesitas zumos verdes, ayunos extremos ni productos caros para "limpiarte por dentro".
-
-Las dietas detox:
-
-- No tienen base científica como método de pérdida de peso
-- Pueden ser muy restrictivas y causar déficits nutricionales
-- Generan una falsa sensación de "reinicio" que no se mantiene
-- A menudo son una estrategia de marketing, no de salud
-
-Lo que sí puedes hacer es **reducir la carga de ultraprocesados, alcohol y azúcar añadido**, que es exactamente lo que trabajamos en una consulta de nutrición personalizada.
+Tu cuerpo ya tiene un sistema de "detox" eficiente: se llama **hígado y riñones**. Las dietas detox no tienen base científica, pueden causar déficits nutricionales y generan una falsa sensación de "reinicio" que no se mantiene. Lo que sí puedes hacer es **reducir ultraprocesados, alcohol y azúcar añadido**, que es lo que trabajamos en una consulta de nutrición personalizada.
 
 ## Mito 8: "Solo importan las calorías"
 
@@ -90,9 +71,7 @@ Lo que necesitas es un **proceso gradual, acompañado por un profesional** que t
 
 ## La verdad sobre perder peso
 
-Perder peso de forma saludable no tiene ningún misterio ni requiere fórmulas mágicas. Requiere un plan personalizado, basado en evidencia, con un seguimiento profesional constante y, sobre todo, mucha paciencia y constancia.
-
-Si quieres dejar atrás estos mitos y empezar a trabajar de verdad en tu salud, te invito a conocer más sobre mi enfoque en la [primera consulta con el nutricionista](/blog/primera-consulta-nutricionista). Y si estás listo para dar el paso, mi servicio de [pérdida de peso](/perdida-de-peso) está diseñado precisamente para acompañarte en este camino.
+Perder peso de forma saludable requiere un plan personalizado, basado en evidencia y con seguimiento profesional. Si quieres dejar atrás estos mitos, te invito a conocer mi enfoque en la [primera consulta con el nutricionista](/blog/primera-consulta-nutricionista). Mi servicio de [pérdida de peso](/perdida-de-peso) está diseñado para acompañarte en este camino.
 
 ---
 

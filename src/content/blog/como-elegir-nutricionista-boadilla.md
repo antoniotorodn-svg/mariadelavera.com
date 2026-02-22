@@ -81,7 +81,7 @@ Es tentador elegir la opción más barata, pero en nutrición, como en salud en 
 
 Tampoco se trata de elegir lo más caro. Se trata de valorar la relación entre la calidad del servicio, la formación del profesional, el nivel de personalización y el seguimiento ofrecido.
 
-**Invertir en un buen nutricionista es invertir en tu salud presente y futura.** Y eso no tiene precio.
+**Invertir en un buen nutricionista es invertir en tu salud presente y futura.** Si quieres conocer mi forma de trabajar, visita mi [consulta de nutrición](/) y descubre cómo puedo ayudarte.
 
 ---
 

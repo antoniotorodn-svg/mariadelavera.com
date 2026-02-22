@@ -5,9 +5,7 @@ date: "2025-11-28"
 tags: ["Nutrición general", "Boadilla del Monte"]
 ---
 
-Dar el paso de pedir cita con un nutricionista puede generar cierta incertidumbre, sobre todo si nunca has ido a uno. Es normal que te preguntes qué va a pasar, si te van a juzgar por lo que comes, si te darán una dieta muy restrictiva o si realmente merece la pena.
-
-En este artículo te cuento exactamente cómo es el proceso de una primera consulta de nutrición, qué deberías llevar y qué puedes esperar en cada fase. Mi objetivo es que llegues tranquilo y con la confianza de que vas a recibir la ayuda que necesitas.
+Dar el paso de pedir cita con un nutricionista puede generar cierta incertidumbre, sobre todo si nunca has ido a uno. En este artículo te cuento cómo es el proceso de una primera consulta de nutrición, qué deberías llevar y qué puedes esperar en cada fase.
 
 ## Antes de la consulta: cómo prepararte
 
@@ -79,9 +77,7 @@ Si todavía estás decidiendo a qué profesional acudir, te recomiendo leer mi g
 
 ## Da el primer paso con confianza
 
-Si has llegado hasta aquí, probablemente ya estás pensando en pedir cita. Mi consejo es que no lo pospongas más. La primera consulta es precisamente eso: un primer paso. No necesitas tener todo claro ni haber cambiado nada antes de venir. **Vienes precisamente para que te ayude a dar ese cambio.**
-
-En mi [consulta de nutrición](/) te espera un espacio sin juicios, con escucha activa y con toda la profesionalidad que tu salud merece.
+No necesitas tener todo claro ni haber cambiado nada antes de venir. **Vienes precisamente para que te ayude a dar ese cambio.** En mi [consulta de nutrición](/) te espera un espacio sin juicios, con escucha activa y con toda la profesionalidad que tu salud merece.
 
 ---
 
