@@ -2,6 +2,7 @@
 interface FAQItem {
   question: string;
   answer: string;
+  icon?: string;
 }
 
 interface Props {
@@ -11,114 +12,87 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div class="faq-accordion">
-  {items.map((item, index) => (
-    <div class="faq-accordion__item">
-      <button
-        class="faq-accordion__question"
-        aria-expanded="false"
-        aria-controls={`faq-answer-${index}`}
-        id={`faq-question-${index}`}
-      >
-        <span>{item.question}</span>
-        <span class="faq-accordion__icon">+</span>
+<div class="faq-list">
+  {items.map((item) => (
+    <div class="faq-item">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        {item.icon && <span>{item.icon}</span>} {item.question}
+        <span class="faq-icon">+</span>
       </button>
-      <div
-        class="faq-accordion__answer"
-        id={`faq-answer-${index}`}
-        aria-labelledby={`faq-question-${index}`}
-        role="region"
-      >
-        <div class="faq-accordion__answer-content">
-          {item.answer}
-        </div>
-      </div>
+      <div class="faq-a">{item.answer}</div>
     </div>
   ))}
 </div>
 
 <style>
-  .faq-accordion {
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 10px;
   }
 
-  .faq-accordion__item {
-    background-color: var(--color-white);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+  .faq-item {
+    background: var(--white);
+    border-radius: var(--radius);
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--sand-dark);
   }
 
-  .faq-accordion__question {
-    width: 100%;
+  .faq-q {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-md) var(--spacing-lg);
+    justify-content: space-between;
+    padding: 18px 24px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95em;
     background: none;
     border: none;
-    cursor: pointer;
+    width: 100%;
     text-align: left;
+    color: var(--text);
     font-family: var(--font-body);
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    transition: var(--transition-base);
+    gap: 12px;
   }
 
-  .faq-accordion__question:hover {
-    background-color: var(--color-bg-secondary);
+  .faq-q:hover {
+    background: var(--sand);
   }
 
-  .faq-accordion__icon {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--color-trust);
-    transition: transform var(--transition-base);
+  .faq-icon {
+    font-size: 1.3em;
+    color: var(--text-light);
+    transition: transform 0.3s;
     flex-shrink: 0;
-    margin-left: var(--spacing-md);
   }
 
-  .faq-accordion__question[aria-expanded="true"] .faq-accordion__icon {
+  .faq-a {
+    padding: 0 24px 18px;
+    font-size: 0.9em;
+    color: var(--text-light);
+    line-height: 1.65;
+    display: none;
+  }
+
+  .faq-item.open .faq-q {
+    background: var(--cream);
+  }
+
+  .faq-item.open .faq-a {
+    display: block;
+    color: var(--text);
+  }
+
+  .faq-item.open .faq-icon {
     transform: rotate(45deg);
   }
 
-  .faq-accordion__answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-
-  .faq-accordion__answer-content {
-    padding: 0 var(--spacing-lg) var(--spacing-md);
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-  }
-
-  .faq-accordion__question[aria-expanded="true"] + .faq-accordion__answer {
-    max-height: 500px;
+  @media (max-width: 900px) {
+    .faq-q { padding: 14px 16px; font-size: 0.85em; }
+    .faq-a { padding: 0 16px 14px; font-size: 0.82em; }
+    .faq-icon { font-size: 1.1em; }
   }
 </style>
-
-<script>
-  // Accordion functionality
-  const accordionButtons = document.querySelectorAll('.faq-accordion__question');
-
-  accordionButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-      // Cerrar otros (comportamiento de uno a la vez)
-      accordionButtons.forEach(otherButton => {
-        if (otherButton !== button) {
-          otherButton.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      // Toggle el actual
-      button.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
-    });
-  });
-</script>

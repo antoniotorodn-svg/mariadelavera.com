@@ -2,95 +2,136 @@
 interface Props {
   title: string;
   price: string;
-  description: string;
+  subtitle?: string;
   features: string[];
   highlighted?: boolean;
   savings?: string;
   ctaText?: string;
   ctaHref?: string;
+  note?: string;
 }
 
 const {
   title,
   price,
-  description,
+  subtitle,
   features,
   highlighted = false,
   savings,
-  ctaText = "Reservar",
-  ctaHref = "#reservar"
+  ctaText = "PEDIR CITA",
+  ctaHref = "#reservar",
+  note
 } = Astro.props;
 ---
 
-<div class={`pricing-card card ${highlighted ? 'pricing-card--highlighted' : ''}`}>
-  {savings && (
-    <div class="pricing-card__badge badge">
-      💰 Ahorro de {savings}
-    </div>
-  )}
-
-  <h3 class="pricing-card__title">{title}</h3>
-  <div class="pricing-card__price">{price}</div>
-  <p class="pricing-card__description">{description}</p>
-
-  <ul class="pricing-card__features">
-    {features.map(feature => (
-      <li>✓ {feature}</li>
-    ))}
+<div class={`precio-card ${highlighted ? 'destacado' : ''}`}>
+  <h3>{title}</h3>
+  {subtitle && <span class="precio-sub">{subtitle}</span>}
+  {savings && <span class="precio-ahorro">(Ahorro de {savings})</span>}
+  <div class="precio-amount">{price}</div>
+  <ul class="precio-features">
+    {features.map(f => <li>{f}</li>)}
   </ul>
-
-  <a href={ctaHref} class={`btn ${highlighted ? 'btn--trust' : 'btn--primary'}`} style="width: 100%; margin-top: auto;">
-    {ctaText}
-  </a>
+  <a href={ctaHref} class={`precio-cta ${highlighted ? 'cta-gold' : 'cta-outline'}`}>{ctaText}</a>
+  {note && <div class="precio-note">{note}</div>}
 </div>
 
 <style>
-  .pricing-card {
+  .precio-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-md);
     display: flex;
     flex-direction: column;
-    position: relative;
+    gap: 12px;
   }
 
-  .pricing-card--highlighted {
-    border: 3px solid var(--color-trust);
-    transform: scale(1.02);
+  .precio-card.destacado {
+    border: 2px solid var(--gold);
   }
 
-  .pricing-card__badge {
-    background-color: var(--color-trust);
-    color: var(--color-white);
-    margin-bottom: var(--spacing-md);
+  .precio-card h3 {
+    font-size: 1.15em;
+    font-weight: 700;
   }
 
-  .pricing-card__title {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text-primary);
+  .precio-sub {
+    font-size: 0.88em;
+    color: var(--text-light);
   }
 
-  .pricing-card__price {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    color: var(--color-trust);
-    margin-bottom: var(--spacing-sm);
+  .precio-ahorro {
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--gold);
   }
 
-  .pricing-card__description {
-    font-size: 0.95rem;
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-md);
+  .precio-amount {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 2.8em;
+    font-weight: 400;
   }
 
-  .pricing-card__features {
+  .precio-features {
     list-style: none;
-    padding: 0;
-    margin-bottom: var(--spacing-lg);
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.88em;
   }
 
-  .pricing-card__features li {
-    padding: 0.5rem 0;
-    color: var(--color-text-secondary);
-    font-size: 0.95rem;
+  .precio-features li::before {
+    content: '\2713  ';
+    color: var(--green-dark);
+    font-weight: 700;
+  }
+
+  .precio-cta {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.92em;
+    transition: all 0.2s;
+    margin-top: 8px;
+    text-decoration: none;
+  }
+
+  .cta-gold {
+    background: var(--gold);
+    color: white;
+  }
+
+  .cta-gold:hover {
+    background: #B8891E;
+  }
+
+  .cta-outline {
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+  }
+
+  .cta-outline:hover {
+    background: var(--gold);
+    color: white;
+  }
+
+  .precio-note {
+    font-size: 0.82em;
+    color: var(--green-dark);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .precio-card { padding: 22px 20px; }
+    .precio-card h3 { font-size: 1em; }
+    .precio-amount { font-size: 2.2em; }
+    .precio-features { font-size: 0.82em; }
+    .precio-cta { padding: 12px; font-size: 0.85em; }
+    .precio-note { font-size: 0.75em; }
   }
 </style>
