@@ -1,83 +1,84 @@
 ---
 interface Props {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
   ctaText?: string;
   ctaHref?: string;
-  variant?: string; // backward compat, ignored
+  variant?: 'primary' | 'trust' | 'whatsapp';
 }
 
 const {
-  title = "¿Damos el primer paso?",
-  description = "Escríbeme y te oriento sin compromiso. Tu salud no puede esperar.",
-  ctaText = "WhatsApp — 611 43 86 79",
-  ctaHref = "https://wa.me/34611438679?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita"
+  title,
+  description,
+  ctaText = "Reservar cita",
+  ctaHref = "#reservar",
+  variant = "primary"
 } = Astro.props;
 ---
 
-<div class="cta-final">
-  <div class="cta-card">
-    <h2>{title}</h2>
-    <p>{description}</p>
-    <a href={ctaHref} class="btn-wa" target="_blank" rel="noopener">{ctaText}</a>
+<div class="cta-box">
+  <div class="cta-box__decoration"></div>
+  <div class="container">
+    <div class="cta-box__content">
+      <h2 class="cta-box__title">{title}</h2>
+      <p class="cta-box__description">{description}</p>
+      <a href={ctaHref} class={`btn btn--${variant} btn--large`}>
+        {ctaText}
+      </a>
+    </div>
   </div>
 </div>
 
 <style>
-  .cta-final {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 24px 60px;
+  .cta-box {
+    padding: var(--spacing-3xl) 0;
+    background: var(--gradient-warm);
+    position: relative;
+    overflow: hidden;
   }
 
-  .cta-card {
-    background: linear-gradient(135deg, var(--green-dark), var(--green));
-    border-radius: var(--radius);
-    padding: 48px 40px;
+  .cta-box__decoration {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 182, 157, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-box__content {
     text-align: center;
-    color: white;
+    max-width: 650px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
 
-  .cta-card h2 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 1.7em;
+  .cta-box__title {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
     font-weight: 400;
-    margin-bottom: 12px;
-    color: white;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
   }
 
-  .cta-card p {
-    font-size: 0.95em;
-    opacity: 0.9;
-    margin-bottom: 24px;
-    color: white;
+  @media (min-width: 768px) {
+    .cta-box__title {
+      font-size: 2.75rem;
+    }
   }
 
-  .btn-wa {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 30px;
-    background: white;
-    color: var(--green-dark);
-    border-radius: 100px;
-    font-weight: 700;
-    font-size: 0.92em;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    transition: all 0.2s;
-    text-decoration: none;
+  .cta-box__description {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
   }
 
-  .btn-wa:hover {
-    background: var(--sand);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 900px) {
-    .cta-final { padding: 0 16px 32px; }
-    .cta-card { padding: 28px 20px; }
-    .cta-card h2 { font-size: 1.2em; }
-    .cta-card p { font-size: 0.85em; }
-    .btn-wa { padding: 12px 24px; font-size: 0.85em; }
+  .btn--large {
+    padding: 1.125rem 2.5rem;
+    font-size: 1.0625rem;
   }
 </style>

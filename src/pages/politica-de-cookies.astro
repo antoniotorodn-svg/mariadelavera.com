@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Pol&iacute;tica de Cookies | Mar&iacute;a De la Vera - Nutricionista"
+  description="Pol&iacute;tica de cookies del sitio web de Mar&iacute;a De la Vera L&oacute;pez, nutricionista en Boadilla del Monte."
+  canonical="/politica-de-cookies"
+>
+  <Nav slot="nav" />
+
+  <section class="section">
+    <div class="container legal-page">
+      <h1>Pol&iacute;tica de Cookies</h1>
+      <p class="legal-page__updated">Última actualización: febrero 2026</p>
+
+      <h2>1. ¿Qué son las cookies?</h2>
+      <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (ordenador, tablet o móvil) cuando visitas un sitio web. Se utilizan para que el sitio web funcione correctamente, mejorar tu experiencia de navegación y ofrecer información al propietario del sitio.</p>
+
+      <h2>2. ¿Qué cookies utilizamos?</h2>
+      <p>Este sitio web utiliza las siguientes cookies:</p>
+
+      <h3>Cookies técnicas (necesarias)</h3>
+      <p>Son imprescindibles para el funcionamiento del sitio web. No requieren consentimiento.</p>
+
+      <h3>Cookies de terceros</h3>
+      <p>Este sitio web puede cargar contenido de servicios externos que establecen sus propias cookies:</p>
+      <ul class="legal-list">
+        <li><strong>Calendly:</strong> para el sistema de reserva de citas. Puede instalar cookies propias para gestionar la sesión de reserva.</li>
+        <li><strong>Vimeo:</strong> para la reproducción de vídeos. Solo se cargan cookies si el usuario interactúa con el vídeo.</li>
+        <li><strong>Google Fonts:</strong> para la carga de tipografías. Google puede recopilar datos de uso.</li>
+      </ul>
+
+      <h2>3. ¿Cómo gestionar las cookies?</h2>
+      <p>Puedes configurar tu navegador para aceptar o rechazar las cookies. A continuación te indicamos cómo hacerlo en los navegadores más habituales:</p>
+      <ul class="legal-list">
+        <li><strong>Google Chrome:</strong> Configuración > Privacidad y seguridad > Cookies y otros datos de sitios.</li>
+        <li><strong>Mozilla Firefox:</strong> Opciones > Privacidad y seguridad > Cookies y datos del sitio.</li>
+        <li><strong>Safari:</strong> Preferencias > Privacidad > Cookies y datos de sitios web.</li>
+        <li><strong>Microsoft Edge:</strong> Configuración > Privacidad, búsqueda y servicios > Cookies.</li>
+      </ul>
+      <p>Si desactivas las cookies, es posible que algunas funcionalidades del sitio (como la reserva de citas con Calendly) no funcionen correctamente.</p>
+
+      <h2>4. Más información</h2>
+      <p>Para más información sobre el tratamiento de tus datos, consulta nuestra <a href="/politica-de-privacidad">Política de Privacidad</a>.</p>
+      <p>Si tienes cualquier duda, puedes contactarnos en <a href="mailto:nutricionista.mariadelavera@gmail.com">nutricionista.mariadelavera@gmail.com</a>.</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    max-width: 800px;
+  }
+
+  .legal-page h1 {
+    font-family: var(--font-display);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .legal-page__updated {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-style: italic;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--mentaris-border);
+  }
+
+  .legal-page h2 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
+    color: var(--mentaris-green-dark);
+  }
+
+  .legal-page h3 {
+    font-size: 1.05rem;
+    margin-top: var(--spacing-md);
+  }
+
+  .legal-page p {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+  }
+
+  .legal-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.2rem;
+  }
+
+  .legal-list li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  .legal-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--mentaris-green);
+  }
+</style>

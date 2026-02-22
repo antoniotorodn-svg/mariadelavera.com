@@ -1,99 +1,125 @@
 ---
-// Nav sticky con blur, logo, links y hamburguesa
+// Navegación sticky: logo elegante + teléfono
 ---
 
 <nav class="nav">
-  <a href="/" class="nav-logo">
-    <svg width="180" height="38" viewBox="0 0 180 38" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="22" font-family="DM Serif Display, Georgia, serif" font-size="20" fill="#2D2D2D" font-weight="400">María De la Vera</text>
-      <text x="0" y="35" font-family="DM Sans, sans-serif" font-size="11" fill="#4A8B6F" font-weight="600">Nutricionista</text>
-    </svg>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#proceso">Proceso</a></li>
-    <li><a href="#precios">Precios</a></li>
-    <li><a href="#reservar">Reservar</a></li>
-    <li><a href="#testimonios">Testimonios</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
-  <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Abrir menú">&#9776;</button>
+  <div class="container">
+    <div class="nav__inner">
+      <!-- Logo -->
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-name">María De la Vera</span>
+        <span class="nav__logo-subtitle">Nutricionista</span>
+      </a>
+
+      <!-- Teléfono (clickable) -->
+      <a href="tel:+34611438679" class="nav__phone">
+        <span class="nav__phone-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </span>
+        <span class="nav__phone-number">611 43 86 79</span>
+      </a>
+    </div>
+  </div>
 </nav>
 
 <style>
   .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 40px;
-    background: rgba(253,248,243,0.92);
     position: sticky;
     top: 0;
-    z-index: 100;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(0,0,0,0.04);
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+    padding: 0.875rem 0;
+    transition: all var(--transition-base);
   }
 
-  .nav-logo {
-    display: block;
-    text-decoration: none;
-  }
-
-  .nav-links {
+  .nav__inner {
     display: flex;
-    gap: 32px;
-    list-style: none;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .nav-links a {
-    font-size: 0.92em;
-    font-weight: 600;
-    color: var(--text);
-    transition: color 0.2s;
+  .nav__logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    gap: 0;
+    line-height: 1;
+  }
+
+  .nav__logo:hover {
     text-decoration: none;
   }
 
-  .nav-links a:hover {
-    color: var(--green-dark);
+  .nav__logo-name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
   }
 
-  .nav-hamburger {
-    display: none;
-    background: none;
-    border: 2px solid var(--sand-dark);
-    border-radius: 8px;
-    padding: 6px 10px;
-    font-size: 1.3em;
-    cursor: pointer;
-    color: var(--text);
+  .nav__logo-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-trust);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 2px;
   }
 
-  @media (max-width: 900px) {
-    .nav {
-      padding: 10px 16px;
+  .nav__phone {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-trust);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 0.6rem 1.25rem;
+    border: 1.5px solid rgba(74, 139, 111, 0.3);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    font-family: var(--font-body);
+  }
+
+  .nav__phone:hover {
+    background: var(--gradient-green);
+    color: var(--color-white);
+    border-color: transparent;
+    box-shadow: var(--shadow-green);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .nav__phone-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__phone-number {
+    font-family: var(--font-body);
+  }
+
+  @media (max-width: 480px) {
+    .nav__phone {
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
     }
 
-    .nav-links {
-      display: none;
+    .nav__logo-name {
+      font-size: 1.15rem;
     }
 
-    .nav-links.open {
-      display: flex !important;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--cream);
-      padding: 20px 24px;
-      gap: 16px;
-      border-bottom: 1px solid var(--sand-dark);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      z-index: 200;
-    }
-
-    .nav-hamburger {
-      display: block;
+    .nav__logo-subtitle {
+      font-size: 0.65rem;
     }
   }
 </style>

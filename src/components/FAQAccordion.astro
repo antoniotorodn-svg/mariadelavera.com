@@ -2,7 +2,6 @@
 interface FAQItem {
   question: string;
   answer: string;
-  icon?: string;
 }
 
 interface Props {
@@ -12,87 +11,129 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div class="faq-list">
-  {items.map((item) => (
-    <div class="faq-item">
-      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-        {item.icon && <span>{item.icon}</span>} {item.question}
-        <span class="faq-icon">+</span>
+<div class="faq-accordion">
+  {items.map((item, index) => (
+    <div class="faq-accordion__item">
+      <button
+        class="faq-accordion__question"
+        aria-expanded="false"
+        aria-controls={`faq-answer-${index}`}
+        id={`faq-question-${index}`}
+      >
+        <span>{item.question}</span>
+        <span class="faq-accordion__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </span>
       </button>
-      <div class="faq-a">{item.answer}</div>
+      <div
+        class="faq-accordion__answer"
+        id={`faq-answer-${index}`}
+        aria-labelledby={`faq-question-${index}`}
+        role="region"
+      >
+        <div class="faq-accordion__answer-content">
+          {item.answer}
+        </div>
+      </div>
     </div>
   ))}
 </div>
 
 <style>
-  .faq-list {
-    max-width: 800px;
-    margin: 0 auto;
+  .faq-accordion {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--spacing-sm);
   }
 
-  .faq-item {
-    background: var(--white);
-    border-radius: var(--radius);
+  .faq-accordion__item {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--mentaris-border);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--sand-dark);
+    transition: all var(--transition-base);
   }
 
-  .faq-q {
+  .faq-accordion__item:has(.faq-accordion__question[aria-expanded="true"]) {
+    border-color: rgba(124, 182, 157, 0.3);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-accordion__question {
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 18px 24px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.95em;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
     background: none;
     border: none;
-    width: 100%;
+    cursor: pointer;
     text-align: left;
-    color: var(--text);
     font-family: var(--font-body);
-    gap: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    transition: all var(--transition-base);
   }
 
-  .faq-q:hover {
-    background: var(--sand);
+  .faq-accordion__question:hover {
+    background-color: var(--mentaris-green-subtle, #f8fdf9);
   }
 
-  .faq-icon {
-    font-size: 1.3em;
-    color: var(--text-light);
-    transition: transform 0.3s;
+  .faq-accordion__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--mentaris-green-light);
+    color: var(--mentaris-green-dark);
     flex-shrink: 0;
+    margin-left: var(--spacing-md);
+    transition: all var(--transition-base);
   }
 
-  .faq-a {
-    padding: 0 24px 18px;
-    font-size: 0.9em;
-    color: var(--text-light);
-    line-height: 1.65;
-    display: none;
+  .faq-accordion__question[aria-expanded="true"] .faq-accordion__icon {
+    transform: rotate(180deg);
+    background: var(--mentaris-green-dark);
+    color: white;
   }
 
-  .faq-item.open .faq-q {
-    background: var(--cream);
+  .faq-accordion__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .faq-item.open .faq-a {
-    display: block;
-    color: var(--text);
+  .faq-accordion__answer-content {
+    padding: 0 var(--spacing-lg) var(--spacing-md);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    font-size: 0.95rem;
   }
 
-  .faq-item.open .faq-icon {
-    transform: rotate(45deg);
-  }
-
-  @media (max-width: 900px) {
-    .faq-q { padding: 14px 16px; font-size: 0.85em; }
-    .faq-a { padding: 0 16px 14px; font-size: 0.82em; }
-    .faq-icon { font-size: 1.1em; }
+  .faq-accordion__question[aria-expanded="true"] + .faq-accordion__answer {
+    max-height: 500px;
   }
 </style>
+
+<script>
+  const accordionButtons = document.querySelectorAll('.faq-accordion__question');
+
+  accordionButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      accordionButtons.forEach(otherButton => {
+        if (otherButton !== button) {
+          otherButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      button.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+    });
+  });
+</script>

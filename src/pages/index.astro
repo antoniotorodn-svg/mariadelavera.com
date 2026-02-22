@@ -8,446 +8,472 @@ import PricingCard from '../components/PricingCard.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import CTABox from '../components/CTABox.astro';
 import CalendlySection from '../components/CalendlySection.astro';
+import ValueProposition from '../components/ValueProposition.astro';
+import MaterialFormativo from '../components/MaterialFormativo.astro';
 import BarrioTag from '../components/BarrioTag.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 import barriosData from '../data/barrios.json';
+import serviciosData from '../data/servicios.json';
 
 const faqItems = [
   {
     question: "¿Qué se hace en la primera consulta?",
-    answer: "En la primera consulta hacemos una entrevista completa sobre tu historial médico, hábitos alimenticios, objetivos y preferencias. Analizamos tu composición corporal y diseñamos una estrategia personalizada. Recibirás tu plan nutricional en 24-72h.",
-    icon: "💬"
+    answer: "En la primera consulta hacemos una entrevista completa sobre tu historial médico, hábitos alimenticios, objetivos y preferencias. Analizamos tu composición corporal y diseñamos una estrategia personalizada. Recibirás tu plan nutricional en 24-72h."
   },
   {
     question: "¿Qué se hace en las revisiones?",
-    answer: "Evaluamos tu progreso, ajustamos el plan según tus resultados y resolvemos dudas. Las revisiones son clave para mantener la motivación y adaptar la estrategia a tu evolución.",
-    icon: "📊"
+    answer: "Evaluamos tu progreso, ajustamos el plan según tus resultados y resolvemos dudas. Las revisiones son clave para mantener la motivación y adaptar la estrategia a tu evolución."
   },
   {
     question: "¿Cada cuánto se hacen las revisiones?",
-    answer: "Recomiendo revisiones cada 21 días para un seguimiento óptimo. Este intervalo permite ver cambios significativos y hacer ajustes efectivos sin perder el ritmo.",
-    icon: "📅"
+    answer: "Recomiendo revisiones cada 21 días para un seguimiento óptimo. Este intervalo permite ver cambios significativos y hacer ajustes efectivos sin perder el ritmo."
   },
   {
     question: "¿Trabajas con personas veganas o vegetarianas?",
-    answer: "Sí, adapto los planes a cualquier patrón alimentario: vegano, vegetariano, flexitariano, etc. Lo importante es que el plan sea equilibrado y cubra todas tus necesidades nutricionales.",
-    icon: "🌱"
+    answer: "Sí, adapto los planes a cualquier patrón alimentario: vegano, vegetariano, flexitariano, etc. Lo importante es que el plan sea equilibrado y cubra todas tus necesidades nutricionales."
   },
   {
     question: "¿Cómo son los planes que mandas?",
-    answer: "Planes 100% personalizados con menús semanales, recetas detalladas, lista de la compra y material educativo. Todo adaptado a tus gustos, horarios y objetivos. Nada de planes genéricos.",
-    icon: "📋"
+    answer: "Planes 100% personalizados con menús semanales, recetas detalladas, lista de la compra y material educativo. Todo adaptado a tus gustos, horarios y objetivos. Nada de planes genéricos."
   },
   {
     question: "¿Necesito tomar algún tipo de suplemento?",
-    answer: "Depende de cada caso. Primero valoro tu alimentación y analíticas. Solo recomiendo suplementación cuando es realmente necesaria y está justificada. La base siempre es la comida real.",
-    icon: "💊"
+    answer: "Depende de cada caso. Primero valoro tu alimentación y analíticas. Solo recomiendo suplementación cuando es realmente necesaria y está justificada. La base siempre es la comida real."
   }
 ];
 
 const testimonials = [
   {
-    quote: "María es una profesional excepcional. Desde el primer momento me sentí muy cómoda y en confianza. Me ha ayudado a mejorar mi relación con la comida y a entender mejor mi cuerpo. Sus planes son muy personalizados y fáciles de seguir.",
+    quote: "María es una profesional excepcional. Desde el primer momento me sentí muy cómoda y en confianza. Me ha ayudado a mejorar mi relación con la comida y a entender mejor mi cuerpo. Sus planes son muy personalizados y fáciles de seguir. ¡100% recomendada!",
     author: "Lucía García",
-    meta: "LocalGuide · 4 reseñas"
+    rating: 5
   },
   {
-    quote: "Llevo varios meses con María y estoy encantada. Ha sabido adaptarse perfectamente a mis necesidades y objetivos. Los menús son variados, ricos y nada aburridos. Además, el material educativo que proporciona es genial.",
+    quote: "Llevo varios meses con María y estoy encantada. Ha sabido adaptarse perfectamente a mis necesidades y objetivos. Los menús son variados, ricos y nada aburridos. Además, el material educativo que proporciona es genial para aprender a comer bien. Sin duda, la mejor decisión que he tomado.",
     author: "Ana Martínez",
-    meta: "5 reseñas"
+    rating: 5
   },
   {
-    quote: "Muy contenta con el seguimiento de María. Es muy cercana, resuelve todas mis dudas por WhatsApp y las revisiones son muy completas. He notado un cambio enorme tanto físico como en energía.",
+    quote: "Muy contenta con el seguimiento de María. Es muy cercana, resuelve todas mis dudas por WhatsApp y las revisiones son muy completas. He notado un cambio enorme tanto físico como en energía. Totalmente recomendable.",
     author: "Carmen López",
-    meta: "2 reseñas"
+    rating: 5
   },
   {
     quote: "María es una gran profesional. Me ayudó mucho con mis problemas digestivos. Después de años sin encontrar solución, con su plan personalizado he mejorado muchísimo. Es atenta, empática y se nota que le apasiona su trabajo.",
     author: "Pedro Sánchez",
-    meta: "LocalGuide · 8 reseñas"
+    rating: 5
   },
   {
-    quote: "Fui a María buscando perder peso y no solo lo conseguí, sino que aprendí a comer de verdad. Nunca me he sentido a dieta. Sus recetas son riquísimas y los menús súper prácticos.",
+    quote: "Fui a María buscando perder peso y no solo lo conseguí, sino que aprendí a comer de verdad. Nunca me he sentido a dieta. Sus recetas son riquísimas y los menús súper prácticos. Es la primera nutricionista con la que realmente he visto resultados duraderos.",
     author: "Marta Fernández",
-    meta: "3 reseñas"
+    rating: 5
   },
   {
-    quote: "Excelente profesional. María se toma el tiempo de conocerte, entender tu estilo de vida y adaptar todo a ti. No es un plan genérico, de verdad se nota que está hecho a medida.",
+    quote: "Excelente profesional. María se toma el tiempo de conocerte, entender tu estilo de vida y adaptar todo a ti. No es un plan genérico, de verdad se nota que está hecho a medida. Además, es muy motivadora y siempre está disponible. Muy recomendable.",
     author: "Javier Ruiz",
-    meta: "1 reseña"
+    rating: 5
   },
   {
-    quote: "Acudí a María por recomendación y ha sido un acierto total. Me ha enseñado a organizar mis comidas, a hacer la compra de forma inteligente y a disfrutar comiendo sano.",
+    quote: "Acudí a María por recomendación y ha sido un acierto total. Me ha enseñado a organizar mis comidas, a hacer la compra de forma inteligente y a disfrutar comiendo sano. Las revisiones cada 21 días son perfectas para mantener el ritmo.",
     author: "Isabel Torres",
-    meta: "LocalGuide · 11 reseñas"
+    rating: 5
   },
   {
-    quote: "María me ha ayudado con la nutrición deportiva y los resultados han sido increíbles. Ha adaptado mi alimentación a mis entrenamientos y competiciones. Mi rendimiento ha mejorado notablemente.",
+    quote: "María me ha ayudado con la nutrición deportiva y los resultados han sido increíbles. Ha adaptado mi alimentación a mis entrenamientos y competiciones. Mi rendimiento ha mejorado notablemente. Es muy profesional y cercana.",
     author: "David Moreno",
-    meta: "6 reseñas"
+    rating: 5
   },
   {
-    quote: "Después de probar con varios nutricionistas, encontré a María y por fin siento que estoy en buenas manos. Su enfoque es diferente: no se trata solo de perder peso, sino de aprender y cambiar hábitos.",
+    quote: "Después de probar con varios nutricionistas, encontré a María y por fin siento que estoy en buenas manos. Su enfoque es diferente: no se trata solo de perder peso, sino de aprender y cambiar hábitos para siempre. Los resultados hablan por sí solos.",
     author: "Sara Jiménez",
-    meta: "4 reseñas"
+    rating: 5
   },
   {
-    quote: "Muy buena experiencia con María. Desde la primera consulta se nota su profesionalidad y dedicación. Me sentí escuchada y comprendida. El plan que me preparó es muy completo y fácil de seguir.",
+    quote: "Muy buena experiencia con María. Desde la primera consulta se nota su profesionalidad y dedicación. Me sentí escuchada y comprendida. El plan que me preparó es muy completo y fácil de seguir. Estoy muy contenta con los resultados.",
     author: "Rosa Navarro",
-    meta: "2 reseñas"
-  },
-  {
-    quote: "Mi hijo tenía problemas con la alimentación y María lo ha gestionado de maravilla. Conecta muy bien y hace que todo sea fácil y natural. El cambio ha sido increíble.",
-    author: "Familia Leyra",
-    meta: "1 reseña"
-  },
-  {
-    quote: "Con María he aprendido a escuchar a mi cuerpo y a nutrirme de verdad. No solo he mejorado mi peso, sino mi energía, mi piel y mi estado de ánimo. Totalmente recomendable.",
-    author: "Andrea",
-    meta: "3 reseñas"
+    rating: 5
   }
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
 ---
 
 <BaseLayout
-  title="Nutricionista en Boadilla del Monte | María De la Vera · MAD01182"
-  description="Nutricionista colegiada en Boadilla del Monte. Pérdida de peso, nutrición deportiva, salud digestiva y hormonal. Primera consulta 50€. Reserva cita."
+  title="Nutricionista en Boadilla del Monte | María De la Vera · Colegiada MAD01182"
+  description="Nutricionista colegiada en Boadilla del Monte. Pérdida de peso, nutrición deportiva, salud digestiva y hormonal. Consulta presencial en Centro Médico Arboleda y online. Primera consulta 50€."
+  schema={faqSchema}
 >
   <Nav slot="nav" />
 
-  <!-- 1. Hero + Trust -->
-  <Hero />
+  <!-- 1. Hero -->
+  <Hero
+    badge="📍 Nutricionista en Boadilla del Monte"
+    title="Tu nutricionista en Boadilla del Monte"
+    titleAccent="Boadilla del Monte"
+    subtitle="Con más de 700 pacientes atendidos, ayudo a personas como tú a alcanzar su mejor versión a través de la nutrición. Consulta presencial en Centro Médico Arboleda (Boadilla del Monte) o modalidad online. Sin dietas milagro, solo educación nutricional y planes 100% personalizados."
+  />
 
-  <!-- 2. Proceso -->
-  <section class="section" id="proceso">
-    <h2 class="section-title">¿Cómo es el proceso?</h2>
-    <div class="proceso-grid">
-      <div class="proceso-card">
-        <div class="proceso-num">1</div>
-        <h3>Primera consulta</h3>
-        <p>Nos conocemos en persona o por videollamada. Hago una entrevista completa sobre tu historial, hábitos, gustos y objetivos. Analizamos tu composición corporal para tener datos objetivos de partida.</p>
+  <!-- 2. Servicios -->
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Servicios de nutrición en Boadilla del Monte</h2>
+        <p class="text-center section-intro__text">
+          Consultas personalizadas de nutrición y dietética, presenciales y online. Cada plan se adapta a tus objetivos, gustos y estilo de vida.
+        </p>
       </div>
-      <div class="proceso-card">
-        <div class="proceso-num">2</div>
-        <h3>Tu plan en 24-72h</h3>
-        <p>Con toda la información, diseño un plan nutricional 100% personalizado: menús semanales, recetas fáciles, lista de la compra y material educativo para que entiendas el porqué de cada decisión.</p>
-      </div>
-      <div class="proceso-card">
-        <div class="proceso-num">3</div>
-        <h3>Revisiones cada 21 días</h3>
-        <p>Nos vemos cada 3 semanas para evaluar tu progreso, resolver dudas y ajustar el plan. Este intervalo es óptimo: suficiente para ver cambios reales y hacer ajustes efectivos.</p>
+
+      <div class="grid grid--3">
+        {serviciosData.map(servicio => (
+          <ServiceCard
+            emoji={servicio.emoji}
+            title={servicio.title}
+            description={servicio.shortDesc}
+            href={`/${servicio.slug}`}
+          />
+        ))}
+        <ServiceCard
+          emoji="💻"
+          title="Consulta online"
+          description="Misma calidad desde cualquier lugar de España, por Google Meet"
+          href="/nutricionista-online"
+        />
       </div>
     </div>
   </section>
 
-  <!-- 3. Proof Bar -->
-  <div class="proof-bar">
-    <span class="proof-stars">★★★★★</span> Más de 700 pacientes han transformado su relación con la comida.
-  </div>
+  <!-- 3. Proceso / Cómo funciona -->
+  <section class="section section--alt" id="proceso">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Cómo funciona</h2>
+        <p class="text-center section-intro__text">
+          Un proceso sencillo y transparente, pensado para que desde el primer día sepas exactamente qué esperar.
+        </p>
+      </div>
 
-  <!-- 4. Precios -->
+      <div class="grid grid--3">
+        <div class="card step-card">
+          <div class="step-card__number">01</div>
+          <h3>Primera consulta</h3>
+          <p>
+            Nos conocemos en persona o por videollamada. Hago una <strong>entrevista completa</strong> sobre tu historial médico, hábitos alimenticios, rutina diaria, gustos y objetivos.
+          </p>
+          <p>
+            Realizamos un <strong>análisis de composición corporal</strong> (peso, grasa, masa muscular) para tener datos objetivos de partida.
+          </p>
+          <p class="step-card__price">
+            <strong>50€</strong> · 60 min aprox.
+          </p>
+        </div>
+
+        <div class="card step-card">
+          <div class="step-card__number">02</div>
+          <h3>Tu plan en 24-72h</h3>
+          <p>
+            Con toda la información recogida, diseño un <strong>plan nutricional 100% personalizado</strong>: menús semanales adaptados a tus horarios, recetas fáciles y una lista de la compra organizada.
+          </p>
+          <p>
+            Además recibirás <strong>material educativo</strong> para que entiendas el porqué de cada decisión y aprendas a comer bien de forma autónoma.
+          </p>
+          <p class="step-card__detail">
+            Lo recibes todo por email en formato digital.
+          </p>
+        </div>
+
+        <div class="card step-card">
+          <div class="step-card__number">03</div>
+          <h3>Revisiones cada 21 días</h3>
+          <p>
+            Nos vemos cada 3 semanas para <strong>evaluar tu progreso</strong>, resolver dudas y ajustar el plan según tus resultados y cómo te sientes.
+          </p>
+          <p>
+            Este intervalo es el óptimo: suficiente para ver <strong>cambios reales</strong> y poder hacer ajustes efectivos sin perder el ritmo.
+          </p>
+          <p class="step-card__price">
+            <strong>40€/revisión</strong> · 30 min aprox.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Precios -->
   <section class="section" id="precios">
-    <h2 class="section-title">Precios</h2>
-    <p class="section-sub">Elige la opción que mejor se adapte a ti. Puedes reservar una sesión individual o aprovechar el pack con descuento.</p>
-    <div class="precios-grid">
-      <PricingCard
-        title="Pago por sesión"
-        subtitle="Consulta individual"
-        price="50€"
-        features={[
-          "Primera consulta completa: 50€",
-          "Revisiones: 40€ cada 21 días",
-          "Pago en consulta: efectivo o tarjeta",
-          "Flexibilidad horaria"
-        ]}
-        note="Empieza hoy, sin necesidad de bonos"
-        ctaText="PEDIR CITA"
-      />
-      <PricingCard
-        title="Pack 4 sesiones"
-        subtitle="Ahorra contratando tu pack"
-        price="140€"
-        features={[
-          "Incluye 4 sesiones completas",
-          "Primera consulta + 3 revisiones",
-          "Seguimiento durante 2 meses",
-          "Pago único al contratar"
-        ]}
-        highlighted={true}
-        savings="30€"
-        note="Mayor compromiso, mejores resultados"
-        ctaText="PEDIR CITA"
-      />
-    </div>
-  </section>
-
-  <!-- 5. Ubicación -->
-  <section class="section">
-    <h2 class="section-title">¿Dónde paso consulta?</h2>
-    <div style="height: 32px;"></div>
-    <div class="ubicacion">
-      <div class="ubicacion-info">
-        <div><strong>Dirección:</strong> Av. Siglo XXI, 13, local 13/14, 28660 Boadilla del Monte, Madrid</div>
-        <div><strong>Centro:</strong> Centro Médico Arboleda</div>
-        <div><strong>Teléfono:</strong> +34 611 43 86 79</div>
-        <div><strong>Horarios:</strong> Lunes a Viernes de 10:00 a 14:00 y de 16:00 a 20:00</div>
-        <a href="tel:+34611438679" class="btn-call">Llamar al 611 43 86 79</a>
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Precios</h2>
       </div>
-      <div class="ubicacion-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.8!2d-3.8777!3d40.4021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418ff572a44c05%3A0x4936e78853ca7fde!2sCentro+M%C3%A9dico+Arboleda!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe>
+
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
+        <PricingCard
+          title="Consulta individual"
+          price="50€"
+          description="Ideal para empezar o si prefieres ir sesión por sesión."
+          features={[
+            "Primera consulta completa (50€)",
+            "Plan nutricional personalizado",
+            "Material de apoyo y recetas",
+            "Revisiones a 40€ cada 21 días"
+          ]}
+          ctaText="Reservar primera consulta"
+        />
+
+        <PricingCard
+          title="Pack 4 sesiones"
+          price="140€"
+          description="La opción más elegida: compromiso y ahorro desde el inicio."
+          features={[
+            "Primera consulta + 3 revisiones",
+            "Plan nutricional personalizado",
+            "Seguimiento durante 2 meses",
+            "Ahorro de 30€ vs pago individual"
+          ]}
+          highlighted={true}
+          savings="30€"
+          ctaText="Reservar pack completo"
+        />
       </div>
     </div>
   </section>
 
-  <!-- 6. Reservar -->
+  <!-- 4. Ubicación / Contacto -->
+  <section class="section section--alt" id="ubicacion">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Dónde estoy</h2>
+      </div>
+
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto; align-items: start;">
+        <div class="card">
+          <div class="card-header-icon">📍</div>
+          <h3>Dirección</h3>
+          <p>
+            <strong>Centro Médico Arboleda</strong><br>
+            Av. Siglo XXI, 13, local 13/14<br>
+            28660 Boadilla del Monte, Madrid
+          </p>
+          <p>
+            <strong>Metro Ligero:</strong> ML2 (a 5 min andando)
+          </p>
+          <p style="margin-bottom: 0;">
+            <strong>Parking:</strong> Gratuito en el centro
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header-icon">📞</div>
+          <h3>Contacto</h3>
+          <p>
+            <strong>WhatsApp:</strong> <a href="https://wa.me/34690917004" target="_blank" rel="noopener">690 917 004</a>
+          </p>
+          <p>
+            <strong>Email:</strong> <a href="mailto:nutricionista@nutricionistaenboadilla.com">nutricionista@nutricionistaenboadilla.com</a>
+          </p>
+          <p style="margin-bottom: 0;">
+            <strong>Horario:</strong> Lunes a Viernes 9:00-20:00h
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Reservar cita con Calendly -->
   <CalendlySection />
 
-  <!-- 7. Servicios -->
-  <section class="section">
-    <h2 class="section-title">Principales Servicios</h2>
-    <p class="section-sub">Cada servicio está diseñado para ayudarte a encontrar equilibrio y bienestar a través de la nutrición.</p>
-    <div class="servicios-grid">
-      <div class="servicio-item">
-        <span class="servicio-icon">⚖️</span>
-        <div>
-          <h3>Pérdida de peso</h3>
-          <p>Sin dietas milagro ni restricciones extremas. Te ayudo a perder peso de forma saludable, sostenible y sin efecto rebote. Aprenderás a comer bien sin pasar hambre.</p>
-        </div>
+  <!-- 6. ¿Por qué elegir mi consulta? -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">¿Por qué elegir mi consulta?</h2>
       </div>
-      <div class="servicio-item">
-        <span class="servicio-icon">💪</span>
-        <div>
-          <h3>Nutrición deportiva</h3>
-          <p>Adapto tu alimentación a tus entrenamientos y competiciones. Maximiza tu rendimiento, mejora tu recuperación y alcanza tus objetivos deportivos.</p>
-        </div>
-      </div>
-      <div class="servicio-item">
-        <span class="servicio-icon">🫄</span>
-        <div>
-          <h3>Salud digestiva</h3>
-          <p>Hinchazón, gases, reflujo, intolerancias... Te ayudo a identificar la causa y a diseñar un plan que mejore tu digestión y bienestar intestinal.</p>
-        </div>
-      </div>
-      <div class="servicio-item">
-        <span class="servicio-icon">🌸</span>
-        <div>
-          <h3>Salud hormonal femenina</h3>
-          <p>SOP, endometriosis, menopausia, ciclo menstrual... La nutrición juega un papel clave. Trabajo con un enfoque adaptado a cada fase de tu vida.</p>
-        </div>
-      </div>
-      <div class="servicio-item">
-        <span class="servicio-icon">🩺</span>
-        <div>
-          <h3>Nutrición clínica</h3>
-          <p>Diabetes, colesterol, hipertensión, tiroides... Planes adaptados a tu condición médica para mejorar tus analíticas y tu calidad de vida.</p>
-        </div>
-      </div>
-      <div class="servicio-item">
-        <span class="servicio-icon">💻</span>
-        <div>
-          <h3>Consulta online</h3>
-          <p>La misma calidad de atención desde cualquier lugar. Consultas por videollamada con seguimiento completo y material digital.</p>
-        </div>
-      </div>
+      <ValueProposition />
     </div>
   </section>
 
-  <!-- 8. Proof Bar -->
-  <div class="proof-bar">Recibe tu plan personalizado con menús, recetas y lista de la compra en 24-72h.</div>
-
-  <!-- 9. FAQ -->
+  <!-- 7. FAQ -->
   <section class="section" id="faq">
-    <h2 class="section-title">Preguntas frecuentes</h2>
-    <p class="section-sub">¿Tienes alguna duda? Puede que esta sección despeje alguna de ellas.</p>
-    <FAQAccordion items={faqItems} />
-  </section>
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Preguntas frecuentes</h2>
+      </div>
 
-  <!-- 10. Reseñas -->
-  <section class="section" id="testimonios">
-    <div style="text-align:center;margin-bottom:8px;font-size:2em;">🥗</div>
-    <div style="text-align:center;margin-bottom:8px;"><span class="proof-stars" style="font-size:1.3em;">★★★★★</span></div>
-    <h2 class="section-title">Lo que dicen mis pacientes</h2>
-    <p class="section-sub">Estas son solo algunas de las valoraciones de mis pacientes. Puedes encontrar más en mi perfil de Google.</p>
-    <div class="resenas-grid">
-      {testimonials.map(t => (
-        <TestimonialCard
-          quote={t.quote}
-          author={t.author}
-          meta={t.meta}
-          rating={5}
-        />
-      ))}
+      <div style="max-width: 800px; margin: 0 auto;">
+        <FAQAccordion items={faqItems} />
+      </div>
     </div>
   </section>
 
-  <!-- 11. CTA Final -->
-  <CTABox />
+  <!-- 8. Testimonios -->
+  <section class="section section--alt" id="testimonios">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Lo que dicen mis pacientes</h2>
+        <p class="text-center section-intro__text">
+          Más de 700 pacientes han transformado su relación con la comida. Estos son algunos de sus testimonios.
+        </p>
+      </div>
+
+      <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
+        {testimonials.map(testimonial => (
+          <TestimonialCard
+            quote={testimonial.quote}
+            author={testimonial.author}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Sobre mí -->
+  <section class="section" id="sobre-mi">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2>Hola, soy María De la Vera</h2>
+          <p>
+            Dietista-Nutricionista colegiada <strong>MAD01182</strong>. Graduada por la <strong>Universidad CEU San Pablo</strong> y con Máster en Nutrición Clínica por <strong>UDIMA</strong>.
+          </p>
+          <p>
+            Más de <strong>700 pacientes atendidos</strong> desde 2023. Ahora en <strong>Boadilla del Monte</strong> (Centro Médico Arboleda).
+          </p>
+          <p>
+            Mi enfoque: <strong>educación nutricional</strong> y planes 100% personalizados. Sin dietas milagro. Consulta <strong>presencial</strong> u <strong>online</strong>.
+          </p>
+        </div>
+
+        <div class="about-image">
+          <div class="about-image-placeholder">
+            <span style="font-size: 5rem;">👩‍⚕️</span>
+            <p style="color: var(--color-text-secondary); font-style: italic; text-align: center; font-size: 0.875rem;">
+              Foto de María<br>(subir imagen)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Material formativo -->
+  <section class="section section--alt" id="material-formativo">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Material formativo incluido</h2>
+        <p class="text-center section-intro__text">
+          Todos mis pacientes reciben material educativo de calidad para entender la nutrición desde la ciencia y aplicarla en su día a día.
+        </p>
+      </div>
+      <MaterialFormativo />
+    </div>
+  </section>
+
+  <!-- 11. Barrios -->
+  <section class="section" id="barrios">
+    <div class="container">
+      <div class="section-intro">
+        <h2 class="text-center">Zonas de Boadilla</h2>
+      </div>
+
+      <div class="barrios-grid">
+        {barriosData.map(barrio => (
+          <BarrioTag name={barrio.name} href={`/${barrio.slug}`} />
+        ))}
+        <BarrioTag name="Consulta online" href="/nutricionista-online" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. CTA Final -->
+  <CTABox
+    title="¿Listo para empezar?"
+    description="Reserva tu primera consulta y da el primer paso hacia tus objetivos de salud."
+    ctaText="Reservar cita ahora"
+    ctaHref="#reservar"
+    variant="trust"
+  />
 
   <Footer slot="footer" />
 </BaseLayout>
 
 <style>
-  /* Proceso */
-  .proceso-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  /* Section intro styling */
+  .section-intro {
+    margin-bottom: var(--spacing-xl);
   }
 
-  .proceso-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    box-shadow: var(--shadow-md);
+  .section-intro h2 {
+    font-family: var(--font-display);
+    margin-bottom: var(--spacing-sm);
   }
 
-  .proceso-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: var(--gold-light);
-    color: var(--gold);
-    font-weight: 800;
-    font-size: 0.95em;
-    margin-bottom: 14px;
+  .section-intro__text {
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.0625rem;
   }
 
-  .proceso-card h3 {
-    font-size: 1em;
-    font-weight: 700;
-    margin-bottom: 10px;
+  /* Step cards */
+  .step-card {
+    text-align: left;
+    position: relative;
+    padding-top: var(--spacing-xl);
   }
 
-  .proceso-card p {
-    font-size: 0.88em;
-    color: var(--text-light);
-    line-height: 1.6;
-    margin: 0;
+  .step-card__number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--mentaris-green-light);
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    line-height: 1;
+    font-weight: 400;
   }
 
-  /* Precios */
-  .precios-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    max-width: 800px;
-    margin: 0 auto;
+  .step-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-sm);
   }
 
-  /* Ubicación */
-  .ubicacion {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
+  .step-card p {
+    font-size: 0.9375rem;
+    margin-bottom: var(--spacing-sm);
   }
 
-  .ubicacion-info {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    font-size: 0.95em;
+  .step-card__price {
+    color: var(--mentaris-green-dark) !important;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--mentaris-border);
+    margin-top: var(--spacing-sm);
+    margin-bottom: 0 !important;
   }
 
-  .ubicacion-info strong { color: var(--text); }
-
-  .ubicacion-map {
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
+  .step-card__detail {
+    font-style: italic;
+    font-size: 0.875rem !important;
+    color: var(--color-text-secondary);
   }
 
-  .ubicacion-map iframe {
-    width: 100%;
-    height: 300px;
-    border: none;
-  }
-
-  .btn-call {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px 32px;
-    background: var(--gold-light);
-    border-radius: 100px;
-    font-weight: 700;
-    font-size: 0.92em;
-    color: var(--text);
-    transition: all 0.2s;
-    margin-top: 8px;
-    text-decoration: none;
-    width: fit-content;
-  }
-
-  .btn-call:hover {
-    background: var(--gold);
-    color: white;
-  }
-
-  /* Servicios */
-  .servicios-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .servicio-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 16px;
-  }
-
-  .servicio-icon {
-    font-size: 1.3em;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .servicio-item h3 {
-    font-size: 0.95em;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .servicio-item p {
-    font-size: 0.85em;
-    color: var(--text-light);
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  /* Reseñas */
-  .resenas-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .proceso-grid { grid-template-columns: 1fr; gap: 14px; }
-    .proceso-card { padding: 20px 18px; }
-    .proceso-card h3 { font-size: 0.9em; }
-    .proceso-card p { font-size: 0.82em; }
-
-    .precios-grid { grid-template-columns: 1fr; max-width: 360px; gap: 16px; }
-
-    .ubicacion { grid-template-columns: 1fr; gap: 20px; }
-    .ubicacion-info { font-size: 0.85em; gap: 10px; }
-    .btn-call { padding: 12px 24px; font-size: 0.85em; }
-    .ubicacion-map iframe { height: 220px; }
-
-    .servicios-grid { grid-template-columns: 1fr; gap: 8px; }
-    .servicio-item { padding: 12px 8px; }
-    .servicio-icon { font-size: 1.1em; }
-    .servicio-item h3 { font-size: 0.88em; }
-    .servicio-item p { font-size: 0.8em; }
-
-    .resenas-grid { grid-template-columns: 1fr; gap: 12px; }
+  /* Card header icon */
+  .card-header-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
   }
 </style>
