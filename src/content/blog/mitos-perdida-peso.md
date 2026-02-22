@@ -72,22 +72,13 @@ Lo que sí puedes hacer es **reducir la carga de ultraprocesados, alcohol y azú
 
 ## Mito 8: "Solo importan las calorías"
 
-El modelo de "calorías que entran vs. calorías que salen" es una simplificación excesiva. Aunque el balance energético importa, no es el único factor. Influyen también:
-
-1. La **calidad de los alimentos** (no es lo mismo 200 kcal de aguacate que 200 kcal de galletas)
-2. El **efecto térmico** de los diferentes macronutrientes
-3. Tu **microbiota intestinal** y cómo procesa los alimentos
-4. Tus **niveles hormonales** (insulina, cortisol, leptina, grelina)
-5. La **distribución de las comidas** a lo largo del día
-6. Tu nivel de **actividad física** y tipo de ejercicio
+El modelo de "calorías que entran vs. calorías que salen" es una simplificación excesiva. Aunque el balance energético importa, influyen también la **calidad de los alimentos**, el efecto térmico de los macronutrientes, tu microbiota intestinal, tus niveles hormonales y tu nivel de actividad física.
 
 La [nutrición deportiva](/nutricion-deportiva) es un buen ejemplo de cómo la distribución y el tipo de nutrientes importan tanto o más que el número total de calorías.
 
 ## Mito 9: "El cardio es el mejor ejercicio para perder peso"
 
-Aunque no soy entrenadora personal, como nutricionista debo hablar de actividad física porque alimentación y ejercicio van de la mano. Y la realidad es que **el entrenamiento de fuerza** es tanto o más efectivo que el cardio para la pérdida de grasa.
-
-La masa muscular es metabólicamente activa: cuanta más masa muscular tienes, más calorías quema tu cuerpo en reposo. Combinar entrenamiento de fuerza con una alimentación adecuada en proteínas es una de las estrategias más efectivas para mejorar la composición corporal.
+La realidad es que **el entrenamiento de fuerza** es tanto o más efectivo que el cardio para la pérdida de grasa. La masa muscular es metabólicamente activa: cuanta más tienes, más calorías quema tu cuerpo en reposo. Combinar fuerza con una alimentación adecuada en proteínas es una de las estrategias más efectivas para mejorar la composición corporal.
 
 ## Mito 10: "Si no veo resultados rápidos, no funciona"
 
