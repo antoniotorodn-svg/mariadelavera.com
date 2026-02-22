@@ -45,10 +45,9 @@ const schema = {
   <Nav slot="nav" />
 
   <Hero
-    badge={`📍 ${barrio.name}`}
     title={`Nutricionista en ${barrio.name}`}
-    titleAccent={barrio.name}
-    subtitle={barrio.description}
+    description={barrio.description}
+    location={barrio.name}
     showVideo={true}
   />
 
