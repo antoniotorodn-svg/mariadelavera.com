@@ -13,7 +13,7 @@
   --green: #7CB69D;
   --green-dark: #4A8B6F;
   --green-pale: #EEF6F1;
-  --gold: #C9982E;
+  --gold: #9A7A1C;
   --gold-light: #F9E8D2;
   --text: #2D2D2D;
   --text-light: #6B6B6B;
@@ -248,14 +248,14 @@ img {
 .btn--primary {
   background: var(--gold);
   color: var(--white) !important;
-  box-shadow: 0 2px 8px rgba(201, 152, 46, 0.2);
+  box-shadow: 0 2px 8px rgba(154, 122, 28, 0.2);
 }
 
 .btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201, 152, 46, 0.3);
+  box-shadow: 0 8px 24px rgba(154, 122, 28, 0.3);
   text-decoration: none;
-  background: #B8891E;
+  background: #7A6216;
 }
 
 .btn--secondary {
@@ -384,7 +384,7 @@ img {
   color: var(--white);
   border-color: var(--gold);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(201, 152, 46, 0.2);
+  box-shadow: 0 4px 12px rgba(154, 122, 28, 0.2);
 }
 
 @media (max-width: 768px) {
