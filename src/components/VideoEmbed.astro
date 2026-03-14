@@ -12,7 +12,19 @@ const {
 // Video de Vimeo - formato vertical
 const videoId = "1137833163";
 const videoHash = "7317f4af36";
-const thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
+// Obtener thumbnail real del vídeo via Vimeo oEmbed API
+let thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
+try {
+  const res = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}/${videoHash}`);
+  if (res.ok) {
+    const data = await res.json();
+    if (data.thumbnail_url) {
+      thumbnailUrl = data.thumbnail_url.replace(/-d_\d+x\d+/, '-d_640');
+    }
+  }
+} catch {
+  // Fallback a vumbnail si la API no responde
+}
 ---
 
 <div class={`hero-video ${vertical ? 'hero-video--vertical' : ''}`} data-video-id={videoId} data-video-hash={videoHash}>
@@ -20,7 +32,7 @@ const thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
     <img
       src={thumbnailUrl}
       alt={title}
-      loading="lazy"
+      loading="eager"
       width="280"
       height="500"
       decoding="async"

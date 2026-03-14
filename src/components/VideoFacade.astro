@@ -5,7 +5,20 @@ interface Props {
 }
 
 const { videoId, title = 'Video de presentación' } = Astro.props;
-const thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
+
+// Obtener thumbnail real del vídeo via Vimeo oEmbed API
+let thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
+try {
+  const res = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`);
+  if (res.ok) {
+    const data = await res.json();
+    if (data.thumbnail_url) {
+      thumbnailUrl = data.thumbnail_url.replace(/-d_\d+x\d+/, '-d_960');
+    }
+  }
+} catch {
+  // Fallback a vumbnail si la API no responde
+}
 ---
 
 <div class="video-facade" data-video-id={videoId}>
