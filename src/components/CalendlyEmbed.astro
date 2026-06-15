@@ -1,93 +1,48 @@
 ---
 interface Props {
-  type: 'presencial' | 'online';
+  type: 'consulta' | 'pareja';
 }
 
 const { type } = Astro.props;
 
-const calendlyUrl = type === 'presencial'
-  ? 'https://calendly.com/nutricionista-mariadelavera/primera-consulta?hide_event_type_details=1&hide_gdpr_banner=1'
-  : 'https://calendly.com/nutricionista-mariadelavera/primera-consulta-online?hide_event_type_details=1&hide_gdpr_banner=1';
+const slug = type === 'pareja' ? 'primera-pareja' : 'primera-consulta';
+const embedId = `reserva-maria-boadilla-del-monte-${slug}`;
+const src = `https://panel.nutricionista.io/embed/cita/maria-boadilla-del-monte/${slug}`;
 ---
 
-<div class="calendly-embed" data-calendly-url={calendlyUrl}>
-  <div class="calendly-placeholder">
-    <div class="calendly-placeholder__content">
-      <p>📅 Cargando calendario de reservas...</p>
-    </div>
-  </div>
-  <div
-    class="calendly-inline-widget"
-    data-url={calendlyUrl}
-    style="min-width:280px;height:700px;display:none;"
-  ></div>
+<div class="reserva-embed">
+  <iframe
+    id={embedId}
+    src={src}
+    width="100%"
+    height="900"
+    frameborder="0"
+    style="border:0;width:100%"
+    loading="lazy"
+    title="Reservar cita"
+    data-reserva-embed
+  ></iframe>
 </div>
 
 <script>
-  let calendlyLoaded = false;
-
-  function loadCalendly() {
-    if (calendlyLoaded) return;
-    calendlyLoaded = true;
-
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.head.appendChild(script);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const embeds = document.querySelectorAll('.calendly-embed');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const placeholder = entry.target.querySelector('.calendly-placeholder') as HTMLElement;
-          const widget = entry.target.querySelector('.calendly-inline-widget') as HTMLElement;
-
-          loadCalendly();
-
-          setTimeout(() => {
-            if (placeholder && widget) {
-              placeholder.style.display = 'none';
-              widget.style.display = 'block';
-            }
-          }, 500);
-
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      rootMargin: '200px'
+  // El iframe publica su altura real para evitar scroll interno. Cada mensaje
+  // se aplica solo al iframe que lo emitió (comparando contentWindow).
+  addEventListener('message', (e: MessageEvent) => {
+    if (!e || !e.data || e.data.type !== 'embed-reserva:height' || typeof e.data.height !== 'number') return;
+    document.querySelectorAll<HTMLIFrameElement>('iframe[data-reserva-embed]').forEach((f) => {
+      if (f.contentWindow === e.source) f.style.height = e.data.height + 'px';
     });
-
-    embeds.forEach((embed) => observer.observe(embed));
   });
 </script>
 
 <style>
-  .calendly-embed {
+  .reserva-embed {
     width: 100%;
     margin: var(--spacing-sm) 0;
   }
 
-  .calendly-placeholder {
-    min-width: 280px;
-    height: 700px;
-    background: var(--color-bg-secondary);
+  .reserva-embed iframe {
+    display: block;
     border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .calendly-placeholder__content {
-    text-align: center;
-    color: var(--color-text-secondary);
-  }
-
-  .calendly-placeholder__content p {
-    font-size: 1.1rem;
-    margin: 0;
   }
 </style>
