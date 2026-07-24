@@ -199,7 +199,7 @@ const faqSchema = {
           description="Terapia nutricional individual"
           features={[
             "Primera consulta completa · 60 min",
-            "Revisiones a 40€ · cada 21 días",
+            "Revisiones a 45€ · cada 21 días",
             "Plan nutricional personalizado",
             "Flexibilidad horaria"
           ]}
@@ -208,7 +208,7 @@ const faqSchema = {
 
         <PricingCard
           title="Pack 4 sesiones"
-          price="145€"
+          price="160€"
           description="Ahorra contratando tu bono"
           features={[
             "Incluye 4 sesiones completas",
@@ -220,6 +220,12 @@ const faqSchema = {
           savings="30€"
           ctaText="PEDIR CITA"
         />
+      </div>
+
+      <div class="parejas-note">
+        <p class="parejas-note__title">💑 <strong>Consulta de parejas:</strong> venid juntos y ahorrad con un <strong>descuento del 33% en las revisiones</strong></p>
+        <p class="parejas-note__prices">Primera consulta pareja: 110€ · Revisión pareja: 60€ (33% dto) · Bono 4 consultas parejas: 250€ (Ahorro 40€)</p>
+        <a href="#reservar" class="parejas-note__cta">Reservar cita para 2 personas</a>
       </div>
     </div>
   </section>
@@ -344,6 +350,54 @@ const faqSchema = {
 </BaseLayout>
 
 <style>
+  /* Nota parejas */
+  .parejas-note {
+    max-width: 720px;
+    margin: 28px auto 0;
+    background: var(--gold-light);
+    border: 2px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    text-align: center;
+  }
+
+  .parejas-note__title {
+    margin: 0 0 8px;
+    font-size: 0.95em;
+    color: var(--text);
+  }
+
+  .parejas-note__prices {
+    margin: 0 0 14px;
+    font-size: 0.88em;
+    color: var(--text-light);
+  }
+
+  .parejas-note__cta {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--gold);
+    color: var(--white);
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.9em;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .parejas-note__cta:hover {
+    background: #B8891E;
+    color: var(--white);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .parejas-note {
+      padding: 20px 18px;
+    }
+  }
+
   /* Servicios grid */
   .servicios-grid {
     display: grid;
