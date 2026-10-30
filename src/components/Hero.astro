@@ -79,7 +79,7 @@ const displayRole = role || "Nutricionista";
       <div class="hero__benefits">
         {benefits.map(item => (
           <div class="hero__benefit">
-            <span class="hero__benefit-icon">{item.emoji}</span>
+            <span class="hero__benefit-icon" set:html={item.emoji} />
             <span class="hero__benefit-label">{item.text}</span>
           </div>
         ))}
