@@ -1,22 +1,9 @@
 import type { APIRoute } from 'astro';
 
-const siteUrl = 'https://nutricionistaenboadilla.com';
+const siteUrl = 'https://mariadelavera.com';
 
 const pages = [
   { url: '/', priority: '1.0', changefreq: 'weekly' },
-  { url: '/perdida-de-peso', priority: '0.9', changefreq: 'monthly' },
-  { url: '/nutricion-deportiva', priority: '0.9', changefreq: 'monthly' },
-  { url: '/salud-digestiva', priority: '0.9', changefreq: 'monthly' },
-  { url: '/salud-hormonal', priority: '0.9', changefreq: 'monthly' },
-  { url: '/nutricion-clinica', priority: '0.9', changefreq: 'monthly' },
-  { url: '/nutricionista-online', priority: '0.9', changefreq: 'monthly' },
-  { url: '/nutricionista-boadilla-centro', priority: '0.8', changefreq: 'monthly' },
-  { url: '/nutricionista-prado-del-espino', priority: '0.8', changefreq: 'monthly' },
-  { url: '/nutricionista-olivar-de-boadilla', priority: '0.8', changefreq: 'monthly' },
-  { url: '/nutricionista-bonanza-boadilla', priority: '0.8', changefreq: 'monthly' },
-  { url: '/nutricionista-las-lomas-boadilla', priority: '0.8', changefreq: 'monthly' },
-  { url: '/nutricionista-valdecabanas-boadilla', priority: '0.8', changefreq: 'monthly' },
-  { url: '/nutricionista-sector-b-boadilla', priority: '0.8', changefreq: 'monthly' },
   { url: '/aviso-legal', priority: '0.3', changefreq: 'yearly' },
   { url: '/politica-de-privacidad', priority: '0.3', changefreq: 'yearly' },
   { url: '/politica-de-cookies', priority: '0.3', changefreq: 'yearly' },
