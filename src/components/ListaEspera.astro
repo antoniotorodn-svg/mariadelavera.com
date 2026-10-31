@@ -8,7 +8,7 @@
  * avisamos.»
  *
  * Envía a POST https://panel.nutricionista.io/api/lista-espera-web con
- * { prof, nombre, email, franja: 'mananas' | 'tardes', origen, acepta, web }.
+ * { prof, nombre, telefono, franja: 'mananas' | 'tardes', origen, acepta, web }.
  * `web` es un campo trampa (honeypot): una persona lo deja vacío.
  * El panel contesta 200 {success:true} o 400/429/500 {success:false,error}.
  */
@@ -22,10 +22,10 @@ const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
 
 <div class="le" id="lista-espera" aria-labelledby="le-titulo">
   <p class="le__kicker"><span class="le__dot" aria-hidden="true"></span>Lista de espera</p>
-  <h3 class="le__titulo" id="le-titulo">¿No encuentras hueco?</h3>
+  <h3 class="le__titulo" id="le-titulo">¿No encuentras hueco que te venga bien?</h3>
   <p class="le__texto">
-    Ahora mismo no quedan huecos disponibles en las próximas semanas. Si te apuntas a la lista de
-    espera y se abre un hueco, te avisaremos nosotros para darte cita.
+    Apúntate a la lista de espera y, si se abre un hueco, te avisaremos nosotros
+    para darte cita.
   </p>
 
   <div class="le__caja" data-le-caja>
@@ -36,8 +36,8 @@ const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
       </div>
 
       <div class="le__campo">
-        <label for="le-email">Correo</label>
-        <input id="le-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" required placeholder="tucorreo@ejemplo.com" />
+        <label for="le-telefono">Teléfono</label>
+        <input id="le-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" required placeholder="600 000 000" />
       </div>
 
       <fieldset class="le__campo le__franjas">
@@ -66,7 +66,7 @@ const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
 
       <button type="submit" class="le__btn">Apuntarme a la lista de espera</button>
       <p class="le__error" role="alert" aria-live="assertive" hidden></p>
-      <p class="le__nota">Solo usaremos tu nombre y tu correo para avisarte si se abre un hueco.</p>
+      <p class="le__nota">Solo usaremos tu nombre y tu número para avisarte si se abre un hueco.</p>
     </form>
 
     <div class="le__gracias" role="status" aria-live="polite" hidden>
@@ -90,11 +90,11 @@ const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
     const errorEl = form.querySelector<HTMLElement>('.le__error');
     const btn = form.querySelector<HTMLButtonElement>('.le__btn');
     const nombre = form.querySelector<HTMLInputElement>('input[name="nombre"]');
-    const email = form.querySelector<HTMLInputElement>('input[name="email"]');
+    const telefono = form.querySelector<HTMLInputElement>('input[name="telefono"]');
     const acepta = form.querySelector<HTMLInputElement>('input[name="acepta"]');
     const trampa = form.querySelector<HTMLInputElement>('input[name="web"]');
     const franjas = form.querySelectorAll<HTMLInputElement>('input[name="franja"]');
-    if (!btn || !nombre || !email || !acepta || !trampa || !errorEl) return;
+    if (!btn || !nombre || !telefono || !acepta || !trampa || !errorEl) return;
     const textoBtn = btn.textContent || '';
 
     function mostrarError(texto: string, campo?: HTMLElement | null) {
@@ -116,12 +116,12 @@ const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
       ev.preventDefault();
       limpiar();
       const vNombre = nombre.value.trim();
-      const vEmail = email.value.trim();
+      const vTel = telefono.value.trim();
       const franja = Array.from(franjas).find((r) => r.checked)?.value || '';
 
       if (!vNombre) return mostrarError('Escribe tu nombre para poder apuntarte.', nombre);
-      if (!vEmail) return mostrarError('Escribe tu correo para que podamos avisarte.', email);
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(vEmail)) return mostrarError('Revisa el correo: parece que le falta algo.', email);
+      if (!vTel) return mostrarError('Escribe tu teléfono para que podamos avisarte.', telefono);
+      if (vTel.replace(/\D/g, '').length < 9) return mostrarError('Revisa el teléfono: parece que le faltan números.', telefono);
       if (!franja) return mostrarError('Elige si te vendría mejor por las mañanas o por las tardes.', franjas[0]);
       if (!acepta.checked) return mostrarError('Para apuntarte tienes que aceptar la política de privacidad.', acepta);
 
@@ -134,7 +134,7 @@ const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
           body: JSON.stringify({
             prof: form.dataset.prof,
             nombre: vNombre,
-            email: vEmail,
+            telefono: vTel,
             franja,
             origen: form.dataset.origen,
             acepta: true,
@@ -144,7 +144,7 @@ const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
         let data: { success?: boolean; error?: string } | null = null;
         try { data = await res.json(); } catch { data = null; }
         if (res.ok && data && data.success) {
-          if (graciasTexto) graciasTexto.textContent = `Si se abre un hueco, te escribimos a ${vEmail}.`;
+          if (graciasTexto) graciasTexto.textContent = `Si se abre un hueco, te avisamos al ${vTel}.`;
           form.hidden = true;
           if (gracias) { gracias.hidden = false; gracias.setAttribute('tabindex', '-1'); gracias.focus(); }
           return;
@@ -213,7 +213,7 @@ const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
   }
   .le__franjas legend { margin-bottom: 6px; }
   .le__campo input[type='text'],
-  .le__campo input[type='email'] {
+  .le__campo input[type='tel'] {
     width: 100%;
     min-height: 48px;
     padding: 0 14px;
