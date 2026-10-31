@@ -1,0 +1,357 @@
+---
+/**
+ * Lista de espera de María (oct-2026), al lado del calendario de reserva.
+ *
+ * Antonio: «Como María tiene muy poca disponibilidad, quiero poner al lado
+ * del calendario de reserva una sección de lista de espera… Nada de prometer
+ * que todas las semanas hay huecos: solo que si se abre un hueco, les
+ * avisamos.»
+ *
+ * Envía a POST https://panel.nutricionista.io/api/lista-espera-web con
+ * { prof, nombre, email, franja: 'mananas' | 'tardes', origen, acepta, web }.
+ * `web` es un campo trampa (honeypot): una persona lo deja vacío.
+ * El panel contesta 200 {success:true} o 400/429/500 {success:false,error}.
+ */
+interface Props {
+  prof?: string;
+  origen?: string;
+}
+const { prof = 'mariadelavera', origen = 'mariadelavera.com' } = Astro.props;
+const ENDPOINT = 'https://panel.nutricionista.io/api/lista-espera-web';
+---
+
+<div class="le" id="lista-espera" aria-labelledby="le-titulo">
+  <p class="le__kicker"><span class="le__dot" aria-hidden="true"></span>Lista de espera</p>
+  <h3 class="le__titulo" id="le-titulo">¿No encuentras hueco?</h3>
+  <p class="le__texto">
+    Ahora mismo no quedan huecos disponibles en las próximas semanas. Si te apuntas a la lista de
+    espera y se abre un hueco, te avisaremos nosotros para darte cita.
+  </p>
+
+  <div class="le__caja" data-le-caja>
+    <form class="le__form" data-lista-espera data-endpoint={ENDPOINT} data-prof={prof} data-origen={origen} novalidate>
+      <div class="le__campo">
+        <label for="le-nombre">Nombre</label>
+        <input id="le-nombre" name="nombre" type="text" autocomplete="name" maxlength="120" required placeholder="Tu nombre" />
+      </div>
+
+      <div class="le__campo">
+        <label for="le-email">Correo</label>
+        <input id="le-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" required placeholder="tucorreo@ejemplo.com" />
+      </div>
+
+      <fieldset class="le__campo le__franjas">
+        <legend>¿Cuándo te vendría mejor?</legend>
+        <div class="le__opciones">
+          <label class="le__opcion">
+            <input type="radio" name="franja" value="mananas" required />
+            <span>Por las mañanas</span>
+          </label>
+          <label class="le__opcion">
+            <input type="radio" name="franja" value="tardes" />
+            <span>Por las tardes</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="le__trampa" aria-hidden="true">
+        <label for="le-web">Web</label>
+        <input id="le-web" name="web" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <label class="le__acepto">
+        <input type="checkbox" name="acepta" required />
+        <span>He leído y acepto la <a href="/politica-de-privacidad" target="_blank" rel="noopener">política de privacidad</a></span>
+      </label>
+
+      <button type="submit" class="le__btn">Apuntarme a la lista de espera</button>
+      <p class="le__error" role="alert" aria-live="assertive" hidden></p>
+      <p class="le__nota">Solo usaremos tu nombre y tu correo para avisarte si se abre un hueco.</p>
+    </form>
+
+    <div class="le__gracias" role="status" aria-live="polite" hidden>
+      <span class="le__gracias-icono" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+      <p class="le__gracias-titulo">¡Apuntado/a!</p>
+      <p class="le__gracias-texto"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const MSG_RED = 'No hemos podido conectar. Revisa tu conexión e inténtalo de nuevo en un momento.';
+  const MSG_GENERICO = 'No hemos podido apuntarte. Inténtalo de nuevo en unos minutos.';
+
+  document.querySelectorAll<HTMLFormElement>('form[data-lista-espera]').forEach((form) => {
+    if (form.dataset.bound) return;
+    form.dataset.bound = '1';
+    const caja = form.closest<HTMLElement>('[data-le-caja]');
+    const gracias = caja?.querySelector<HTMLElement>('.le__gracias');
+    const graciasTexto = caja?.querySelector<HTMLElement>('.le__gracias-texto');
+    const errorEl = form.querySelector<HTMLElement>('.le__error');
+    const btn = form.querySelector<HTMLButtonElement>('.le__btn');
+    const nombre = form.querySelector<HTMLInputElement>('input[name="nombre"]');
+    const email = form.querySelector<HTMLInputElement>('input[name="email"]');
+    const acepta = form.querySelector<HTMLInputElement>('input[name="acepta"]');
+    const trampa = form.querySelector<HTMLInputElement>('input[name="web"]');
+    const franjas = form.querySelectorAll<HTMLInputElement>('input[name="franja"]');
+    if (!btn || !nombre || !email || !acepta || !trampa || !errorEl) return;
+    const textoBtn = btn.textContent || '';
+
+    function mostrarError(texto: string, campo?: HTMLElement | null) {
+      errorEl!.textContent = texto;
+      errorEl!.hidden = false;
+      if (campo) {
+        campo.setAttribute('aria-invalid', 'true');
+        campo.focus();
+      }
+    }
+    function limpiar() {
+      errorEl!.hidden = true;
+      errorEl!.textContent = '';
+      form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+    }
+    form.addEventListener('input', () => { if (!errorEl.hidden) limpiar(); });
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      limpiar();
+      const vNombre = nombre.value.trim();
+      const vEmail = email.value.trim();
+      const franja = Array.from(franjas).find((r) => r.checked)?.value || '';
+
+      if (!vNombre) return mostrarError('Escribe tu nombre para poder apuntarte.', nombre);
+      if (!vEmail) return mostrarError('Escribe tu correo para que podamos avisarte.', email);
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(vEmail)) return mostrarError('Revisa el correo: parece que le falta algo.', email);
+      if (!franja) return mostrarError('Elige si te vendría mejor por las mañanas o por las tardes.', franjas[0]);
+      if (!acepta.checked) return mostrarError('Para apuntarte tienes que aceptar la política de privacidad.', acepta);
+
+      btn.disabled = true;
+      btn.textContent = 'Apuntándote…';
+      try {
+        const res = await fetch(form.dataset.endpoint || '', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prof: form.dataset.prof,
+            nombre: vNombre,
+            email: vEmail,
+            franja,
+            origen: form.dataset.origen,
+            acepta: true,
+            web: trampa.value,
+          }),
+        });
+        let data: { success?: boolean; error?: string } | null = null;
+        try { data = await res.json(); } catch { data = null; }
+        if (res.ok && data && data.success) {
+          if (graciasTexto) graciasTexto.textContent = `Si se abre un hueco, te escribimos a ${vEmail}.`;
+          form.hidden = true;
+          if (gracias) { gracias.hidden = false; gracias.setAttribute('tabindex', '-1'); gracias.focus(); }
+          return;
+        }
+        mostrarError((data && typeof data.error === 'string' && data.error.trim()) || MSG_GENERICO);
+      } catch {
+        mostrarError(MSG_RED);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = textoBtn;
+      }
+    });
+  });
+</script>
+
+<style>
+  .le {
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
+    border-radius: var(--radius-md);
+    padding: 28px 26px;
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-body);
+    color: var(--text);
+    scroll-margin-top: 96px;
+  }
+  .le__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 10px;
+    padding: 4px 12px;
+    background: var(--gold-light);
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .le__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cta); }
+  .le__titulo {
+    margin: 0 0 8px;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .le__texto {
+    margin: 0 0 20px;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--text-light);
+  }
+
+  .le__form { display: grid; gap: 14px; }
+  .le__form[hidden] { display: none; }
+  .le__campo { display: grid; gap: 6px; margin: 0; padding: 0; border: 0; min-width: 0; }
+  .le__campo > label,
+  .le__franjas legend {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    padding: 0;
+  }
+  .le__franjas legend { margin-bottom: 6px; }
+  .le__campo input[type='text'],
+  .le__campo input[type='email'] {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1.5px solid var(--sand-dark);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    font: inherit;
+    font-size: 16px;
+    color: var(--ink);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .le__campo input:focus {
+    outline: none;
+    border-color: var(--cta-dark);
+    box-shadow: 0 0 0 4px rgba(245, 184, 0, 0.2);
+  }
+  .le__form [aria-invalid='true'] { border-color: #c0392b !important; }
+
+  .le__opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .le__opcion { position: relative; display: block; cursor: pointer; }
+  .le__opcion input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .le__opcion span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 8px;
+    border: 1.5px solid var(--sand-dark);
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    background: var(--white);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+  }
+  .le__opcion:hover span { border-color: var(--cta-dark); }
+  .le__opcion input:checked + span {
+    background: var(--cta);
+    border-color: var(--cta);
+    color: var(--ink);
+  }
+  .le__opcion input:focus-visible + span {
+    outline: 2px solid var(--green-dark);
+    outline-offset: 2px;
+  }
+  .le__opcion input[aria-invalid='true'] + span { border-color: #c0392b; }
+
+  .le__trampa {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .le__acepto {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .le__acepto input {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin: 1px 0 0;
+    accent-color: var(--cta-dark);
+  }
+  .le__acepto input[aria-invalid='true'] { outline: 2px solid #c0392b; outline-offset: 1px; }
+  .le__acepto a { color: var(--green-dark); text-decoration: underline; text-underline-offset: 2px; }
+
+  .le__btn {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 4px;
+    padding: 0 18px;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--cta);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+  }
+  .le__btn:hover { background: var(--cta-dark); }
+  .le__btn:active { transform: translateY(1px); }
+  .le__btn[disabled] { opacity: 0.6; cursor: default; }
+
+  .le__error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    background: #fdeded;
+    border: 1px solid #f5c9c9;
+    color: #98322f;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .le__error[hidden] { display: none; }
+  .le__nota { margin: 0; font-size: 0.8rem; line-height: 1.45; color: var(--text-light); }
+
+  .le__gracias {
+    text-align: center;
+    padding: 18px 8px 6px;
+    outline: none;
+  }
+  .le__gracias[hidden] { display: none; }
+  .le__gracias-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background: var(--cta);
+    color: var(--ink);
+    font-size: 1.5rem;
+  }
+  .le__gracias-titulo { margin: 0 0 6px; font-size: 1.2rem; font-weight: 700; color: var(--ink); }
+  .le__gracias-texto { margin: 0; font-size: 0.98rem; line-height: 1.55; color: var(--text-light); overflow-wrap: anywhere; }
+
+  @media (max-width: 480px) {
+    .le { padding: 22px 18px; }
+    .le__titulo { font-size: 1.3rem; }
+    .le__opcion span { font-size: 0.86rem; }
+  }
+</style>
