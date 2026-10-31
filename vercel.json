@@ -71,5 +71,77 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/perdida-de-peso",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricion-deportiva",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/salud-digestiva",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/salud-hormonal",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricion-clinica",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricionista-online",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricionista-boadilla-centro",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricionista-prado-del-espino",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricionista-olivar-de-boadilla",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricionista-bonanza-boadilla",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricionista-las-lomas-boadilla",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricionista-valdecabanas-boadilla",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nutricionista-sector-b-boadilla",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }

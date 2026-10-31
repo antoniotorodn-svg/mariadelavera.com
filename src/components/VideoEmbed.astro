@@ -12,7 +12,8 @@ const {
 // Video de Vimeo - formato vertical
 const videoId = "1137833163";
 const videoHash = "7317f4af36";
-const thumbnailUrl = `https://vumbnail.com/${videoId}.jpg`;
+// Miniatura real del vídeo (Vimeo CDN, vía oEmbed) - vumbnail.com devolvía placeholder genérico
+const thumbnailUrl = "https://i.vimeocdn.com/video/2131876852-47dbcbdbcbed21bc4c89ff13585dae149a8c0a939a5c8c6408f71eca1611fab2-d_640?region=us";
 ---
 
 <div class={`hero-video ${vertical ? 'hero-video--vertical' : ''}`} data-video-id={videoId} data-video-hash={videoHash}>
