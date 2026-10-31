@@ -1,5 +1,6 @@
 ---
 import CalendlyEmbed from './CalendlyEmbed.astro';
+import ListaEspera from './ListaEspera.astro';
 ---
 
 <section class="section" id="reservar">
@@ -11,38 +12,45 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
       </p>
     </div>
 
-    <div class="calendly-toggle" role="tablist" aria-label="Modalidad de consulta">
-      <button class="calendly-tab calendly-tab--active" id="tabIndividual" role="tab" aria-selected="true">Individual</button>
-      <button class="calendly-tab" id="tabPareja" role="tab" aria-selected="false">En pareja</button>
-    </div>
-
     <div class="calendly-grid">
-      <div class="calendly-props">
-        <div class="calendly-prop">
-          <span class="calendly-prop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-0.12em"><path d="M20 6 9 17l-5-5" /></svg></span>
-          <div><strong>100% personalizado</strong><br/>Planes adaptados a tus gustos, horarios y estilo de vida.</div>
+      <div class="calendly-col calendly-col--cal">
+        <div class="calendly-toggle" role="tablist" aria-label="Modalidad de consulta">
+          <button class="calendly-tab calendly-tab--active" id="tabIndividual" role="tab" aria-selected="true">Individual</button>
+          <button class="calendly-tab" id="tabPareja" role="tab" aria-selected="false">En pareja</button>
         </div>
-        <div class="calendly-prop">
-          <span class="calendly-prop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-0.12em"><path d="M20 6 9 17l-5-5" /></svg></span>
-          <div><strong>Educación nutricional</strong><br/>Entiende el porqué de cada pauta, sin dietas milagro.</div>
-        </div>
-        <div class="calendly-prop">
-          <span class="calendly-prop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-0.12em"><path d="M20 6 9 17l-5-5" /></svg></span>
-          <div><strong>Seguimiento real</strong><br/>Revisiones periódicas para ajustar tu plan contigo.</div>
-        </div>
-        <div class="calendly-prop">
-          <span class="calendly-prop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-0.12em"><path d="M20 6 9 17l-5-5" /></svg></span>
-          <div><strong>Presencial u online</strong><br/>En Centro Médico Arboleda (Boadilla) o desde donde estés.</div>
+        <a class="calendly-saltar" href="#lista-espera">¿No encuentras hueco? Apúntate a la lista de espera</a>
+
+        <div class="calendly-panels">
+          <div class="calendly-panel" id="panelIndividual" role="tabpanel">
+            <CalendlyEmbed type="consulta" />
+          </div>
+          <div class="calendly-panel calendly-panel--hidden" id="panelPareja" role="tabpanel">
+            <CalendlyEmbed type="pareja" />
+          </div>
         </div>
       </div>
 
-      <div class="calendly-panels">
-        <div class="calendly-panel" id="panelIndividual" role="tabpanel">
-          <CalendlyEmbed type="consulta" />
-        </div>
-        <div class="calendly-panel calendly-panel--hidden" id="panelPareja" role="tabpanel">
-          <CalendlyEmbed type="pareja" />
-        </div>
+      <div class="calendly-col calendly-col--espera">
+        <ListaEspera />
+      </div>
+    </div>
+
+    <div class="calendly-props" aria-label="Por qué consultar con María">
+      <div class="calendly-prop">
+        <span class="calendly-prop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-0.12em"><path d="M20 6 9 17l-5-5" /></svg></span>
+        <div><strong>100% personalizado</strong><br/>Planes adaptados a tus gustos, horarios y estilo de vida.</div>
+      </div>
+      <div class="calendly-prop">
+        <span class="calendly-prop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-0.12em"><path d="M20 6 9 17l-5-5" /></svg></span>
+        <div><strong>Educación nutricional</strong><br/>Entiende el porqué de cada pauta, sin dietas milagro.</div>
+      </div>
+      <div class="calendly-prop">
+        <span class="calendly-prop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-0.12em"><path d="M20 6 9 17l-5-5" /></svg></span>
+        <div><strong>Seguimiento real</strong><br/>Revisiones periódicas para ajustar tu plan contigo.</div>
+      </div>
+      <div class="calendly-prop">
+        <span class="calendly-prop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-0.12em"><path d="M20 6 9 17l-5-5" /></svg></span>
+        <div><strong>Presencial u online</strong><br/>En Centro Médico Arboleda (Boadilla) o desde donde estés.</div>
       </div>
     </div>
   </div>
@@ -75,7 +83,7 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
     display: flex;
     justify-content: center;
     gap: 0;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1.25rem;
     background: var(--sand);
     border-radius: 999px;
     padding: 5px;
@@ -97,45 +105,81 @@ import CalendlyEmbed from './CalendlyEmbed.astro';
     color: var(--ink);
   }
 
+  /* Las cuatro razones, en una tira compacta debajo del calendario y la lista
+     de espera (antes eran la columna izquierda). */
   .calendly-props {
-    display: flex;
-    flex-direction: column;
-    gap: 1.4rem;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem 1.4rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--sand-dark);
   }
   .calendly-prop {
     display: flex;
-    gap: 0.9rem;
+    gap: 0.75rem;
     align-items: flex-start;
-    font-size: 0.98rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--text-light);
   }
+  .calendly-prop strong { color: var(--text); }
   .calendly-prop__icon {
     flex: none;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background: var(--cta);
     color: var(--ink);
     border-radius: 50%;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .calendly-panel--hidden { display: none; }
 
+  /* Calendario a la izquierda y lista de espera a la derecha; en móvil, el
+     calendario primero y la lista debajo (con un enlace para saltar a ella). */
   .calendly-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
   }
+  .calendly-col { min-width: 0; }
+  .calendly-col--espera {
+    position: sticky;
+    top: 96px;
+  }
+
+  .calendly-saltar { display: none; }
 
   @media (max-width: 900px) {
     .calendly-grid {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 28px;
     }
+    .calendly-col--espera { position: static; }
+    .calendly-saltar {
+      display: block;
+      margin: -0.25rem 0 0.75rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .calendly-props {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .calendly-props { grid-template-columns: 1fr; gap: 0.9rem; }
   }
 
   .calendly-col__label {
