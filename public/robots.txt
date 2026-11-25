@@ -1,6 +1,4 @@
-# nutricionistaenboadilla.com robots.txt
-
+# Web sin indexar (25-nov-2026): noindex en la cabecera X-Robots-Tag y en
+# cada página. Sin Disallow a propósito: Google tiene que poder rastrear las
+# páginas para ver el noindex y quitarlas del índice.
 User-agent: *
-Allow: /
-
-Sitemap: https://nutricionistaenboadilla.com/sitemap.xml
