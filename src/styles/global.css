@@ -37,7 +37,10 @@
 
   /* Colores del sistema */
   --color-white: #FFFFFF;
-  --color-bg: #FDF8F3;
+  --color-bg: #FFFFFF;
+  --cta: #F5B800;
+  --cta-dark: #DFA600;
+  --ink: #1A1A1A;
   --color-bg-secondary: #F5F0EB;
   --color-accent: #F9E8D2;
   --color-text-primary: #2D2D2D;
@@ -45,7 +48,7 @@
   --color-trust: #4A8B6F;
 
   /* Tipografía Mentaris */
-  --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-display: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-body: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
   /* Espaciado */

@@ -6,6 +6,7 @@ interface Props {
   features: string[];
   highlighted?: boolean;
   savings?: string;
+  oldPrice?: string;
   ctaText?: string;
   ctaHref?: string;
 }
@@ -17,22 +18,24 @@ const {
   features,
   highlighted = false,
   savings,
+  oldPrice,
   ctaText = "PEDIR CITA",
   ctaHref = "#reservar"
 } = Astro.props;
 ---
 
 <div class={`pricing-card ${highlighted ? 'pricing-card--highlighted' : ''}`}>
+  {highlighted && savings && (
+    <span class="pricing-card__ribbon">AHORRA {savings}</span>
+  )}
   <h3 class="pricing-card__title">{title}</h3>
   <span class="pricing-card__description">{description}</span>
 
-  {savings && (
-    <span class="pricing-card__savings">
-      (Ahorro de {savings})
-    </span>
-  )}
 
-  <div class="pricing-card__price">{price}</div>
+  <div class="pricing-card__price">
+    {oldPrice && <s class="pricing-card__oldprice">{oldPrice}</s>}
+    {price}
+  </div>
 
   <ul class="pricing-card__features">
     {features.map(feature => (
@@ -45,12 +48,32 @@ const {
   </a>
 
   <div class="pricing-card__note">
-    {highlighted ? '\u2705 Mayor compromiso, mejores resultados' : '\u2705 Empieza hoy, sin necesidad de bonos'}
+    <span set:html={(highlighted ? '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1em\" height=\"1em\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"display:inline-block;vertical-align:-0.12em\"><path d=\"M20 6 9 17l-5-5\" /></svg> Mayor compromiso, mejores resultados' : '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1em\" height=\"1em\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"display:inline-block;vertical-align:-0.12em\"><path d=\"M20 6 9 17l-5-5\" /></svg> Empieza hoy, sin necesidad de bonos')} />
   </div>
 </div>
 
 <style>
+  .pricing-card__ribbon {
+    display: table;
+    margin: 0 auto 0.85rem;
+    background: var(--cta);
+    color: var(--ink);
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    padding: 0.35rem 1.1rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .pricing-card__oldprice {
+    color: var(--text-light);
+    font-size: 0.55em;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
   .pricing-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -128,13 +151,13 @@ const {
   }
 
   .pricing-card__cta.cta-gold {
-    background: var(--gold);
-    color: var(--white);
+    background: var(--cta);
+    color: var(--ink);
   }
 
   .pricing-card__cta.cta-gold:hover {
-    background: #B8891E;
-    color: var(--white);
+    background: var(--cta-dark);
+    color: var(--ink);
     text-decoration: none;
   }
 
