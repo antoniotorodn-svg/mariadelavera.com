@@ -74,6 +74,8 @@ const schemas = schema ? [defaultSchema, schema] : [defaultSchema];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Web sin indexar (25-nov-2026): también va en la cabecera X-Robots-Tag (vercel.json). -->
+  <meta name="robots" content="noindex, nofollow">
 
   <!-- SEO Principal -->
   <title>{title}</title>
